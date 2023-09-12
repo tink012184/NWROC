@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+
+<html lang="en-US" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Notification Template">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="styles2.css">
+	<title>Notification Template</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Smith, Will E</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Smith, Will E</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+</mso:CustomDocumentProperties>
+
+https://owlcation.com/stem/How-to-control-values-displayed-in-one-HTML-Dropdown-List-with-the-other-using-simple-JavaScript
+
+</xml><![endif]-->
+</head>
+
+<body>
+
+<div class="wrapper">
+
+	<!-- Header section -->
+	<div class="header">
+		<div class="logo">
+			<div>REGIONAL</div>
+			<div style="font-size: 18px;">OPERATIONS CENTER</div>
+		</div>
+		<div class="title" id="hedder">Safety Hazard Calls</div>
+	</div>
+
+	<!-- Left Navigation Menu -->
+	<div class="menu">
+	<!--	<div class="Section" style="margin-top: 5px;">Routing</div>
+		<div class="btns">
+			<div class="page"><a href="Leakage.htm">Leakage</a></div>
+			<div class="page"><a href="Leakage2.htm">Leakage w/2 orders</a></div>
+		</div>
+		<div class="Section" style="margin-top: 5px;">Planned Maintenance</div>
+		<div class="btns">
+			<div class="page"><a href="Planned Maintenance.htm">DM Template</a></div>
+		</div>
+	-->
+		<div class="Section" style="margin-top: 5px;">Navigation</div>
+		<div class="btns">
+			<div class="page" style="line-height: 20px;"><a href="index.htm">Notification Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Y8tool.htm">Y8 Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="CRQ.htm">CRQ Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="SafetyHazard.htm">Safety Hazard Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Planned Maintenance.htm">DM Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Regulatory.htm">California OES</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Regulatory_NV">Nevada PUC</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Fiber2.htm">Fiber Call</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Fiber.htm">Fiber Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="PSJobs.htm">PS Job Creator</a></div>
+			<div class="page" style="line-height: 20px;"><a href="ArtDemand.htm">ART Demand Email</a></div>
+		</div>
+
+		<!-- Section for Feedback -->
+	<div class="feedback">Issues / Feedback? Email:<br /><a href="mailto:DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com">Northwest ROC Leadership</a></div>
+    </div>
+
+
+    <div class="main">
+        <form class="SafetyHazard">
+            <div class="row" style="vertical-align: top; padding-top: 10px; padding-left: 10px; float: left;">
+                <div class="row">
+                    <div class="cell">Node:</div>
+                    <div class="cell"><input type="text" id="Node" onChange="my811();" /></div>
+                </div>
+                <div class="row">
+                    <div class="cell">What is the address or location of damage?:</div>
+                    <div class="cell"><input type="text" id="Address" onChange="my811();" /></div>
+                </div>
+                <div class="row">
+                    <div class="cell">Where on the property is the damage?:</div>
+                    <div class="cell"><input type="text" id="Where" onChange="my811();" /></div>
+                </div>
+                <div class="row">
+                    <div class="cell">What is damaged?:</div>
+                    <div class="cell"><input type="text" id="What" onChange="my811();" /></div>
+                </div>	
+                <div class="row">
+                    <div class="cell">Is the damaged area still exposed/unburied?:</div>
+                    <div class="cell"><input type="text" id="Exposed" onChange="my811();" /></div>
+                </div>
+                <div class="row">
+                    <div class="cell">Is this a verified Charter owned asset?:</div>
+                    <select id="CharterYN" onChange="my811();" >
+                        <option label=" "></option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                   </select>
+                </div>
+                <div class="row">
+                    <div class="cell">Who is the point of contact?:</div>
+                    <div class="cell"><input type="text" id="POC" onChange="my811();" /></div>
+                </div>
+                <div class="row">
+                    <div class="cell">What is the point of contacts phone#:</div>
+                    <div class="cell"><input type="text" id="POCNum" onChange="my811();" /></div>
+                </div>
+                <div class="row">
+                    <div class="cell">How was it damaged? (i.e., car accident, construction crew, utility crew etc.…):</div>
+                    <div class="cell"><input type="text" id="How" onChange="my811();" /></div>
+                </div>
+                <div class="row">
+                    <div class="cell">&nbsp;</div>
+                    <div class="cell" style="text-align: center;"><input type="reset" value="Clear" onclick="window.location.reload();"></div>
+                </div>
+            </div>
+
+            <div class="row" style="vertical-align: top; padding-top: 10px; padding-right: 80px;">
+                <div class="row">
+                    <div class="cell">&nbsp;</div>
+                    <div class="cell" style="text-align: left;"><BR><BR>Copy:<BR>
+                    <textarea id="Copy811" rows="25" cols="49" style="overflow: auto; width: 500px;font-size: 10px;" onChange="my811();"></textarea></div>
+                </div>
+                
+                <div class="row">
+                    <div class="cell">&nbsp;</div>
+                    <div class="cell2" style="text-align: center;"><input type="button" value="Copy LH Detail" class="Copy" /></div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+    	<!-- Footer Section -->
+	<div class="footer">
+		<div class="row">
+			<div class="cell">
+				<div class="row">
+					<!-- Help Section Title -->
+
+				</div>
+				<div class="row">
+					<!-- Left Help section -->
+					<div class="cell" id="helpcolumn1">
+
+					</div>
+					<!-- Right Help section -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+<!-- The Modal Code.  Used to create the help pop up windows and close button associated to JavaScript File. -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<div id="caption"></div>
+	<img class="modal-content" id="img01" src="/" alt="" />
+</div>
+
+<!-- Calls the JavaScript files -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="SafetyHazard.js"></script>
+</body>
+
+</html>

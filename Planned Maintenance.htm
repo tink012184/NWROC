@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+
+<html lang="en-US" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="DM Template">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="styles.css">
+	<title>DM Template</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Smith, Will E</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author msdt:dt="string">Smith, Will E</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Author>
+</mso:CustomDocumentProperties>
+
+https://owlcation.com/stem/How-to-control-values-displayed-in-one-HTML-Dropdown-List-with-the-other-using-simple-JavaScript
+
+</xml><![endif]-->
+</head>
+
+<body>
+
+<div class="wrapper">
+
+	<!-- Header section -->
+	<div class="header">
+		<div class="logo">
+			<div>REGIONAL</div>
+			<div style="font-size: 18px;">OPERATIONS CENTER</div>
+		</div>
+		<div class="title">DM Template</div>
+	</div>
+
+	<!-- Left Navigation Menu -->
+	<div class="menu">
+	<!--	<div class="Section" style="margin-top: 5px;">Routing</div>
+		<div class="btns">
+			<div class="page"><a href="Leakage.htm">Leakage</a></div>
+			<div class="page"><a href="Leakage2.htm">Leakage w/2 orders</a></div>
+		</div>
+		<div class="Section" style="margin-top: 5px;">Planned Maintenance</div>
+		<div class="btns">
+			<div class="page"><a href="Planned Maintenance.htm">DM Template</a></div>
+		</div>
+	-->
+		<div class="Section" style="margin-top: 5px;">Navigation</div>
+		<div class="btns">
+			<div class="page" style="line-height: 20px;"><a href="index.htm">Notification Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Y8tool.htm">Y8 Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="CRQ.htm">CRQ Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="SafetyHazard.htm">Safety Hazard Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Planned Maintenance.htm">DM Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Regulatory.htm">California OES</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Regulatory_NV">Nevada PUC</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Fiber2.htm">Fiber Call</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Fiber.htm">Fiber Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="PSJobs.htm">PS Job Creator</a></div>
+			<div class="page" style="line-height: 20px;"><a href="ArtDemand.htm">ART Demand Email</a></div>
+		</div>
+		
+		<!-- Section for Feedback -->
+		<div class="feedback">Issues / Feedback? Email:<br /><a href="mailto:DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com">Northwest ROC Leadership</a></div>
+	</div>
+	
+	<!--	<div class="Section" style="margin-top: 5px;">Remedy Templates</div>
+		<div class="btns">
+			<div class="page"><a href="SROwnoRTM.htm">SRO W/No RTM</a></div>
+			<div class="page"><a href="RTMwnoSRO.htm">RTM W/No SRO</a></div>
+		</div>
+		<div class="Section" style="margin-top: 5px;">PSC Outage Notice</div>
+		<div class="btns">
+			<div class="page"><a href="PSCInitial.htm">PSC Initial Notice</a></div>
+			<div class="page"><a href="PSCUpdate.htm">PSC Update Notice</a></div>
+			<div class="page"><a href="PSCFinal.htm">PSC Final Notice</a></div>
+		</div>
+		<div class="Section" style="margin-top: 5px;">ISP Escalations</div>
+		<div class="btns">
+			<div class="page"><a href="ISPEscalation.htm">ISP Escalations</a></div>
+		</div>
+	-->
+	</div>
+		<!-- Section for Feedback 
+		!<div class="feedback">Issues / Feedback? Email:<br /><a href="mailto:DL-Field-Ops-Eng-ROC-WST-Mgmt@charter.com">West ROC Leadership</a></div> -->
+</div>
+
+<!-- Main Content Area -->
+<div class="main">
+	<div class="row">
+		<!-- Begin left side data entry -->
+		<form> <!-- Form tag is only used to allow the Clear button at the bottom to clear the data entry area. -->
+			<div class="cell" style="padding-top: 10px; padding-left: 30px;display:block;">
+			<div class="row">
+					<div class="cell">Critical/Critical Y7? </div>
+					<div class="cell" style="text-align:left;"><input type="checkbox" id="CritY7" onChange="MAHIDE(); chngApprover(); myLHDesc();store_value('CritY7',this.value);" /></div>
+				</div>
+				
+				<div class="row">
+					<div class="cell">Management Area (MA) </div>
+					<div class="cell">
+						<select id="Q0" onChange="chngApprover();MAHIDE();OvRide();">
+							<option label=" "></option>
+							<option value="Mountain States">Mountain States</option>
+							<option value="Pacific Northwest">Pacific Northwest</option>
+							<option value="Sierra Nevada">Sierra Nevada</option>
+						</select>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="cell">Reason for Interruption </div>
+					<div class="cell">
+						<select id="Q1" onChange="myLHDesc();chngApprover();store_value('Q1',this.value);BlockCOV();">
+							<option label=" "></option>
+							<option value="FECC">FECC</option>
+							<option value="FECU">FECU</option>
+							<option value="SNR">SNR</option>
+							<option value="Fast Pass">Fast Pass</option>
+							<option value="Cash Pass">Cash Pass</option>
+							<option value="Override">Override</option>
+							<option value="BOTOT">BOTOT</option>
+							<option value="Overrun">DM MW Overrun</option>
+						</select>
+					</div>
+				</div>
+				<!-- Second Question here-->
+	<!--			<div class="row">
+					<div class="cell">Impairment Validated by </div>
+					<div class="cell">
+						<select class="form-control"  id='rep' onChange="store_value('rep',this.value);"></select>
+					</div>
+				</div>
+	-->			<div class="row">
+					<div class="cell">Plant Interruption Location </div>
+					<div class="cell">
+							<select id="Q3" onChange="myLHDesc();store_value('Q3',this.value);" >
+								<option label=" "></option>
+								<option value="Node">Node</option>
+								<option value="Mini Bridger">Mini Bridger</option>
+								<option value="Line Extender">Line Extender</option>
+								<option value="Passive Downstream of Last Active">Passive Downstream of Last Active</option>
+						   </select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="cell"># of customers impacted </div>
+					<div class="cell"><input type="text" id="Q4" onChange="myLHDesc();store_value('Q4',this.value);" /></div>
+				</div>
+				<div class="row">
+					<div class="cell">Planned Interuption Length (minutes) </div>
+					<div class="cell"><input type="text" id="Q5" onChange="myLHDesc();store_value('Q5',this.value);" /></div>
+				</div>
+				<div class="row">
+					<div class="cell">Approved by Title </div>
+					<div class="cell">
+						   <select class="InteruptionPlant" id="Q7" onChange="myLHDesc();changeApproval(this.value);store_value('Q7',this.value); "><option value=" ">&nbsp;</option>
+						   </select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="cell">Interuption Approved by </div>
+					<div class="cell">
+							<select id="Q6" onChange="myLHDesc(); store_value('Q6',this.value);"><option value=" ">&nbsp;</option>
+							</select>
+					</div> <!-- //myWorkLog(); -->
+					<div class="cell"></div>
+				</div>
+				
+				<div class="row">
+					<div class="cell">Override? </div>
+					<div class="cell" style="text-align:left;"><input type="checkbox" id="ORide" onChange="OvRide(); myLHDesc();store_value('ORide',this.value);" /></div>
+				</div>
+				
+		 	<div class="row" id="hidden80"> 
+					<div class="cell">If Override, Override Approved by </div> 
+					<div class="cell"><select disabled id="Q8" onChange="myLHDesc(); store_value('Q8',this.value);"><option value=" ">&nbsp;</option></select></div> <!-- //myWorkLog(); -->
+				</div>		
+				<div class="row" id="hidden90">  <!-- style="display:none" -->
+					<div class="cell">If Override, Reason for Override </div>
+					<div class="cell">
+						   <select disabled class="" id="Q9" onChange="myLHDesc(); store_value('Q9',this.value); ">
+								<option label=" "></option>
+								<option value="Intermittent">Intermittent</option>
+								<option value="ECAF">ECAF</option>
+								<option value="Access">Access</option>
+								<option value="Safety">Safety</option>
+								<option value="Ratkiller">Ratkiller</option>
+								<option value="Other">Other</option>
+						   </select>
+					</div>
+				</div>
+
+
+				<div class="row">
+					<div class="cell">Lighthouse Order # </div>
+					<div class="cell"><input type="text" id="Q10" onChange="myLHDesc();store_value('Q10',this.value);" /></div>
+				</div>
+				
+				<div class="row">
+					<div class="cell">Node Name </div>
+					<div class="cell"><input type="text" id="Q11" onChange="myLHDesc();store_value('Q11',this.value);" /></div>
+				</div>
+
+				<div class="row">
+					<div class="cell">COV Overridden?<BR><font size=1><I>(Controllable Outage Validation)</i></font></div>
+					<div class="cell">
+					<select id="Q12" onChange="myLHDesc();store_value('Q12',this.value);">
+							<option label=" "></option>
+							<option value="Yes">Yes</option>
+							<option value="No">No</option>
+					</select>
+					</div>
+				</div>
+	
+				<div class="row">
+					<div class="cell">Reason This Couldn't Be Done Inside The Maintenance Window</div>
+					<div class="cell"><input type="text" id="Q13" onChange="myLHDesc();store_value('Q13',this.value);" /></div>
+				</div>	
+	
+				
+				<div class="row">
+					<div class="cell">&nbsp;</div>
+					<div class="cell" style="text-align: center;"><input type="reset" value="Clear" onclick="window.location.reload();" /></div>
+				</div>
+			</div>
+		</form>
+		
+		<!-- Right side for result box -->
+		<div class="cell" style="vertical-align: top; padding-top: 10px; padding-left: 69px;">
+			<div class="row">
+				<div class="cell">Lighthouse Description:</div>
+				<div class="cell"><textarea id="LHDesc" rows="13" cols="50" style="overflow: hidden; width: 500px;" readonly></textarea></div>
+			</div>
+			<div class="row">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: center;"><input type="button" value="Copy Lighthouse Comments" class="CopyDesc" /></div>
+			</div>
+			<div class="row">
+				<div class="cell"> Choose your name </div>
+				<div class = "cell" style="text-align: left;">
+					<select class="cell" style="color: black; " id='rep' onChange="myLHDesc();store_value('rep',this.value);"></select>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+	<!-- Footer Section -->
+	<div class="footer">
+		<div class="row">
+			<div class="cell">
+				<div class="row">
+					<!-- Help Section Title -->
+					<div class="cell" style="text-decoration: underline; padding-left: 10px;">Update Information:</div>
+				</div>
+				<div class="row">
+					<!-- Left Help section -->
+					<div class="cell" id="helpcolumn1">
+						<ol>
+							<li>Choose from the Interuption Reasons</li>
+							<li>Choose from the Validated List</li>
+							<li>Enter the approving Supervisor/Managers name <img class="help" id="DMGuidelines" src="Images/popup.png" alt="popup" height="13" width="13" /></li>
+						</ol>
+					</div>
+					<!-- Right Help section -->
+					<div class="cell" id="helpcolumn2">
+						<ol start="4">
+							<li>Click Copy Lighthouse Comments button and paste into WO Comments</li>
+							<li><b>Process - </b><A href="https://chalk.charter.com/x/YSDGI" target="_blank">Chalk link</a></LI>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+<!-- The Modal Code.  Used to create the help pop up windows and close button associated to JavaScript File. -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<div id="caption"></div>
+	<img class="modal-content" id="img01" src="/" alt="" />
+</div>
+
+<!-- Calls the JavaScript files -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="ROCReps.js"></script>
+<script src="PlannedMaint.js"></script>
+<script src="Approved_by_Array.js"></script>
+</body>
+
+</html>

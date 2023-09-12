@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+
+<html lang="en-US" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="ROC Note">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="styles.css">
+	<title>CAL OES</title>
+
+<!--[if gte mso 9]><xml>
+<mso:CustomDocumentProperties>
+<mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor msdt:dt="string">Smith, Will E</mso:display_urn_x003a_schemas-microsoft-com_x003a_office_x003a_office_x0023_Editor>
+</mso:CustomDocumentProperties>
+</xml><![endif]-->
+</head>
+
+<body>
+
+<div class="wrapper">
+
+	<!-- Header section -->
+	<div class="header">
+		<div class="logo">
+			<div>REGIONAL</div>
+			<div style="font-size: 18px;">OPERATIONS CENTER</div>
+		</div>
+		<div class="title">California OES Notifications</div>
+	</div>
+
+	<!-- Left Navigation Menu -->
+	<div class="menu">
+		<div class="Section" style="margin-top: 5px;">Navigation</div>
+		<div class="btns">
+			<div class="page" style="line-height: 20px;"><a href="index.htm">Notification Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Y8tool.htm">Y8 Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="CRQ.htm">CRQ Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="SafetyHazard.htm">Safety Hazard Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Planned Maintenance.htm">DM Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Regulatory.htm">California OES</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Regulatory_NV">Nevada PUC</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Fiber2.htm">Fiber Call</a></div>
+			<div class="page" style="line-height: 20px;"><a href="Fiber.htm">Fiber Template</a></div>
+			<div class="page" style="line-height: 20px;"><a href="PSJobs.htm">PS Job Creator</a></div>
+			<div class="page" style="line-height: 20px;"><a href="ArtDemand.htm">ART Demand Email</a></div>
+		</div>
+		<!-- Section for Feedback -->
+		<div class="feedback">Issues / Feedback? Email:<br /><a href="mailto:DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com">Northwest ROC Leadership</a></div>
+	</div>
+
+	<!-- Main Content Area -->
+	<div class="main">
+		<div class="row">
+			<form> <!-- Form tag is only used to allow the Clear button at the bottom to clear the data entry area. -->
+			<!-- Begin left side data entry -->
+			<div class="cell" style="vertical-align: top; padding-top: 10px; padding-left: 136px;">
+				<div class="row">
+					<div class="cell">Notification Type:</div>
+					<div class="cell">
+						<select id="NotificationType" onChange="myWorkLog();setVisibility();setOutageCauses();">
+							<option value="Initial Notification">Initial Notification</option>
+							<option value="Status Update">Status Update</option>
+							<option value="Final Notification">Final Notification</option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="cell">ROC Point of Contact<br>Name (First Last):</div>
+					<div class="cell">
+						<select id="EmpName" onChange="setROCTitle(this.value);myWorkLog();">
+							<option value=""></option>
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="cell">ROC Point of<br>Contact Title:</div>
+					<div class="cell"><input type="text" id="EmpTitle" value="" onChange="myWorkLog();" readonly /></div>
+				</div>
+				<div class="row">
+					<div class="cell">Remedy Incident Id:</div>
+					<div class="cell"><input type="text" id="IncidentId" onChange="myWorkLog();" /></div>
+				</div>
+				<div class="row">
+					<div class="cell">Cause of Outage:</div>
+					<div class="cell">
+						<select id="OutageCause" onChange="myWorkLog();">
+						
+						</select>
+					</div>
+				</div>
+				<div class="row">
+					<div class="cell">Count of Voice<br>Subscribers Impacted:</div>
+					<div class="cell"><input type="text" id="SubImpact" onChange="myWorkLog();setVisibility();" /></div>
+				</div>
+				<div class="row otherInput">
+					<div class="cell">Outage Zip Codes<br>(Separated with commas):</div>
+					<div class="cell"><textarea id="ZipCodes" onChange="myWorkLog();"></textarea></div>
+				</div>
+				<div class="row otherInput">
+					<div class="cell">Cities/Areas Impacted<br>(Separated with commas):</div>
+					<div class="cell"><textarea id="CitiesAreasImpacted" onChange="myWorkLog();"></textarea></div>
+				</div>
+				<div class="row">
+					<div class="cell">Date/Time Outage Began<BR>(From E-Mail Body):</div>
+					<div class="cell"><input type="datetime-local" id="OutageBegan" onChange="myWorkLog();" /></div>
+				</div>
+				<div class="row">
+					<div class="cell">Date/Time Outage Discovered<BR>(Use Mountain Time):</div>
+					<div class="cell"><input type="datetime-local" id="OutageDiscovered" onChange="myWorkLog();" /></div>
+				</div>
+				<div class="row statusUpdate">
+					<div class="cell">ETR Date/Time:<BR>(Use Mountain Time)</div>
+					<div class="cell"><input type="datetime-local" id="ETR" onChange="myWorkLog();" /></div>
+				</div>
+				<div class="row displayNone finalUpdate">
+					<div class="cell">Restoration Date/Time:<br>(Use Mountain Time)</div>
+					<div class="cell"><input type="datetime-local" id="ATR" onChange="myWorkLog();" /></div>
+				</div>
+				<div class="row displayNone">
+					<div class="cell">Company Name:</div>
+					<div class="cell"><input type="text" id="CompanyName" value="Charter Communications" disabled /></div>
+				</div>
+				<!-- ROC specific data fields -->
+				<div class="row displayNone">
+					<div class="cell">Company Phone Contact:</div>
+					<div class="cell"><input type="text" id="PhoneNumber" value="1-844-849-7831 Option 4" disabled /></div>
+				</div>
+				<div class="row displayNone">
+					<div class="cell">Company E-Mail Contact:</div>
+					<div class="cell"><input type="text" id="Email" value="ROC-NW@charter.com" disabled /></div>
+				</div>
+				<div class="row displayNone">
+					<div class="cell">E-Mail CC Line:</div>
+					<div class="cell"><input type="text" id="CCLine" value="DL-Regulatory-Outages@charter.com;DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com;ROC-NW@charter.com" disabled /></div>
+				</div>
+				<div class="row">
+					<div class="cell">&nbsp;</div>
+					<div class="cell" style="text-align: center;"><input type="button" style="width: 275px;" value="Clear" onClick="defaultForm();" /></div>
+				</div>
+			</div>
+			</form>
+			<!-- Right side for result boxes -->
+			<div class="cell" style="vertical-align: top; padding-top: 10px; padding-left: 69px;">
+				<div class="row initialUpdate telephoneNotification">
+					<div class="cell">Telephone<br>Notification Script:</div>
+					<div class="cell"><textarea id="WorkLog" rows="10" cols="34" style="overflow: hidden; width: 550px; height: 425px;" readonly></textarea></div>
+				</div>
+				<div class="row initialUpdate telephoneNotification">
+					<div class="cell">&nbsp;</div>
+					<div class="cell" style="text-align: center;"><input type="button" style="width: 475px;" value="Copy Telephone Notification Script" class="CopyWorkLog" /></div>
+				</div>
+				<div class="row">
+					<div class="cell">&nbsp;</div>
+					<div class="cell" style="text-align: center;"><button type="submit" style="width: 475px;" class="SubmitButton" onClick="alertBox();">Generate Email</button></div>
+				</div>
+				<div class="row">
+					<div class="cell">&nbsp;</div>
+					<div class="cell" style="text-align: center;"><input type="button" style="width: 475px;" value="Copy E-Mail Disclaimer" class="CopyDisclaimer" /></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Footer Section -->
+	<div class="footer">
+		<div class="row">
+			<div class="cell">
+				<div class="row">
+					<!-- Help Section Title -->
+					<div class="cell" style="text-decoration: underline; padding-left: 10px;">CA Regulatory Notification:</div>
+				</div>
+				<div class="row">
+					<!-- Left Help section -->
+					<div class="cell" id="helpcolumn1">
+						<ol>
+							<li>Populate the form information.</li>
+							<li>Click the 'Generate E-Mail' button.</li>
+							<li style="color: red;">Change the "From" in your e-mail to "ROC-NW" and add your email signature to the bottom.</li>
+							<li style="color: red;">Click the 'Copy E-Mail Disclaimer' button, and paste into the e-mail.</li>
+						</ol>
+					</div>
+					<!-- Right Help section -->
+					<div class="cell" id="helpcolumn2">
+						<ol start="7">
+							
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- The Modal Code.  Used to create the help pop up windows and close button associated to JavaScript File. -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<div id="caption"></div>
+	<img class="modal-content" id="img01" src="/" alt="" />
+</div>
+
+<!-- Calls the JavaScript file -->
+<script src="Regulatory.js"></script>
+<script src="Hub-Tech-MA-List.js"></script>
+<script src="Techs_by_MA_Array.js"></script>
+<script src="StoreValues.js"></script>
+<script src="ROC_User_List.js"></script>
+
+<!-- Populate Persisting Fields -->
+
+</body>
+
+</html>

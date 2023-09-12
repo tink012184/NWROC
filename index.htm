@@ -1,0 +1,1516 @@
+<!DOCTYPE html>
+
+<html lang="en-US" xmlns:mso="urn:schemas-microsoft-com:office:office" xmlns:msdt="uuid:C2F41010-65B3-11d1-A29F-00AA00C14882">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="description" content="Notification Template">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<link rel="stylesheet" href="styles2.css">
+	<script src="//code.jquery.com/jquery.min.js"></script>
+
+	<title>Notification Template</title>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+	<div class="header">
+		<include src="header.htm"></include>
+	</div>
+
+	<div class="menu">
+		<include src="nav.html"></include>
+	</div>
+	
+	</div>
+	
+
+
+
+</div>
+
+<!-- Main Content Area -->
+<div class="main">
+	<div class="row">
+		<!-- Begin left side data entry -->
+		<form> <!-- Form tag is only used to allow the Clear button at the bottom to clear the data entry area. -->
+			<div class="cell" style="padding-top: 10px; padding-left: 25px;display:block;width: 550px"> 
+				<div class="row ORIG">
+					<div class="cell"> <input type="button" id="EverButton" width="3000" value="Everbridge? [ ]" onclick="Everbridge()" />
+<input class="displayNone" type="checkbox" id="EverbridgeMode" /><BR><BR><center><a class="EBLink displayNone" id="EBLnk" target=_new href="https://authentication.everbridge.net/cas/saml/login/censmanager?casSaml=true&disco=true&service=https://manager.everbridge.net/docms/j_spring_cas_security_check">Everbridge</a></center></div>
+
+					<div class="cell">Notification Type:<BR>
+							<select class="SHOWME" id="NoteType" onChange="myUpdate();ReVis();HideBC();ETS();" >
+								<option label=" "></option>
+								<option class="NoEBMode" value="Initial">Initial Notification</option>
+								<option class="NoEBMode" value="Update Before">Update: Tech Arrival/En Route</option>
+								<option class="YesEBMode displayNone" value="EBTechNot">Tech Access Issues/En Route</option> 
+								<option class="NoEBMode" value="Update After">Update: Hourly Update</option>
+								<option class="YesEBMode displayNone" value="Update After">Initial Everbridge/Hourly Update</option>
+								<option class="YesEBMode" value="PSQMTA">Commercial Power Updates</option>
+								<option class="NoEBMode" value="Monitoring">Monitoring</option>
+								<option class="NoEBMode" value="RepY6">Repeat Y6 Email</option>
+								<option class="NoEBMode" value="RepOut">Repeat Outage Email</option>
+								<option class="NoEBMode" value="IRIS">IRIS</option>
+								<option class="NoEBMode" value="ENOC/ETS">ENOC/ETS Update</option>
+						   </select>
+					</div>
+			</div>	
+		<div class="row displayNone ETS">
+			<div class="cell">Fiber Count Total</div>
+			<div class="cell"><input type="text" id="ETSTotal" onchange="ETS();"></div>
+		</div>
+		<div class="row displayNone ETS">
+			<div class="cell">&nbsp&nbsp&nbsp&nbsp# of /bundles and count</div>
+			<div class="cell"><input type="text" id="ETSCount" onchange="ETS();"></div>
+		</div>
+		<div class="row displayNone ETS">
+			<div class="cell">Type of Damage/Cause</div>
+			<div class="cell"><input type="text" id="ETSCaused" onchange="ETS();"></div>
+		</div>
+		<div class="row displayNone ETS">
+			<div class="cell">&nbsp&nbsp&nbsp&nbsp# of damage locations</div>
+			<div class="cell"><input type="text" id="ETSNumLoc" onchange="ETS();"></div>
+		</div>
+		<div class="row displayNone ETS">
+			<div class="cell">Damage Location (Address)</div>
+			<div class="cell"><input type="text" id="ETSAdd" onchange="ETS();"></div>
+		</div>
+		<div class="row displayNone ETS">
+			<div class="cell" style="vertical-align: top;"></div>
+			<div class="cell">Ariel <input value="Ariel" type="radio" name="ArielorUnder" id="ETSAriel" onChange="ETS();" />&nbsp&nbspUnderground <input value="Underground" type="radio" name="ArielorUnder" id="ETSUnder" onChange="ETS();"></div>
+		</div>
+		<div class="row displayNone ETS">
+			<div class="cell" style="vertical-align: top;"></div>
+			<div class="cell">Permanent <input value="Permanent" type="radio" name="ETSPorT" id="ETSPerm" onChange="ETS();" />&nbsp&nbsp&nbspTemporary <input value="Temporary" type="radio" name="ETSPorT" id="ETSTemp" onChange="ETS();"></div>
+		</div>
+		<div class="row displayNone ETS">
+			<div class="cell">Ability to Prioritize/Reroute TSP or Premier/CTBH Customer Circuits? (if applicable)</div>
+			<div class="cell"><input type="text" id="ETSCx" onchange="ETS();"></div>
+		</div>
+		<div class="row displayNone ETS">
+			<div class="cell">Challenges</div>
+			<div class="cell"><textarea id="ETSChallenges" onchange="ETS();"></textarea></div>
+		</div>
+		<div class="row displayNone ETS">
+			<div class="cell">ETR</div>
+			<input class="cell2" type="datetime-local" id="ETSETR" value="1969-01-01T00:00" onChange="TimeUp('future',ETSETR.value,'ETSETR'); ETS();">(MT)
+		</div>
+		<div class="row displayNone ETS">
+			<div class="cell">Current Status</div>
+			<div class="cell"><textarea id="ETSCurrent" onchange="ETS();"></textarea></div>
+		</div>
+				<div class="row displayNone Fiorm Reppy6">
+					<div class="cell" style="text-align: right;">How Many Y6 Repeats: </div>
+					<div class="cell" align="left">
+					<select id="NumRepsY6" onChange="RepUpdate();ReVis();">
+						<Option value="0"></option>
+						<Option value="1">Tier1: 1 Repeat (2 Y6's on Same Account)</option>
+						<Option value="2">Tier2: 2 Repeats (3 Y6's on Same Account)</option>
+						<Option value="3">Tier3: 3 Repeats (4 Y6's on Same Account)</option>
+						<Option value="4">Tier 4: 4+ Repeats (5+ Y6's on Same Account)</option>
+					</select>
+					</div>
+				</div>
+				
+				<div class="row displayNone Fiorm RepZV">
+					<div class="cell" style="text-align: right;">How Many Repeat Outages: </div>
+					<div class="cell" align="left">
+					<select id="NumRepsZV" onChange="RepUpdate();ReVis();RepeatBreadCrumb();">
+						<Option value="00000"></option>
+						<Option>Tier1: 5th SSA in 24 hrs</option>
+						<Option>Tier1: 6th unplanned outages in 10 days</option>
+						<Option>Tier2: 6th SSA in 24 hrs</option>
+						<Option>Tier2: 7th unplanned outages in 10 days</option>
+						<Option>Tier3: 7th SSA in 24 hrs</option>
+						<Option>Tier3: 8th unplanned outages in 10 days</option>
+						<Option>Tier4: 8th+ SSA in 24 hrs</option>
+						<Option>Tier4: 9th+ unplanned outages in 10 days</option>
+					</select>
+					</div>
+				</div>
+				
+				<div class="row displayNone Fiorm Reppy6a RepZVa">
+					<div class="cell" style="text-align: right;">MA: </div>
+					<div class="cell" align="left">
+					<select class="SHOWME" id="MA" onChange="HubLoad(this.value);" >
+						<option value=""></option>
+						<Option value="Mountain States">Mountain States</option>
+						<Option value="Pacific Northwest">Pacific Northwest</option>
+						<Option value="Sierra Nevada">Sierra Nevada</option>
+					</Select></div>
+				</div>
+				
+				<div class="row displayNone Fiorm Reppy6a RepZVa">
+					<div class="cell" style="text-align: right;">HUB: </div>
+					<div class="cell" align="left">
+					<Select id="HubHub" onChange="RepUpdate();RepeatBreadCrumb();">
+						<option value="">&nbsp;</option>
+					</Select></div>
+				</div>				
+
+				<div class="row displayNone Fiorm Reppy6a RepZVa">
+					<div class="cell" style="text-align: right;">Node Name: </div>
+					<div class="cell" align="left">
+					<input type="text" id="RepNode" style="width: 300px;" onChange="RepUpdate();RepeatBreadCrumb();" /></div>
+				</div>
+				
+				<div class="row displayNone Fiorm Reppy6a RepZVa">
+					<div class="cell" style="text-align: right;">Lighthouse Order #: </div>
+					<div class="cell2" align="left">
+					<input maxlength="20" type="number" id="RepLH" style="width: 300px;" onChange="HowMany(this.id);RepUpdate();" /></div>
+				</div>
+				<div class="row displayNone Fiorm RepZVa">
+					<div class="cell" style="text-align: right;">Technician Name: </div>
+					<div class="cell" align="left">
+					<input type="text" id="RepTech" style="width: 300px;" onChange="RepUpdate();" /></div>
+				</div>
+
+				<div class="row displayNone Fiorm RepZVa">
+					<div class="cell" style="text-align: right;">Repeat Outage Detail(What, When, Where): </div>
+					<div class="cell" align="left">
+					<textarea id="RepZVComments" cols="15" rows="5" onChange="RepUpdate();RepeatBreadCrumb();"></textarea>
+					
+					</div>
+				</div>		
+				<div class="row displayNone Fiorm RepZVa">
+					<div class="cell" style="text-align: right;">Enter the following for the last 10 days: </div>
+				</div>
+				<div class="row displayNone Fiorm RepZVa">
+					<div class="cell" style="text-align: right;">Number of Outages: </div>
+					<div class="cell" align="left">
+					<input type="text" id="RepOutages" style="width: 300px;" onChange="RepUpdate();" /></div>
+				</div>
+				<div class="row displayNone Fiorm RepZVa">
+					<div class="cell" style="text-align: right;">Number of Y6's: </div>
+					<div class="cell" align="left">
+					<input type="text" id="RepY6" style="width: 300px;" onChange="RepUpdate();" /></div>
+				</div>
+				<div class="row displayNone Fiorm RepZVa">
+					<div class="cell" style="text-align: right;">Number of Y7's: </div>
+					<div class="cell" align="left">
+					<input type="text" id="RepY7" style="width: 300px;" onChange="RepUpdate();" /></div>
+				</div>	
+				<div class="row displayNone Fiorm RepZVa">
+					<div class="cell" style="text-align: right;">Number of ZZ's: </div>
+					<div class="cell" align="left">
+					<input type="text" id="RepZZ" style="width: 300px;" onChange="RepUpdate();" /></div>
+				</div>		
+				<div class="row displayNone Fiorm Reppy6a">
+					<div class="cell" style="text-align: right;">Customer's Account #: </div>
+					<div class="cell2" align="left">
+					<input type="number" id="RepCustAcct" style="width: 300px;" onChange="HowMany(this.id);RepUpdate();" /></div>
+				</div>
+
+				<div class="row displayNone Fiorm Reppy6a">
+					<div class="cell" style="text-align: right;">Customer's Address: </div>
+					<div class="cell" align="left">
+					<input type="text" id="RepCustAddy" style="width: 300px;" onChange="RepUpdate();" /></div>
+				</div>
+				<div class="row displayNone Reppy6a">
+                    <div class="cell">Number of Orders </div>
+                    <div class="cell">
+                        <select id="NUMOrders" onChange="PreLHWO();">
+                            <option label=" "></option>
+							<option label="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                        </select>
+                    </div>
+                </div>
+				<div class="row displayNone Reppy6a">&nbsp</div>
+				<div class="row displayNone Reppy6a">&nbsp</div>	
+				<div class="row displayNone Reppy6a">&nbsp</div>
+				<div class="row displayNone Reppy6a">&nbsp</div>
+				<div class="row displayNone Reppy6a">&nbsp</div>
+				<div class="row displayNone Reppy6a">&nbsp</div>		
+				<div class="row">
+					<div class="cell displayNone Reppy6a " style="text-align: left;">Previous Lighthouse Order #: </div>
+					<div class="cell displayNone Reppy6a " style="text-align: left;">Previous WO Type: </div>
+					<div class="cell displayNone Reppy6a " style="text-align: left;">Previous WO Resolution: </div>
+					<div class="cell displayNone Reppy6a " style="text-align: left;">Previous WO was Resolved By: </div>
+					<div class="cell displayNone Reppy6a " style="text-align: left;">Previous WO Resolution Comments: </div>
+					<div class="cell displayNone Reppy6a" style="text-align: left;">Previous Y6 WO Referral Reason: </div>
+				</div>
+				<div class="row displayNone OneOrder">
+					<div class="cell">
+					<input type="text" id="a01" onchange="PreLHWO();"></div>
+					<div class="cell">
+					<input type="text" id="b01" onchange="PreLHWO();"></div>
+					<div class="cell">
+					<input type="text" id="c01" onchange="PreLHWO();"></div>
+					<div class="cell">
+					<input type="text" id="d01" onchange="PreLHWO();"></div>
+					<div class="cell">
+					<input type="text" id="e01" onchange="PreLHWO();"></div>
+					<div class="cell displayNone Reppy6a">
+					<input type="text" id="f01" onchange="PreLHWO();"></div>
+				</div>
+				<div class="row displayNone TwoOrder">
+					<div class="cell">
+					<input type="text" id="a02" onchange="PreLHWO();"></div>
+					<div class="cell">
+					<input type="text" id="b02" onchange="PreLHWO();"></div>
+					<div class="cell">
+					<input type="text" id="c02" onchange="PreLHWO();"></div>
+					<div class="cell">
+					<input type="text" id="d02" onchange="PreLHWO();"></div>
+					<div class="cell">
+					<input type="text" id="e02" onchange="PreLHWO();"></div>
+					<div class="cell displayNone Reppy6a">
+					<input type="text" id="f02" onchange="PreLHWO();"></div>
+				</div>
+				<div class="row displayNone ThreeOrder">
+					<div class="cell">
+					<input type="text" id="a03" onchange="PreLHWO();"></div>
+					<div class="cell">
+					<input type="text" id="b03" onchange="PreLHWO();"></div>
+					<div class="cell">
+					<input type="text" id="c03" onchange="PreLHWO();"></div>
+					<div class="cell">
+					<input type="text" id="d03" onchange="PreLHWO();"></div>
+					<div class="cell">
+					<input type="text" id="e03" onchange="PreLHWO(); "></div>
+					<div class="cell displayNone Reppy6a">
+					<input type="text" id="f03" onchange="PreLHWO(); "></div>
+				</div>
+				<div class="row displayNone FourOrder">
+					<div class="cell">
+					<input type="text" id="a04" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="b04" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="c04" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="d04" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="e04" onchange="PreLHWO(); "></div>
+					<div class="cell displayNone Reppy6a">
+					<input type="text" id="f04" onchange="PreLHWO(); "></div>
+				</div>
+				<div class="row displayNone FiveOrder">
+					<div class="cell">
+					<input type="text" id="a05" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="b05" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="c05" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="d05" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="e05" onchange="PreLHWO(); "></div>
+					<div class="cell displayNone Reppy6a">
+					<input type="text" id="f05" onchange="PreLHWO(); "></div>
+				</div>
+				<div class="row displayNone SixOrder">
+					<div class="cell">
+					<input type="text" id="a06" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="b06" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="c06" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="d06" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="e06" onchange="PreLHWO(); "></div>
+					<div class="cell displayNone Reppy6a">
+					<input type="text" id="f06" onchange="PreLHWO(); "></div>
+				</div>
+				<div class="row displayNone SevenOrder">
+					<div class="cell">
+					<input type="text" id="a07" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="b07" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="c07" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="d07" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="e07" onchange="PreLHWO(); "></div>
+					<div class="cell displayNone Reppy6a">
+					<input type="text" id="f07" onchange="PreLHWO(); "></div>
+				</div>
+				<div class="row displayNone EightOrder">
+					<div class="cell">
+					<input type="text" id="a08" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="b08" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="c08" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="d08" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="e08" onchange="PreLHWO(); "></div>
+					<div class="cell displayNone Reppy6a">
+					<input type="text" id="f08" onchange="PreLHWO(); "></div>
+				</div>
+				<div class="row displayNone NineOrder">
+					<div class="cell">
+					<input type="text" id="a09" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="b09" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="c09" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="d09" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="e09" onchange="PreLHWO(); "></div>
+					<div class="cell displayNone Reppy6a">
+					<input type="text" id="f09" onchange="PreLHWO(); "></div>
+				</div>
+				<div class="row displayNone TenOrder">
+					<div class="cell">
+					<input type="text" id="a10" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="b10" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="c10" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="d10" onchange="PreLHWO(); "></div>
+					<div class="cell">
+					<input type="text" id="e10" onchange="PreLHWO(); "></div>
+					<div class="cell displayNone Reppy6a">
+					<input type="text" id="f10" onchange="PreLHWO(); "></div>
+				</div>
+
+
+				 
+				<div class="row displayNone Fiorm INITUPDATE NSTANDBY DISPATCHGA" name="testi">
+					<div class="cell" style="text-align: right;">Technician Name: </div>
+					<div class="cell" align="left"><input type="text" id="IQ1" onChange="myUpdate();" /> 
+						<input type="checkbox" id="IQ1-VM" onChange="VM();myUpdate();" /> Voicemail?</div>
+						<!-- <div class="cell" align="left"><input type="checkbox" id="PendTech" onChange="myUpdate();" /> Pending Tech </div> -->
+				</div>
+
+				<div class="row displayNone Fiorm ONsiteNot">
+					<div class="cell" style="text-align: right;">On Site or Not on Site: </div>
+					<div class="cell">
+						<select id="OR" onChange="myUpdate();" >
+							<option label=" "></option>
+							<option value=" is on site. ">is on site</option>
+							<option value=" is not on site. ">is not on site</option>
+						</select>
+					</div>					
+				</div>
+
+				<div class="row displayNone Fiorm VMINIT VMUPDATE NORIG INIT NSTANDBY DISPATCHGA">
+					<div class="cell" style="text-align: right;">ETA?: </div>
+					<div class="cell2" align="left"><input type="checkbox" id="IQ2a" onChange="myUpdate();UnkNow(this.id,'IQ2');" /> Unknown
+					<BR>
+					<input type="datetime-local" id="IQ2" value="1969-01-01T00:00" onChange="TimeUp('future',IQ2.value,'IQ2');myUpdate();" /> (MT)</div>
+				</div>
+
+<!---Begin: Single / Multi Node--->
+				<div class="row displayNone Fiorm INIT DISPATCHGA">
+					<div class="cell" style="text-align: right;">Single or Multi Node?: </div>
+					<div class="cell">
+							<select id="IQ3" onChange="myUpdate();SingleMulti();" >
+								<option label=" "></option>
+								<option value="single">Single</option>
+								<option value="multiple">Multiple</option>
+						   </select>
+					</div>
+				</div>
+
+				<div class="row displayNone Fiorm  ISUB MULTI NQMTAPS">
+					<div class="cell" style="text-align: right;">• Dual dispatch initiated?: </div>
+					<div class="cell">
+							<select id="IQ3a" onChange="myUpdate();DualDisp();" >
+								<option label=" "></option>
+								<option value="No">No</option>
+								<option value="Yes">Yes</option>
+						   </select>
+					</div>
+				</div>				
+
+				<div class="row displayNone Fiorm ISUB MULTI2 NQMTAPS">
+					<div class="cell" style="text-align: right;">• LBI impacted?: </div>
+					<div class="cell">
+							<select id="IQ3b" onChange="myUpdate();LBI();" >
+								<option label=" "></option>
+								<option value="No">No</option>
+								<option value="Yes">Yes</option>
+						   </select>
+					</div>
+				</div>				
+
+				<div class="row displayNone Fiorm  ISUB LBI">
+					<div class="cell" style="text-align: right;">• How many?: </div>
+					<div class="cell" align="left"><input type="number" id="IQ3bi" onChange="myUpdate();HowMany(this.id);" /></div>
+				</div>				
+
+<!---End: Single / Multi Node--->
+
+<!---Power Supply Detail--->
+				<div class="row displayNone Fiorm INIT DISPATCHGA">
+					<div class="cell" style="text-align: right;">Power Supply Status?: </div>
+					<div class="cell">
+							<select id="IQ4" onChange="myUpdate();CPOETR();" >
+								<option label=" "></option>
+								<option value="is online">Online</option>
+								<option value="is offline">Offline</option>
+								<option value="shows both online and offline power supplies">Online/Offline Combo</option>
+								<option value="is in stand-by">Stand-by</option>
+								<option value="is unknown">Not in Continuity</option>
+						   </select>
+					</div>
+				</div>				
+
+				<div class="row displayNone Fiorm MULTIPS">
+					<div class="cell"></div>
+					<div class="cell" align="left">PS in stand-by for <B>all</B> nodes? <input type="checkbox" id="IQ4c" onChange="myUpdate();CPOETR();" /></div>
+				</div>
+
+				<div class="row displayNone Fiorm ISUB STANDBY QMTA2">
+					<div class="cell" style="text-align: right;">• Commercial Power Co.<BR> &nbsp&nbsp&nbsp&nbsp Website ETR?: </div>
+					<div class="cell2" align="left"><input type="checkbox" id="IQ4b" onChange="myUpdate();UnkNow(this.id,'IQ4a');" />Unknown
+					<BR>
+					<input type="datetime-local" id="IQ4a" value="1969-01-01T00:00" onChange="TimeUp('future',IQ4a.value,'IQ4a');myUpdate();" /> (MT)</div>
+				</div>
+<!---End: Power Supply Detail--->
+
+
+				
+
+<!---End INITIAL Section--->
+				
+				
+<!---Start Update Section--->
+				<div class="row displayNone Fiorm BEFORE VMUPDATE VM NAFTER UPDATE PSGEN">
+					<div class="cell" style="text-align: right;">Is tech on site?: </div>
+					<div class="cell">
+							<select id="UQ1" onChange="myUpdate();OnSite();" >
+								<option label=" "></option>
+								<option value="Yes">Yes</option>
+								<option value="No">No</option>
+						   </select>
+					</div>
+				</div>
+
+<!---Tech Onsite: Yes--->
+				<div class="row displayNone Fiorm VMUPDATE ONSITE USUB">
+					<div class="cell" style="text-align: right;">• Onsite Time?: </div>
+					<div class="cell2" align="left"><input type="datetime-local" id="UQ1a" value="1969-01-01T00:00" onChange="TimeUp('past',UQ1a.value,'UQ1a');myUpdate();" /> (MT)</div>
+
+				</div>	
+				
+				<div class="row displayNone Fiorm VMUPDATE ONSITE AFTER">
+					<div class="cell ISWAS" style="text-align: right;">What is the cause?: </div>
+					<div class="cell WASIS displayNone" style="text-align: right;">What was the cause?: </div>
+					<div class="cell">
+							<select id="UQ4" onChange="CommPwr();myUpdate();" >
+								<option label=" "></option>
+								<option value="due to third party damage">Third Party Damage</option>
+								<option value="due to commercial power">Commercial Power</option>
+								<option value="due to a power issue at the location">Location Power</option>
+								<option value="due to a power supply fault">Power Supply Fault</option>
+								<option value="due to a power supply failure">Power Supply Failure</option>
+								<option value="due to equipment failure">Equipment Failure</option>
+								<option value="due to animal chew/damage">Animal Chew/Damage</option>
+								<option value="due to a storm in the area">Storm</option>
+								<option value="due to a fire in the area">Fire</option>
+								<option value="due to a planned maintenance overrun">Planned Maintenance Overrun</option>
+								<option value="due to a configuration error">Configuration Error</option>
+								<option value="due to vandalism">Vandalism</option>
+								<option class="NoEBMode" value="due to student move outs">Student Move Outs</option>
+								<option class="NoEBMode" value="due to NON-Pay Power disconnects">Non Pay Power Disconnects</option>
+								<option class="NoEBMode" value="due to single customer issues">Single CX Issues</option>
+								<option value="due to a vehicle accident">Vehicle Accident</option>
+								<option class="NoEBMode" value="cleared before testing">Cleared Before Testing (CBT)</option>
+								<option class="NoEBMode" value="cleared while testing">Cleared While Testing (CWT)</option>
+								<option value="being investigated">Unknown</option>
+						   </select>
+					</div>
+				</div>				
+
+<!---Tech Onsite: No--->			
+				<div class="row displayNone Fiorm VMUPDATE NONSITE USUB PSGEN">
+					<div class="cell">• Is there an access issue?: </div>
+					<div class="cell">
+							<select id="UQ1b" onChange="myUpdate();AccessIssue();" >
+								<option label=" "></option>
+								<option value="Yes">Yes</option>
+								<option value="No">No</option>
+						   </select>
+					</div>
+				</div>
+
+				<div class="row displayNone Fiorm VMUPDATE NACCESS USUB">
+					<div class="cell">• Who is preventing access?: </div>
+					<div class="cell">
+							<select id="UQ1bii" onChange="myUpdate();" >
+								<option label=" "></option>
+								<option value="the police department">Police</option>
+								<option value="the fire department">Fire</option>
+								<option value="the power company">Power Company</option>
+								<option value="lack of building access">Building Access</option>
+								<option value="a storm">Storm</option>
+								<option value="a hazardous area">Hazardous Area</option>
+								<option value="a 3rd party contractor">3rd Party Contractor</option>
+						   </select>
+					</div>
+				</div>
+<!--For monitoring option -->
+				<div class="row displayNone Fiorm Monitoring">
+					<div class="cell" style="text-align: right;">What type of monitoring?: </div>
+					<div class="cell">
+							<select id="Mon" onChange="myUpdate();MonitoringNAccess();" >
+								<option label=" "></option>
+								<option value="due to student move outs">Student Move Out</option>
+								<option value="due to NON-Pay Power Disconnects">NON-Pay Power Disconnects</option>
+								<option value="due to single customer issues">Single CX Issues</option>
+								<option value="due to no access at the location">No Access</option>
+						   </select>
+					</div>
+				</div>				
+				<div class="row displayNone Fiorm WhyNoAccessP">
+						<div class="cell" style="vertical-align: top; text-align: right;">What is the access issue? </div>
+						<div class="cell" align="left"><input type="text" style="width: 300px;" id="preAccess" onChange="myUpdate();"></div>
+				</div>	
+				<div class="row displayNone Fiorm VMUPDATE NACCESS USUB WhyNoAccessP WhyNoAccessN NOAccess">
+					<div class="cell">• Access ETA?: </div>
+					<div class="cell" align="left"><input type="checkbox" id="UNAccess" onChange="myUpdate();UnkNow(this.id,'UQ1bi');" />Unknown
+						<br>
+						<input type="datetime-local" id="UQ1bi" value="1969-01-01T00:00" onChange="TimeUp('future',UQ1bi.value,'UQ1bi');myUpdate();" /> (MT)</div>
+				</div>			
+				<div class="row displayNone Fiorm ACCESS USUB">
+					<div class="cell">• ETA?: </div>
+					<div class="cell" align="left"><input type="checkbox" id="UNETA" onChange="myUpdate();UnkNow(this.id,'UQ1c');" />Unknown
+						<br>
+						<input type="datetime-local" id="UQ1c" value="1969-01-01T00:00" onChange="TimeUp('future',UQ1c.value,'UQ1c');myUpdate();" /> (MT)
+						<BR>
+					<div class= "NoEBMode Fiorm ACCESS USUB">
+						• CBT? <input type="checkbox" id="CBTB4" onChange="CBTBefore();myUpdate();" />
+					</div>
+					</div>
+				</div>
+				<div class="row displayNone YesEBMode">
+					<div class="cell3">Are we updating Hourly???</div>
+					<div class="cell3"><input type="checkbox" id="hourly" onchange="myUpdate();"> </div>
+				</div>
+				<div class="row displayNone YesEBMode">
+					<div class="cell">Start time in Remedy</div>
+					<div class="cell2"><input type="datetime-local" id="startTime" value="1969-01-01T00:00" onchange="timediff();"> </div>
+				</div>
+				<div class="row displayNone YesEBMode">
+					<div class="cell"></div>
+					<div class="cell"><textarea id="TimeDifferance" rows="1" cols="15" style="overflow: hidden; width: 300px;background-color: #dddddd;" readonly></textarea></div>
+				</div>
+
+				
+				<div class="row displayNone Fiorm VMUPDATE NAFTER ONSITE NCOMMPOWER ptype PSUpdate PSGEN CPOTy">
+					<div class="cell" style="text-align: right;">Plant Type: </div>
+					<div class="cell">
+							<select id="UQ2" onChange="myUpdate();PlantType();" >
+								<option label=" "></option>
+								<option value="aerial ">Aerial</option>
+								<option value="underground ">Underground</option>
+								<option value="both aerial and underground ">Both Aerial and Underground</option>	
+						   </select>
+					</div>
+				</div>
+				
+				<div class="row displayNone Fiorm VMUPDATE SUBTYPE USUB NCOMMPOWER ptype PSUpdate PSGEN CPOTy">
+					<div class="cell" style="text-align: right;">• Sub-Type: </div>
+					<div class="cell">
+							<select id="UQ2a" onChange="myUpdate();" >
+								<option label=" "></option>
+								<option value=" at a street crossing.">Street Crossing</option>
+								<option value=" near a right of way/parallel.">Right of Way/Parallel</option>
+								<option value=" in a rear easement.">Rear Easement</option>
+								<option value=" in a front easement.">Front Easement</option>
+								<option value=".">N/A</option>
+						   </select>
+					</div>
+				</div>
+
+				<div class="row displayNone Fiorm VMUPDATE NAFTER ONSITE NCOMMPOWER ptype PSUpdate PSGEN CPOTy">
+					<div class="cell" style="text-align: right;">Outage Type: </div>
+					<div class="cell">
+							<select id="UQ3" onChange="myUpdate();" >
+								<option label=" "></option>
+								<option value="coaxial lines">Coax</option>
+								<option value="fiber lines ">Fiber</option>
+								<option value="coaxial and fiber lines">Coax and Fiber</option>
+								<option value="transport ">Transport</option>
+								<option value="third party fiber">3rd Party Fiber</option>
+								<option value="third party transport">3rd Party Transport</option>
+						   </select>
+					</div>
+				</div>
+				
+				<div class="row displayNone Fiorm AFTER NCOMMPOWER PSGEN CPOTy">
+					<div class="cell">&nbsp;</div>
+					<div class="cell">Dual Dispatch Engaged: <input type="checkbox" id="DualCheck" onChange="DualTwo();myUpdate();" /><BR>
+					
+					
+					
+					<p class="LBI2 displayNone">• LBI Impacted?: <input type="checkbox" id="ElBeeEye" onChange="DualTwo();myUpdate();"></p>
+					<p class="Howm displayNone">• How Many?: <input type="number" id="HowMany2" onChange="HowMany(this.id);myUpdate();" /></p>
+
+					</div>
+				</div>
+				
+				<div class="row displayNone Fiorm AFTER NCOMMPOWER PSGEN CPOTy">
+					<div class="cell" style="vertical-align: top;"><BR>Technician Update: </div>
+				</div>
+				
+						
+
+				
+				<div class="row displayNone Fiorm AFTER NCOMMPOWER PSGEN CPOTy">
+					<div class="cell" style="vertical-align: top;text-align: right;">What did the tech do?: </div>
+					<div class="cell" style="vertical-align: top;">
+					<I><font color=white>"They have <input type="text" style="width: 215px;" id="UA1" onChange="myUpdate();" /></I></font>
+					</div>
+				</div>				
+				
+				<div class="row displayNone Fiorm AFTER NCOMMPOWER PSGEN CPOTy">
+					<div class="cell" style="vertical-align: top; text-align: right;">Where was the work done?: </div>
+					<div class="cell" style="vertical-align: top;">
+					<I><font color=white>at <input type="text" style="width: 283px;" id="UA2" onChange="myUpdate();" /></I></font></div>
+				</div>
+				
+				<div class="row displayNone Fiorm AFTER NFINAL NEXTSTEPS PSGEN GENTI CPOTy">
+					<div class="cell" style="vertical-align: top; text-align: right;">Tech's next steps?: </div>
+					<div class="cell" style="vertical-align: top;"><I><font color=white>and will continue to<BR><input type="text" style="width: 285px;" id="UA3" onChange="myUpdate();" />."</I></font></div>
+				</div>
+
+				<div class="row displayNone Fiorm FINAL F2 F22 PSGEN">
+					<div class="cell" style="vertical-align: top;"></div>
+					<div class="cell" style="vertical-align: top;"><I><font color=white>which has resolved the outage."</I></font></div>
+				</div>
+				
+				<div class="row displayNone Fiorm PSQMTAopt1 PSH PSo">
+					<div class="cell" style="text-align: right;">Technician Name: </div>
+					<div class="cell" align="left"><input type="text" id="PTechN" onChange="CPUExec(PSQMTA1.value);" /> <input type="checkbox" id="PS1-VM" onChange="PSVM();CPUExec(PSQMTA1.value);" /> Voicemail? </div>
+				</div>
+				
+				<div class="row displayNone Fiorm PSQMTA PSH">
+					<div class="cell" style="text-align: right;">Power Issue Type: </div>
+					<div class="cell">
+							<select id="PSQMTA1" onChange="myUpdate();Power();" >
+								<option label=" "></option>
+								<option value="CPO">Commercial Power Outage</option>
+								<option value="GEN">Generator Tracking</option>
+								<option value="PS">Power Supply in Stand-By</option>
+								<option value="QMTAUPDATE">QMTA</option>
+						   </select>
+					</div>
+				</div>
+
+				<div class="row displayNone Fiorm CPO PSH">
+					<div class="cell" style="text-align: right;">Commercial Power Outage: </div>
+					<div class="cell">
+							<select id="CPO1" onChange="myUpdate();CPU1();" >
+								<option label=" "></option>
+								<option value="No Change">No Change</option>
+								<option value="More Devices">Change: More Devices Offline</option>
+								<option value="Partial">Change: Partial Recovery</option>
+								<option value="6HourOut">6-Hour Send Re-Verification</option>
+								<option value="IRIS">IRIS Event During CPO</option>
+								<option value="Reverified">CPO Re-Verified</option>
+								<option value="Restored">Power Restored</option>
+								<option value="Power Restored but Monitoring">Power Restored but Monitoring</option>
+						   </select>
+					</div>
+				</div>
+				
+				<div class="row displayNone Fiorm GEN PSH">
+					<div class="cell" style="text-align: right;">Generator Ticket: </div>
+					<div class="cell">
+							<select id="GEN1" onChange="myUpdate();CPU2();" >
+								<option label=" "></option>
+								<option value="No Change">No Change</option>
+								<option value="Refuel">Refuel Dispatch</option>
+								<option value="Refuel Complete">Refuel Complete</option>
+								<option value="Pickup">Generator Pickup</option>
+								<option value="PickupComplete">Generator Pickup Completed</option>
+						   </select>
+					</div>
+				</div>				
+
+				<div class="row displayNone Fiorm PS PSH">
+					<div class="cell" style="text-align: right;">PS in Stand-By: </div>
+					<div class="cell">
+							<select id="PS1" onChange="myUpdate();CPU3();" >
+								<option label=" "></option>
+								<option value="Standby">At Least 1 Hour Remains</option>
+								<option value="Less">Less than 1 Hour Remains</option>
+								<option value="Offline">Power Supply has Fallen Offline</option>
+								<option value="OnOut">PS Online, Outage Remains</option>
+								<option value="OnRest">PS Online, Restored</option>
+						   </select>
+					</div>
+				</div>
+
+				<div class="row displayNone Fiorm QMTAUPDATE PSH">
+					<div class="cell" style="text-align: right;">QMTA: </div>
+					<div class="cell">
+							<select id="QMTA1" onChange="myUpdate();CPU4();" >
+								<option label=" "></option>
+								<option value="Valid">QMTA Still Valid</option>
+								<option value="Failed">QMTA Offline</option>
+								<option value="Outage">QMTA Online, Outage Remains</option>
+								<option value="Online">QMTA Online, Outage Restored</option>
+						   </select>
+					</div>
+				</div>
+
+				<div class="row displayNone Fiorm PSQMTAopt5 PSH PSo">
+					<div class="cell"></div>
+					<div class="cell" align="left"><input type="checkbox" id="NoGen" onChange="CPUExec(PSQMTA1.value);" /> No Generator Available</div>					
+				</div>
+
+				<div class="row displayNone Fiorm PSQMTAopt2 PSH PSo">
+					<div class="cell" style="text-align: right;">ZX-Plant Other LH: <BR><font size=1><I>(YD-Storm Assessment for Storm)</I></font></div>
+					<div class="cell2" align="left"><input maxlength="20" type="number" id="ZX" onChange="HowMany(this.id);CPUExec(PSQMTA1.value);" /> </div>
+				</div>
+				<div class="row displayNone Fiorm COMMPOWER CPOR NLP">
+					<div class="cell" style="text-align: right;">Source of Restoration Time: </div>
+					<div class="cell">
+							<select id="CPOT" onChange="myUpdate();CPU1();CommPwr();CPOType();" >
+								<option label=" "></option>
+								<option value="6 Hour Re-Verification due at ">6 Hour Re-Verification</option>
+								<option value="Power company website ETR is ">Power Company Website</option>
+								<option value="The ETR is provided by the technician is at ">Provided By Technician</option>
+						   </select>
+					</div>
+				</div>
+				<div class="row displayNone Fiorm PSQMTAopt3 PSH PSo NOSHOW">
+					<div class="cell displayNone PSM" style="text-align: right;">ETR?</div>
+					<div class="cell displayNone CPOR" style="text-align: right;">CPO 6-hr Reverify Time or ETR?: <BR><font size=1><I>(6-Hours after last verification)</I></font> </div>
+					<div class="cell NCPOR" style="text-align: right;">Tech ETA?: </div>
+					<div class="cell" align="left"><input type="checkbox" id="CPUETAa" onChange="myUpdate();CPUExec(PSQMTA1.value);UnkNow(this.id,'CPUETA')" />Unknown
+					<BR>
+					<input class="cell2" type="datetime-local" id="CPUETA" value="1969-01-01T00:00" onChange="TimeUp('future',CPUETA.value,'CPUETA');CPUExec(PSQMTA1.value);" /> (MT)</div>
+				</div>
+				
+	
+
+
+
+
+				
+				<div class="row displayNone Fiorm VMUPDATE COMMPOWER USUB NLP">
+					<div class="cell" style="text-align: right;">• Power Co. Name: </div>
+					<div class="cell" align="left"><input type="text" id="UQ4a" onChange="myUpdate();"></div>
+				</div>
+
+				<div class="row displayNone Fiorm COMMPOWER USUB NLP">
+					<div class="cell" style="text-align: right;">• Power Co. On Site?: </div>
+					<div class="cell">
+							<select id="UQ4b" onChange="myUpdate();" >
+								<option label=" "></option>
+								<option value="on">Yes</option>
+								<option value="not on">No</option>
+						   </select>
+					</div>
+				</div>	
+				
+				<div class="row displayNone Fiorm VMUPDATE COMMPOWER USUB    NFIN AL NPSF">
+					<div class="cell NLP" style="text-align: right;">• ETR: </div>
+					<div class="cell LP displayNone" style="text-align: right;">• Location Power ETR: </div>
+					<div class="cell" align="left"><input type="checkbox" id="UQ4ci" onChange="myUpdate();UnkNow(this.id,'UQ4c');" />Unknown
+					<BR>
+					<input class="cell2" type="datetime-local" id="UQ4c" value="1969-01-01T00:00" onChange="TimeUp('future',UQ4c.value,'UQ4c');myUpdate();" /> (MT)</div>
+				</div>
+				<div class="row displayNone Fiorm PSF">
+					<div class="cell" style="text-align: right;">• What is the Fault?: </div>
+					<div class="cell">
+							<select id="PSFR" onChange="myUpdate();" >
+								<option label=" "></option>
+								<option value="breaker tripped">Breaker Tripped</option>
+								<option value="batteries failed">Batteries Failed</option>
+								<option value="had inverter faulure">Inverter Issues</option>
+						   </select>
+					</div>
+				</div>	
+				
+				
+				<div class="row displayNone Fiorm VMUPDATE COMMPOWER USUB NoPSF">
+					<div class="cell" style="vertical-align: top; text-align: right;">• Verification Address: </div>
+					<div class="cell" align="left"><input type="text" width=400 id="UQ4d" onChange="myUpdate();"></div>
+				</div>
+				
+				<div class="row displayNone Fiorm VMUPDATE COMMPOWER USUB NLP PSF">
+					<div class="cell" align="right" style="vertical-align: top; text-align: right;">Generator Deployed or on Truck Inverter?: </div>
+					<div class="cell" align="left">
+						<select id="UQ4e" onChange="myUpdate();GenDep();OnSite();PSFault();" >
+							<option value="NA">No</option>
+							<option value="Yes">Yes Generator</option>
+							<option value="YesTI">Yes Truck Inverter</option>
+							<option value="No">No Generator Available</option>
+					   </select>
+					</div>
+				</div>
+
+				
+				
+				<div class="row displayNone QMTAAddressMac">
+					<div class="cell"><input id="btnAdd" type="button" value="Add QMTA Address and MAC" /></div>
+					<div class="row">
+						<div class="cell" id="AddBox" onchange="QMTAAddressandMAC()"></div>
+						<div class="cell" id="MACBox" onchange="QMTAAddressandMAC()">
+						<!--Textboxes will be added here 
+					<div class="cell"><input id="btnGet" type="button" value="Compile" /></div>-->
+					</div>
+					</div>
+				</div>
+
+				
+				<div class="row displayNone Fiorm P SH P So GENInfo">
+					<div class="cell" style="text-align: right;">Generator Serial Num: </div>
+					<div class="cell" align="left"><input type="text" id="GENSerial" onChange="myUpdate(); GenInfoTemplate();" /></div>
+				</div>	
+
+				<div class="row displayNone Fiorm PSQMTAopt4 P SH P So">
+					<div class="cell" style="text-align: right;">Generator Refuel Time?: </div>
+					<div class="cell2" align="left"><input type="datetime-local" id="GENRefuel" value="1969-01-01T00:00" onChange="TimeUp('future',GENRefuel.value,'GENRefuel');CPUExec(PSQMTA1.value);myUpdate();GenInfoTemplate();" /> (MT)</div>
+				</div>	
+				
+				<div class="row displayNone Fiorm P SH P So GENInfo NOAccess">
+					<div class="cell" style="text-align: right;">POC: </div>
+					<div class="cell" align="left"><input type="text" id="GENPOC" onChange="myUpdate();GenInfoTemplate();" /></div>
+				</div>	
+
+				<div class="row displayNone Fiorm P SH P So GENInfo">
+					<div class="cell" style="text-align: right;">Generator Currently Powering: </div>
+					<div class="cell" align="left"><input type="text" id="GENNodes" onChange="myUpdate(); GenInfoTemplate();" /></div>
+				</div>
+				
+				<div class="row displayNone Fiorm PSQMTAopt6 P SH P So GENInfo">
+					<div class="cell GeN PSo" style="text-align: right;">Generator Location?: </div>
+					<div class="cell ReV PSo displayNone" style="text-align: right;">Verification Address?: </div>
+					<div class="cell" align="left"><input type="text" id="GENAddy" onChange="CPUExec(PSQMTA1.value);myUpdate(); GenInfoTemplate();" /></div>
+				</div>
+				<div class="row displayNone Fiorm PSQMTAopt6 P SH P So GENInfo">
+					<div class="cell GeN PSo" style="text-align: right;">POC: </div>
+					<div class="cell" align="left"><input type="text" id="POCR" onChange="CPU2();myUpdate(); GenInfoTemplate();" /></div>
+				</div>
+				<div class="row displayNone Fiorm P SH P So GENInfo PSGEN">
+					<div class="cell" style="text-align: right;">Related INC: </div>
+					<div class="cell" align="left"><input type="text" id="GENINC" onChange="myUpdate(); GenInfoTemplate();" /></div>
+				</div>
+
+				<div class="row displayNone Fiorm AFTER ETRETR ONSITE NFINAL RES GENTI">
+					<div class="cell" style="vertical-align: top; text-align: right;">ETR?: </div>
+					<div class="cell" align="left">
+					<input type="checkbox" id="UQ5a" onClick="UnkNow(this.id,'UQ5');" onChange="myUpdate();" />Unknown
+					<BR>
+					<input class="cell2" type="datetime-local" id="UQ5" value="1969-01-01T00:00" onChange="myUpdate();" /> (MT)</div>
+					
+				</div>				
+
+
+				<div class="row displayNone Fiorm AFTER">
+					<div class="cell" style="vertical-align: top;"></div>
+					<div class="cell" style="vertical-align: top;"><input type="checkbox" id="UA0" onChange="Final();myUpdate();Final();" />Outage Resolved</div>
+				</div>
+
+				<div class="row displayNone Fiorm mon">
+					<div class="cell" style="vertical-align: top;"></div>
+					<div class="cell" style="vertical-align: top;"><input type="checkbox" id="MonRes" onChange="myUpdate();" />Outage Resolved</div>
+				</div>
+
+				
+				<div class="row displayNone Fiorm FINAL">
+					<div class="cell" style="vertical-align: top; text-align: right;">Resolution Time: </div>
+					<div class="cell2" style="vertical-align: top;"><input type="datetime-local" id="UA4" value="1969-01-01T00:00" onChange="TimeUp('past',UA4.value,'UA4');myUpdate();" /> (MT)</div>
+				</div>
+
+				<div class="row displayNone Fiorm FINAL F2 F22">
+					<div class="cell" style="vertical-align: top;text-align: right;">Fix Type:</div>
+					<div class="cell" style="vertical-align: top;">
+					Permanent <input value="Permanent" type="radio" name="Fixx" id="UA5" onChange="myUpdate();" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspTemporary <input value="Temporary" type="radio" name="Fixx" id="UA6" onChange="myUpdate();" />
+					</div>
+				</div>
+				<div class="row displayNone Fiorm PSLessThan">
+					<div class="cell" style="text-align: right;">Less than 60 min remaining?:</div>
+					<div class="cell displayNone PSLessThan"><input type="checkbox" id="PSCheckbox" onChange="myUpdate(); CPOETR();" /></div>
+				</div>
+				<div class="row displayNone Fi orm GAStandby">
+					<div class="row"></div>
+					<div class="cell" style="text-align: left;" >If the PS is in Standby does it have less than 64-72 hours remaining and is a GA node? <input type="checkbox" id="PSLessThanStandby" onChange="myUpdate();InitUpdate();" /></div>
+				</div>
+				<div class="row displayNone Fiorm INIT">
+					<div class="cell" style="text-align: right;">QMTA?: <input type="checkbox" id="IQ5" onChange="myUpdate();CPOETR();" /></div>
+					<div class="cell displayNone QMTA" ></div>
+				</div>
+
+				<div class="row displayNone Fiorm MULTIQMTA">
+					<div class="cell"></div>
+					<div class="cell" >QMTAs for All Nodes? <input type="checkbox" id="IQ5b" onChange="myUpdate();CPOETR();" /></div>
+				</div>
+
+
+				
+				<div class="row displayNone Fiorm CBT1">
+					<div class="cell" style="text-align: right;">CBT?: <input type="checkbox" id="IQ6" onChange="myUpdate();CBT();" /></div>
+					<div class="cell displayNone CBT2" style="text-align: left;" >CBT? <input type="radio" name="CeeBeeTee" id="IQ6a" value="Single CBT" onChange="myUpdate();CBT();" />&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbspRepeat CBT?: <input type="radio" name="CeeBeeTee" id="IQ6b" value="Repeat CBT" onChange="myUpdate();CBT();" /></div>
+				</div>
+				<div class="row displayNone Fiorm NoNote">
+					<div class="cell"></div>
+					<div class="cell" style="text-align: center; color: red;">No Notification Required</div>
+				</div>
+				<div class="row displayNone Fi orm GA">
+					<div class="cell" style="text-align: right;">Is outage in California?:<input type="checkbox" id="Cali" onChange="myUpdate();Califunction();" /></div>
+				</div>
+				<div class="row displayNone Fi orm GAC">
+					<div class="cell" style="text-align: right;">Critical Facilities?:<input type="checkbox" id="GAA" onChange="myUpdate();GA();" /><BR><font size=1><i>Government Affairs (GA)</i></font> </div>
+					<div class="cell displayNone GA2" style="text-align: left;" >How many power supplies are not online?<br> <input type="number" id="TotalPS" onChange="HowMany(this.id);myUpdate();" /></div>
+				</div>
+				<div class="row displayNone Fi orm GA2">
+					<div class="row displayNine GA2"></div>
+					<div class="cell displayNone GA2" style="text-align: left;" >How many are GA critical power supplies? <input type="number" id="GANum" onChange="HowMany(this.id);myUpdate();" /></div>
+				</div>
+				<div class="row displayNone Fi orm BOTOTBoxSH">
+					<!-- <div class="row displayNone BOTOTBoxSH"></div> -->
+					<div class="cell displayNone BOTOTBoxSH" style="text-align: right;" >Is this a BOTOT? <input type="checkbox" id="BOTOTBox" onChange="HowMany(this.id);myUpdate();" /></div>
+				</div>
+				<div class="row displayNone IRIS">
+					<div class="cell">Is there a SSA alarm is this node </div>
+					<div class="cell"><select id="AN" onChange="IRIS();store_value('AN',this.value);">
+						<option value=" "></option>
+						<option value="No">No</option>
+						<option value="Yes">Yes</option>
+					</select>
+					</div>
+				</div>
+				<div class="row displayNone USDS">
+					<div class="cell">Is there an upstream or downstream alarm present is this node </div>
+					<div class="cell"><select id="USDSA" onChange="IRIS();store_value('USDSA',this.value);">
+						<option value=" "></option>
+						<option value="No">No</option>
+						<option value="Yes">Yes</option>
+					</select>
+					</div>
+				</div>
+				<div class="row displayNone Dispatch">
+					<div class="cell">Node</div>
+					<div class="cell"><input type="text" id="Q1" onChange="IRIS();store_value('Q1',this.value);" /></div>
+				</div>
+				<div class="row displayNone Dispatch">
+					<div class="cell">Customer #1 Account #</div>
+					<div class="cell"><input type="text" id="Q2" onChange="IRIS();store_value('Q2',this.value);" /></div>
+				</div>
+				<div class="row displayNone Dispatch">
+					<div class="cell">Customer #1 Address </div>
+					<div class="cell"><input type="text" id="Q3" onChange="IRIS();store_value('Q3',this.value);" /></div>
+				</div>
+				<div class="row displayNone Dispatch">
+					<div class="cell">Customer #1 Biller Notes</div>
+					<div class="cell"><input type="text" id="Q4" onChange="IRIS();store_value('Q4',this.value);" /></div>
+				</div>
+				<div class="row displayNone Dispatch">
+					<div class="cell">Upstream and Downstream Issues</div>
+					<div class="cell"><input type="text" id="Q11a" onChange="IRIS();store_value('Q4',this.value);" /></div>
+				</div>
+				<hr class="displayNone Dispatch">
+				<div class="row displayNone Dispatch">
+					<div class="cell">Customer #2 Account #</div>
+					<div class="cell"><input type="text" id="Q5" onChange="IRIS();store_value('Q5',this.value);" /></div>
+				</div>
+				<div class="row displayNone Dispatch">
+					<div class="cell">Customer #2 Address </div>
+					<div class="cell"><input type="text" id="Q6" onChange="IRIS();store_value('Q6',this.value);" /></div>
+				</div>
+				<div class="row displayNone Dispatch">
+					<div class="cell">Customer #2 Biller Notes</div>
+					<div class="cell"><input type="text" id="Q7" onChange="IRIS();store_value('Q7',this.value);" /></div>
+				</div>
+				<div class="row displayNone Dispatch">
+					<div class="cell">Upstream and Downstream Issues</div>
+					<div class="cell"><input type="text" id="Q11b" onChange="IRIS();store_value('Q4',this.value);" /></div>
+				</div>
+				<hr class="displayNone Dispatch">
+				<div class="row displayNone Dispatch">
+					<div class="cell">Customer #3 Account #</div>
+					<div class="cell"><input type="text" id="Q8" onChange="IRIS();store_value('Q8',this.value);" /></div>
+				</div>
+					<div class="row displayNone Dispatch">
+					<div class="cell">Customer #3 Address </div>
+					<div class="cell"><input type="text" id="Q9" onChange="IRIS();store_value('Q9',this.value);" /></div>
+				</div>
+				<div class="row displayNone Dispatch">
+					<div class="cell">Customer #3 Biller Notes </div>
+					<div class="cell"><input type="text" id="Q10" onChange="IRIS();store_value('Q10',this.value);" /></div>
+				</div>
+				<div class="row displayNone Dispatch">
+					<div class="cell">Upstream and Downstream Issues</div>
+					<div class="cell"><input type="text" id="Q11c" onChange="IRIS();store_value('Q4',this.value);" /></div>
+				</div>
+				
+				<div class="row displayNone Dispatch">
+					<div class="cell">Are there commonalities between the three addresses</div>
+					<div class="cell"><select id="common" onChange="IRIS();store_value('common',this.value);">
+						<option value=" "></option>
+						<option value="No">No</option>
+						<option value="Yes">Yes</option>
+					</select>
+					</div>
+				</div>
+				<div class="row displayNone Dispatch">
+					<div class="cell">Why are we CBTing this?</div>
+					<div class="cell"><input type="text" id="CBTReason" onChange="IRIS();store_value('CBTReason',this.value);" /></div>
+				</div>
+
+			</div>
+				
+				<div class="row SPACE HOLDER">
+					<div class="cell">&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</div>
+					<div class="cell" style="text-align: center;"><BR><BR><BR></div>
+				</div>				
+
+
+
+				<div class="row">
+					<div class="cell">&nbsp;</div>
+					<div class="cell" style="text-align: center;"><input type="button" value="Clear" onclick="window.location.reload();" /></div>
+				</div>
+				
+				<div class="row displayNone">
+					<div class="cell">&nbsp;</div>
+					<div class="cell" style="text-align: center;"><input type="button" value="TEST" onclick="UpdateCases();" /></div>
+				</div>				
+				
+				<div class="row displayNone">
+					<div class="cell">&nbsp;</div>
+					<div class="cell">
+					Nodes: <input type="text" id="FlagNodes" />
+					<BR>
+					Multi-Node: <input type="checkbox" id="FlagMulti" /> 
+					<BR>
+					PS Status: <input type="text" id="FlagPSStatus" placeholder="Online/Offline/Standby/Combo" />
+					<BR>
+					PS Offline: <input type="text" id="FlagPSOffline" placeholder="Node: X, PS Y; Node: Z, PS A;..." />
+					<BR>
+					PS Standby: <input type="text" id="FlagPSStandby" placeholder="Node: X, PS Y 1 hour remaining; Node: Z, PS A 1 hour remaining;..."/>
+					</div>
+				</div>
+
+				
+		</form>
+
+		<div class="row displayNone">
+			<div class="cell">&nbsp;</div>
+			<textarea id="PWOTotal" rows="10" cols="49" style="overflow: auto; width: 500px;font-size: 10px;"></textarea>
+		</div>
+		<div class="row displayNone">
+			<div class="cell">&nbsp;</div>
+			<textarea id="PWOTotalY6" rows="10" cols="49" style="overflow: auto; width: 500px;font-size: 10px;"></textarea>
+		</div>
+		<div class="row displayNone Reppy6a">
+			<div class="cell">&nbsp;</div>
+			<textarea id="PWOTotalY6Format" rows="10" cols="49" style="background-color: #787878; color: white; border: 0px;overflow: auto; height: 500 px; width: 500px; font-size: 10px;"></textarea>
+		</div>
+		<div class="row displayNone RepZVa">
+			<div class="cell">&nbsp;</div>
+			<textarea id="PWOTotalFormat" rows="10" cols="49" style="background-color: #787878; color: white; border: 0px; overflow: auto; height: 500 px; width: 500px; font-size: 10px;"></textarea>
+		</div>
+
+		
+
+
+        <!-- Right side for result box -->
+        <div class="cell displayNone EMAIL" style="vertical-align: top; padding-top: 10px; padding-left: 69px;">
+        Email:<BR><textarea id="RepeatNote" rows="15" cols="49" style="overflow: scroll; width: 500px;background-color: #dddddd;"></textarea><BR><CENTER>
+        <input type="button" value="Generate Email" class="GenEmail" />
+        <div class="cell displayNone">
+        <input type="button" value="Copy Previous LHWOs" class="PWOEmailOutage" />
+        </div>
+        <div class="cell displayNone Reppy6a">
+        <input type="button" value="Copy Previous LHWOs" class="PWOEmailY6" />
+        </div>
+        </CENTER>
+        <div class="cell displayNone RepZV" style="vertical-align: top; padding-top: 10px; padding-left: 69px;">
+        Repeat Breadcrumb:<BR><textarea id="RepeatBCBox" rows="5" cols="49" style="overflow: scroll; width: 500px;background-color: #dddddd;" readonly onChange=""></textarea><BR><center>
+        <input type="button" value="Copy BC" class="RepeatBCButton" />
+        </div>
+        </center>
+
+</div>
+		
+					
+		<div class="cell NOTIFICATIONS" style="vertical-align: top; padding-top: 10px; padding-left: 69px;">
+			<div class="row">
+				<div class="cell"></div>
+				
+ 				<div class="cell">Remedy/Everbridge Notification: <I><font size=1>(Read Only)</font></I><BR>
+ <textarea id="Desc" rows="10" cols="49" style="scroll-margin: hidden; width: 500px;background-color: #dddddd;" readonly></textarea></div>
+			</div>
+			
+			<div class="row">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: center;"><input type="button" value="Copy Notification ONLY" class="CopyDesc" /></div>
+			</div>			
+
+			<div class="row BCBC">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: left;"><BR><BR>LH Triage Breadcrumb:<BR>
+				<textarea id="BC" rows="4" cols="49" style="overflow: auto; width: 500px;font-size: 10px; background-color: #dddddd;" readonly onChange="" placeholder="Node: XY001A | xx/xxx | x.xx% offline | Power Supply xxxx: Normal | SNR: xx.x |"></textarea></div>
+			</div>
+
+			<div class="row BCBC">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: center;"><input type="button" value="Copy Lighthouse Breadcrumb" class="CopyBC" /></div>
+			</div>
+
+			<div class="row BCBC IRISDispatch">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: left;"><BR><BR>Addresses:<I><font size=1> (Paste Here)</font></I><BR>
+				<textarea id="AddressBlock" rows="10" cols="49" style="overflow: auto; width: 500px;font-size: 10px;" onChange="myUpdate();scrubIT();"></textarea></div>
+			</div>
+
+			<div class="row displayNone Dispatch">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: left;"><BR><BR>Addresses:<BR>
+				<textarea id="AddressBlockIRIS" rows="10" cols="49" style="overflow: auto; width: 500px;font-size: 10px;" readonly onChange="IRIS();"></textarea></div>
+			</div>
+
+			<div class="row">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: left;"><BR><BR>Ping/SNR Stats:<I><font size=1> (Paste Here)</font></I><BR>
+				<textarea id="Ping" rows="25" cols="49" style="overflow: auto; width: 500px;font-size: 10px;" onChange="myUpdate();scrubIT();"></textarea></div>
+			</div>
+			
+			<div class="row">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: center;"><input type="button" value="Copy Remedy Work Detail" class="CopyPing" /></div>
+			</div>
+			<div class="row displayNone GENInfo">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: left;"><BR><BR>Generator Template:<BR>
+				<textarea id="GENTemp" rows="10" cols="49" style="overflow: auto; width: 500px;font-size: 10px;"></textarea></div>
+			</div>
+
+			<div class="row displayNone GENInfo">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: center;"><input type="button" value="Copy Generator Template" class="CopyGENT" /></div>
+			</div>
+			
+			<div class="row displayNone">
+				<div class="cell">&nbsp;</div>
+				<textarea id="AddRESS" rows="10" cols="49" style="overflow: auto; width: 500px;font-size: 10px;"></textarea>
+			</div>
+
+
+			<div class="row displayNone COPYGOOD">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: center;">Copied Successfully...</div>
+			</div>
+
+			<div class="row">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: center;">
+				<BR><BR>
+				Select Hub for Power Company Website:<BR>
+				<Select id="PowerHub" onChange="PwrHub();">
+				<Option></option>
+<option value="ALMSCO33564">ALMSCO33564 - ALAMOSA</option>
+<option value="ANCNMT33577">ANCNMT33577 - ANACONDA</option>
+<option value="ARSNCA21715">ARSNCA21715 - ANDERSON</option>
+<option value="ATSCCA00082">ATSCCA00082 - ATASCADERO</option>
+<option value="BAKROR11243">BAKROR11243 - BAKER CITY</option>
+<option value="BASNWY33614">BASNWY33614 - BASIN</option>
+<option value="BFLOWY00001">BFLOWY00001 - BUFFALO</option>
+<option value="BGTMMT33578">BGTMMT33578 - BIG TIMBER</option>
+<option value="BKFD01">BKFD01 - ARROW HEADEND</option>
+<option value="BKFD02">BKFD02 - AUBURN HUB</option>
+<option value="BKFD03">BKFD03 - FRUITVALE HUB</option>
+<option value="BKFD04">BKFD04 - PANAMA HUB</option>
+<option value="BKFD05">BKFD05 - LAMONT HUB</option>
+<option value="BKFD06">BKFD06 - DELANO HUB</option>
+<option value="BKFD06M">BKFD06M - MCFARLAND HUB</option>
+<option value="BKFD07">BKFD07 - WASCO HUB</option>
+<option value="BKFD07S">BKFD07S - SHAFTER HUB</option>
+<option value="BKFD08">BKFD08 - TAFT HUB</option>
+<option value="BKFD09">BKFD09 - TEHACHAPI HUB</option>
+<option value="BLNGMT33579">BLNGMT33579 - BILLINGS</option>
+<option value="BNVSCO33566">BNVSCO33566 - BUENA VISTA</option>
+<option value="BRNSOR00020">BRNSOR00020 - BURNS</option>
+<option value="BUTTMT33581">BUTTMT33581 - BUTTE</option>
+<option value="BZMNMT33580">BZMNMT33580 - BOZEMAN</option>
+<option value="CACYCO00038">CACYCO00038 - CANON CITY</option>
+<option value="CSPRWY33600">CSPRWY33600 - CASPER</option>
+<option value="CHYNWY33610">CHYNWY33610 - CHEYENNE</option>
+<option value="CLVLWA09386">CLVLWA09386 - COLVILLE</option>
+<option value="CODYWY00008">CODYWY00008 - CODY</option>
+<option value="COEUR">COEUR D'ALENE : CD</option>
+<option value="COULEE">COULEE DAM : EC</option>
+<option value="CRAGCO00041">CRAGCO00041 - CRAIG</option>
+<option value="CRCYCA21717">CRCYCA21717 - CRESCENT CITY</option>
+<option value="CRCYNV33563">CRCYNV33563 - CARSON CITY</option>
+<option value="CRYSNV00008">CRYSNV00008 - CRYSTAL BAY</option>
+<option value="CSBYOR09397">CSBYOR09397 - COOS BAY</option>
+<option value="CTBNMT33583">CTBNMT33583 - CUT BANK</option>
+<option value="CTGVOR00012">CTGVOR00012 - COTTAGE GROVE</option>
+<option value="DLLNMT33584">DLLNMT33584 - DILLON</option>
+<option value="DLLSOR09537">DLLSOR09537 - DALLAS</option>
+<option value="DURNCO33605">DURNCO33605 - DURANGO</option>
+<option value="ELBGWA20916">ELBGWA20916 - ELLENSBURG</option>
+<option value="ESCLCA00075">ESCLCA00075 - ESCALON</option>
+<option value="FLLNNV35146">FLLNNV35146 - FALLON</option>
+<option value="FLRNOR09230">FLRNOR09230 - FLORENCE</option>
+<option value="FTMRCO00045">FTMRCO00045 - FORT MORGAN</option>
+<option value="GDJTCO33606">GDJTCO33606 - GRAND JUNCTION</option>
+<option value="GLRYCA17900">GLRYCA17900 - GILROY</option>
+<option value="GLTTWY33570">GLTTWY33570 - GILLETTE</option>
+<option value="GRDVNV30696">GRDVNV30696 - GARDNERVILLE</option>
+<option value="GREENFIELD">GREENFIELD : GF</option>
+<option value="GRFLMT00018">GRFLMT00018 - GREAT FALLS</option>
+<option value="GRPSOR25434">GRPSOR25434 - GRANTS PASS</option>
+<option value="GUNNISON">GUNNISON : GU</option>
+<option value="HAVRMT33588">HAVRMT33588 - HAVRE</option>
+<option value="HLNAMT33589">HLNAMT33589 - HELENA</option>
+<option value="HMTNMT00021">HMTNMT00021 - HAMILTON</option>
+<option value="HWTHNV0009">HWTHNV0009 - HAWTHORNE</option>
+<option value="JCSNWY00013">JCSNWY00013 - JACKSON</option>
+<option value="KLFLOR18645">KLFLOR18645 - KLAMATH FALLS</option>
+<option value="KLSLMT33594">KLSLMT33594 - KALISPELL</option>
+<option value="KNWCWA00023">KNWCWA00023 - KENNEWICK</option>
+<option value="LAGROR00007">LAGROR00007 - LA GRANDE</option>
+<option value="LARMWY33571">LARMWY33571 - LARAMIE</option>
+<option value="LDVLCO00049">LDVLCO00049 - LEADVILLE</option>
+<option value="LJNTCO33572">LJNTCO33572 - LA JUNTA</option>
+<option value="LKVWORAY10817">LKVWORAY10817 - LAKEVIEW</option>
+<option value="LNBHWA09442">LNBHWA09442 - LONG BEACH</option>
+<option value="LNCYOR09653">LNCYOR09653 - LINCOLN CITY</option>
+<option value="LVTNMT33596">LVTNMT33596 - LIVINGSTON</option>
+<option value="MDFDOR09952">MDFDOR09952 - MEDFORD</option>
+<option value="MOSCOW">MOSCOW : MI</option>
+<option value="MSSLMT00033">MSSLMT00033 - MISSOULA</option>
+<option value="MTRSCO00054">MTRSCO00054 - MONTROSE</option>
+<option value="OKANWA22922">OKANWA22922 - OMAK</option>
+<option value="PLSNMT33598">PLSNMT33598 - POLSON</option>
+<option value="POST">POST FALLS : PF</option>
+<option value="POWLWY33573">POWLWY33573 - POWELL</option>
+<option value="PTVLCA19729">PTVLCA19729 - PORTERVILLE</option>
+<option value="PULLMAN">PULLMAN : PU</option>
+<option value="RDLGMT33599">RDLGMT33599 - RED LODGE</option>
+<option value="RENONV35142">RENONV35142 - RENO</option>
+<option value="RENONV23981">RENONV23981 - RENO</option>
+<option value="RSBGOR10333">RSBGOR10333 - ROSEBURG</option>
+<option value="RVTNWY33574">RVTNWY33574 - RIVERTON</option>
+<option value="RWLNWY00018">RWLNWY00018 - RAWLINS</option>
+<option value="SALDCO00058">SALDCO00058 - SALIDA</option>
+<option value="SHRDWY00023">SHRDWY00023 - SHERIDAN</option>
+<option value="SNLOCA00480">SNLOCA00480 - SAN LUIS OBISPO</option>
+<option value="SNSDWA21679">SNSDWA21679 - SUNNYSIDE</option>
+<option value="STAHCA33562">STAHCA33562 - SOUTH LAKE TAHOE</option>
+<option value="STNGCO00059">STNGCO00059 - STERLING</option>
+<option value="SVSPNV30697">SVSPNV30697 - SILVER SPRINGS</option>
+<option value="TELLURIDE">TELLURIDE : TL</option>
+<option value="THDLOR08617">THDLOR08617 - THE DALLES</option>
+<option value="THRMWY00026">THRMWY00026 - THERMOPOLIS</option>
+<option value="TLMKOR09655">TLMKOR09655 - TILLAMOOK</option>
+<option value="TRLCCA22463">TRLCCA22463 - TURLOCK</option>
+<option value="WLBGCO00061">WLBGCO00061 - WALSENBURG</option>
+<option value="WLWLWA21798">WLWLWA21798 - WALLA WALLA</option>
+<option value="WNTCWA22557">WNTCWA22557 - WENATCHEE</option>
+<option value="WRLDWY33609">WRLDWY33609 - WORLAND</option>
+<option value="WRTNOR00004">WRTNOR00004 - WARRENTON</option>
+<option value="WTVLCA00073">WTVLCA00073 - WATSONVILLE</option>
+<option value="YAKMWA11628">YAKMWA11628 - YAKIMA</option>
+
+				
+				</Select>				
+				
+
+				
+				</div>
+				
+			</div>
+			
+			<div class="row" style="text-align: center;">
+			<div class="cell">&nbsp</div>
+			<div class="cell" style="text-align: center;">
+			
+<div class="ALMSCO33564 displayNone HUBB"><a href ="https://www.outagemap-xcelenergy.com/outagemap/" target=new>Xcel Energy</a></div>
+<div class="ANCNMT33577 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="ARSNCA21715 displayNone HUBB"><a href ="https://www.cityofredding.org/departments/redding-electric-utility/reu-pages/outage-map" target=new>City of Redding</a></div>
+<div class="ARSNCA21715 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="ATSCCA00082 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="BAKROR11243 displayNone HUBB"><a href ="https://outagemap.otec.coop/OMSWebMap.htm?clientKey=undefined" target=new>Oregon Trail Electric CO-OP</a></div>
+<div class="BASNWY33614 displayNone HUBB"><a href ="https://www.basinelectric.com/# (No outage info)" target=new>Basin Electric Power CO-OP</a></div>
+<div class="BFLOWY00001 displayNone HUBB"><a href ="https://precorp.coop/outage-map" target=new>Powder River Energy CO-OP</a></div>
+<div class="BGTMMT33578 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="BKFD01 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="BKFD02 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="BKFD03 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="BKFD04 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="BKFD05 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="BKFD06 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="BKFD06 displayNone HUBB"><a href ="https://www.sce.com/outage-center/check-outage-status" target=new>SCE</a></div>
+<div class="BKFD06M displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="BKFD07 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="BKFD07S displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="BKFD08 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="BKFD09 displayNone HUBB"><a href ="https://www.sce.com/outage-center/check-outage-status" target=new>SCE</a></div>
+<div class="BLNGMT33579 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="BNVSCO33566 displayNone HUBB"><a href ="https://www.myelectric.coop/safety/outages/" target=new>Sangre De Cristo Electric Association</a></div>
+<div class="BRNSOR00020 displayNone HUBB"><a href ="https://outagemap.otec.coop/OMSWebMap.htm?clientKey=undefined" target=new>Oregon Trail Electric CO-OP</a></div>
+<div class="BUTTMT33581 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="BZMNMT33580 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="CACYCO00038 displayNone HUBB"><a href ="https://www.blackhillsenergy.com/outages" target=new>Black Hills Energy</a></div>
+<div class="CSPRWY33600 displayNone HUBB"><a href ="https://www.rockymountainpower.net/outages-safety.html" target=new>Rocky Mountain Power</a></div>
+<div class="CHYNWY33610 displayNone HUBB"><a href ="https://www.blackhillsenergy.com/outages" target=new>Black Hills Energy</a></div>
+<div class="CLVLWA09386 displayNone HUBB"><a href ="https://outagemap.myavista.com/external/default.html" target=new>Avista Utilities</a></div>
+<div class="CLVLWA09386 displayNone HUBB"><a href ="https://www.cityofchewelah.org/electric" target=new>City of Chewelah</a></div>
+<div class="CODYWY00008 displayNone HUBB"><a href ="https://www.rockymountainpower.net/outages-safety.html" target=new>Rocky Mountain Power</a></div>
+<div class="COEUR displayNone HUBB"><a href ="https://outagemap.myavista.com/external/default.html" target=new>Avista Utilities</a></div>
+<div class="COULEE displayNone HUBB"><a href ="https://www.grantpud.org/outages" target=new>Grand PUD</a></div>
+<div class="CRAGCO00041 displayNone HUBB"><a href ="https://www.yvea.com/outage-center" target=new>Yampa Valley Electric</a></div>
+<div class="CRCYCA21717 displayNone HUBB"><a href ="https://outagemap.cooscurryelectric.com/OMSWebMap/OMSWebMap.htm?clientKey=undefined" target=new>Coos-Curry Electric CO-OP</a></div>
+<div class="CRCYNV33563 displayNone HUBB"><a href ="https://www.nvenergy.com/outages-and-emergencies/view-current-outages" target=new>NV Energy</a></div>
+<div class="CRYSNV00008 displayNone HUBB"><a href ="https://california.libertyutilities.com/north-lake-tahoe/residential/emergencies/electrical/outages-map.html#navbar-electrical-emergencies-residential" target=new>Liberty Utilities</a></div>
+<div class="CRYSNV00008 displayNone HUBB"><a href ="https://www.nvenergy.com/outages-and-emergencies/view-current-outages/ Liberty Utilities " target=new>NV Energy</a></div>
+<div class="CSBYOR09397 displayNone HUBB"><a href ="https://clpud.org/customer-information/outages/outage-map/" target=new>Central Lincoln PUD</a></div>
+<div class="CSBYOR09397 displayNone HUBB"><a href ="https://outagemap.cooscurryelectric.com/OMSWebMap/OMSWebMap.htm?clientKey=undefined" target=new>Coos-Curry Electric CO-OP</a></div>
+<div class="CSBYOR09397 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="CTBNMT33583 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="CTGVOR00012 displayNone HUBB"><a href ="https://laneelectric.com/outages/outage-map/" target=new>Lane Electric</a></div>
+<div class="CTGVOR00012 displayNone HUBB"><a href ="https://www.eweb.org/outages-and-safety/power-outages/power-outage-map" target=new>Eugene Water and Electric Board (EWEB)</a></div>
+<div class="DLLNMT33584 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="DLLSOR09537 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="DURNCO33605 displayNone HUBB"><a href ="http://outage.lpea.coop/" target=new>La Plata Electric Association (LPEA)</a></div>
+<div class="ELBGWA20916 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="ELBGWA20916 displayNone HUBB"><a href ="https://www.kittitaspud.com/193/Outages" target=new>Kittitas PUD</a></div>
+<div class="ESCLCA00075 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="FLLNNV35146 displayNone HUBB"><a href ="https://www.nvenergy.com/outages-and-emergencies/view-current-outages" target=new>NV Energy</a></div>
+<div class="FLRNOR09230 displayNone HUBB"><a href ="https://clpud.org/customer-information/outages/outage-map/" target=new>Central Lincoln PUD</a></div>
+<div class="FTMRCO00045 displayNone HUBB"><a href ="https://www.outagemap-xcelenergy.com/outagemap/" target=new>Xcel Energy</a></div>
+<div class="GDJTCO33606 displayNone HUBB"><a href ="https://www.gvp.org/outage-center" target=new>Grand Valley Power</a></div>
+<div class="GDJTCO33606 displayNone HUBB"><a href ="https://www.outagemap-xcelenergy.com/outagemap/" target=new>Xcel Energy</a></div>
+<div class="GLRYCA17900 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="GLTTWY33570 displayNone HUBB"><a href ="https://precorp.coop/outage-map" target=new>Powder River Energy CO-OP</a></div>
+<div class="GRDVNV30696 displayNone HUBB"><a href ="https://www.nvenergy.com/outages-and-emergencies/view-current-outages" target=new>NV Energy</a></div>
+<div class="GREENFIELD displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="GRFLMT00018 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="GRPSOR25434 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="GUNNISON displayNone HUBB"><a href ="https://www.gunnisonco.gov/departments/public_works/electric.php" target=new>Gunnison City Electric</a></div>
+<div class="HAVRMT33588 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="HLNAMT33589 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="HMTNMT00021 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="HWTHNV0009 displayNone HUBB"><a href ="https://www.nvenergy.com/outages-and-emergencies/view-current-outages" target=new>NV Energy</a></div>
+<div class="JCSNWY00013 displayNone HUBB"><a href ="https://www.lvenergy.com/news/outage-center/" target=new>Lower Valley Energy</a></div>
+<div class="KLFLOR18645 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="KLSLMT33594 displayNone HUBB"><a href ="https://outage.flathead.coop:8181/" target=new>Flathead Electric CO-OP</a></div>
+<div class="KNWCWA00023 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="LAGROR00007 displayNone HUBB"><a href ="https://outagemap.otec.coop/OMSWebMap.htm?clientKey=undefined" target=new>Oregon Trail Electric CO-OP</a></div>
+<div class="LARMWY33571 displayNone HUBB"><a href ="https://www.rockymountainpower.net/outages-safety.html" target=new>Rocky Mountain Power</a></div>
+<div class="LDVLCO00049 displayNone HUBB"><a href ="https://www.outagemap-xcelenergy.com/outagemap/" target=new>Xcel Energy</a></div>
+<div class="LJNTCO33572 displayNone HUBB"><a href ="https://secpa.com/" target=new>Southeast Colorado Power Association (SECPA)</a></div>
+<div class="LJNTCO33572 displayNone HUBB"><a href ="https://www.blackhillsenergy.com/outages" target=new>Black Hills Energy</a></div>
+<div class="LKVWORAY10817 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="LNBHWA09442 displayNone HUBB"><a href ="http://www.pacificpud.org/safety.html" target=new>Pacific County PUD</a></div>
+<div class="LNCYOR09653 displayNone HUBB"><a href ="https://clpud.org/customer-information/outages/outage-map/" target=new>Central Lincoln Community Power</a></div>
+<div class="LNCYOR09653 displayNone HUBB"><a href ="https://www.tpud.org/outages/power-outages/" target=new>Tillamook PUD</a></div>
+<div class="LVTNMT33596 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="MDFDOR09952 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="MOSCOW displayNone HUBB"><a href ="https://outagemap.myavista.com/external/default.html" target=new>Avista Utilities</a></div>
+<div class="MOSCOW displayNone HUBB"><a href ="https://smarthub.clearwaterpower.com/maps/public/OutageWebMap/" target=new>Clear Water Power</a></div>
+<div class="MSSLMT00033 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="MTRSCO00054 displayNone HUBB"><a href ="https://www.dmea.com/outage-map" target=new>Delta Montrose Electric Association (DMEA)</a></div>
+<div class="OKANWA22922 displayNone HUBB"><a href ="https://www.okanoganpud.org/Outage" target=new>Okanogan County PUD</a></div>
+<div class="PLSNMT33598 displayNone HUBB"><a href ="https://missionvalleypower.org/outage-map" target=new>Mission Valley Power</a></div>
+<div class="POST displayNone HUBB"><a href ="https://outagemap.myavista.com/external/default.html" target=new>Avista Utilities</a></div>
+<div class="POWLWY33573 displayNone HUBB"><a href ="https://www.garlandpower.org/report-outage" target=new>Garland Power</a></div>
+<div class="PTVLCA19729 displayNone HUBB"><a href ="https://www.sce.com/outage-center/check-outage-status" target=new>SCE</a></div>
+<div class="PULLMAN displayNone HUBB"><a href ="https://outagemap.myavista.com/external/default.html" target=new>Avista Utilities</a></div>
+<div class="RDLGMT33599 displayNone HUBB"><a href ="https://www.northwesternenergy.com/outages/outage-map" target=new>Northwestern Energy</a></div>
+<div class="RENONV23981 displayNone HUBB"><a href ="https://www.nvenergy.com/outages-and-emergencies/view-current-outages" target=new>NV Energy</a></div>
+<div class="RENONV35142 displayNone HUBB"><a href ="https://www.nvenergy.com/outages-and-emergencies/view-current-outages" target=new>NV Energy</a></div>
+<div class="RSBGOR10333 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="RVTNWY33574 displayNone HUBB"><a href ="https://www.rockymountainpower.net/outages-safety.html" target=new>Rocky Mountain Power</a></div>
+<div class="RWLNWY00018 displayNone HUBB"><a href ="https://www.rockymountainpower.net/outages-safety.html" target=new>Rocky Mountain Power</a></div>
+<div class="SALDCO00058 displayNone HUBB"><a href ="https://www.outagemap-xcelenergy.com/outagemap/" target=new>Xcel Energy</a></div>
+<div class="SHRDWY00023 displayNone HUBB"><a href ="https://customer.montana-dakota.com/outage-map" target=new>Montana-Dakota Utilities CO</a></div>
+<div class="SNLOCA00480 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="SNSDWA21679 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="STAHCA33562 displayNone HUBB"><a href ="https://california.libertyutilities.com/north-lake-tahoe/residential/emergencies/electrical/outages-map.html#navbar-electrical-emergencies-residential" target=new>Liberty Utilities</a></div>
+<div class="STAHCA33562 displayNone HUBB"><a href ="https://www.nvenergy.com/outages-and-emergencies/view-current-outages" target=new>NV Energy</a></div>
+<div class="STNGCO00059 displayNone HUBB"><a href ="https://www.outagemap-xcelenergy.com/outagemap/" target=new>Xcel Energy</a></div>
+<div class="SVSPNV30697 displayNone HUBB"><a href ="https://www.nvenergy.com/outages-and-emergencies/view-current-outages" target=new>NV Energy</a></div>
+<div class="TELLURIDE displayNone HUBB"><a href ="https://nisc.smpa.com/maps/Outage_Web_Map/" target=new>San Miguel Power Association</a></div>
+<div class="THDLOR08617 displayNone HUBB"><a href ="https://www.nwascopud.org/ (No outage info)" target=new>Wasco PUD</a></div>
+<div class="THDLOR08617 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="THDLOR08617 displayNone HUBB"><a href ="http://www.klickitatpud.com/yourPUD/reportOutages.aspx" target=new>Klickitat PUD</a></div>
+<div class="THRMWY00026 displayNone HUBB"><a href ="https://www.rockymountainpower.net/outages-safety.html" target=new>Rocky Mountain Power</a></div>
+<div class="TLMKOR09655 displayNone HUBB"><a href ="https://www.tpud.org/outages/power-outages/" target=new>Tillamook PUD</a></div>
+<div class="TRLCCA22463 displayNone HUBB"><a href ="https://www.tid.org/power/outages/" target=new>TID</a></div>
+<div class="WLBGCO00061 displayNone HUBB"><a href ="https://ebill.siea.com/mapviewer/mapviewer.html?config=Outage+Web+Map" target=new>San Isabel Electric Association</a></div>
+<div class="WLWLWA21798 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="WNTCWA22557 displayNone HUBB"><a href ="https://www.chelanpud.org/my-pud-services/outage-and-safety-center" target=new>Chelan County PUD</a></div>
+<div class="WNTCWA22557 displayNone HUBB"><a href ="https://douglaspud.org/for-customers/outage-information/" target=new>Douglas Couty PUD</a></div>
+<div class="WRLDWY33609 displayNone HUBB"><a href ="https://www.rockymountainpower.net/outages-safety.html" target=new>Rocky Mountain Power</a></div>
+<div class="WRTNOR00004 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+<div class="WRTNOR00004 displayNone HUBB"><a href ="https://smarthub.clatskaniepud.com/maps/OutageWebMap/" target=new>Clatskanie PUD</a></div>
+<div class="WTVLCA00073 displayNone HUBB"><a href ="https://pgealerts.alerts.pge.com/outagecenter/?WT.mc_id=Vanity_pge-outages#outages" target=new>PG&E</a></div>
+<div class="YAKMWA11628 displayNone HUBB"><a href ="https://www.pacificpower.net/outages-safety.html" target=new>Pacific Power</a></div>
+
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			</div>
+
+		</div>
+	</div>
+</div>
+</div>
+
+	<!-- Footer Section -->
+	<div class="footer">
+		<div class="row">
+			<div class="cell">
+				<div class="row">
+					<!-- Help Section Title -->
+
+				</div>
+				<div class="row">
+					<!-- Left Help section -->
+					<div class="cell" id="helpcolumn1">
+
+					</div>
+					<!-- Right Help section -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+<!-- The Modal Code.  Used to create the help pop up windows and close button associated to JavaScript File. -->
+<div id="myModal" class="modal">
+	<span class="close">&times;</span>
+	<div id="caption"></div>
+	<img class="modal-content" id="img01" src="/" alt="" />
+</div>
+
+<!-- Calls the JavaScript files -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="Notifications.js"></script>
+<script src="Hubs_by_MA_Array.js"></script>
+<script src="include.js"></script>
+
+	
+</body>
+
+</html>
