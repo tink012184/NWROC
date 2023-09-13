@@ -82,7 +82,7 @@ function myCRQDesc() {
         }
     }else if (document.getElementById("OorC").value == "Close"){
 
-        
+
 
     if (document.getElementById("LBIYN").value == "Yes"){
         for (let el of document.querySelectorAll('.LBI')) el.classList.remove("displayNone");
@@ -229,4 +229,10 @@ function TimeFramefun() {
         alert("GET THE OVERRUN INC")
     } else if (document.getElementById("TimeFrame").value == "Yes" && (document.getElementById("OorC").value == "Open" || document.getElementById("OorC").value == "Close")) {
 }
+}
+
+function alertLBI () {
+    if (document.getElementById("LBIYN").value =="Yes") {
+        alert ("Call SENOC to verify LBI restoration")
+    }
 }
