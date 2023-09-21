@@ -423,13 +423,25 @@ const carriers = [0];
 
 
 	if(document.getElementById("BC").innerHTML != ""){
-		
-		document.getElementById("BC").innerHTML = document.getElementById("BC").innerHTML + "\n\n" + "Node: " + ThisNode + " | " + ALLOFF + "/" +ALLDEV + " | " + offlinep + " offline | Power Supply " + PS + "| SNR: " + SNR + " | "
-	} else if (i==1) {
-		
-		document.getElementById("BC").innerHTML = "Node: " + ThisNode + " | " + ALLOFF + "/" + ALLDEV + " | " + offlinep + " offline | Power Supply " + PS + "| SNR: " + SNR + " | "
 
-	}
+		if (document.getElementById("REPEATCheck").checked == true) {
+			document.getElementById("BC").innerHTML = document.getElementById("BC").innerHTML + "\n\n" + "\r******REPEAT OUTAGE DO NOT CBT******\r" + "Node: " + ThisNode + " | " + ALLOFF + "/" +ALLDEV + " | " + offlinep + " offline | Power Supply " + PS + "| SNR: " + SNR + " | "
+		}else {
+			document.getElementById("BC").innerHTML = document.getElementById("BC").innerHTML + "\n\n" + "Node: " + ThisNode + " | " + ALLOFF + "/" +ALLDEV + " | " + offlinep + " offline | Power Supply " + PS + "| SNR: " + SNR + " | "
+		}
+		
+		
+	} else if (i==1) {
+
+		if (document.getElementById("REPEATCheck").checked == true) {
+			document.getElementById("BC").innerHTML = "******REPEAT OUTAGE DO NOT CBT******\r" + "Node: " + ThisNode + " | " + ALLOFF + "/" + ALLDEV + " | " + offlinep + " offline | Power Supply " + PS + "| SNR: " + SNR + " | "
+		}else (
+			document.getElementById("BC").innerHTML = "Node: " + ThisNode + " | " + ALLOFF + "/" + ALLDEV + " | " + offlinep + " offline | Power Supply " + PS + "| SNR: " + SNR + " | "
+		)
+		
+	
+
+}
 
 }
 
