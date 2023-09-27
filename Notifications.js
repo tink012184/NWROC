@@ -4222,7 +4222,7 @@ EBMode = document.getElementById("EverbridgeMode").checked
 if(EBMode == true) {
 	document.getElementById("EverButton").value = "Everbridge? [ ]"
 	document.getElementById("EverbridgeMode").checked = false
-	document.getElementById("hedder").innerHTML = "Notification Template"
+	document.getElementById("header").innerHTML = "Notification Template"
 	document.getElementById("NoteType").value = ""
 	document.getElementById("UQ1").disabled = false
 	document.getElementById("UQ1").value = " "
@@ -4243,7 +4243,7 @@ if(EBMode == true) {
  else if(EBMode == false) {
 	document.getElementById("EverButton").value = "Everbridge? [√]"
 	document.getElementById("EverbridgeMode").checked = true
-	document.getElementById("hedder").innerHTML = "Everbridge Template"
+	document.getElementById("header").innerHTML = "Everbridge Template"
 	document.getElementById("IQ1-VM").checked = false
 	document.getElementById("PS1-VM").checked = false
 	document.getElementById("NoteType").value = ""
