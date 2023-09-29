@@ -607,7 +607,7 @@ if(Tipe == "RepOut"){
 	
 	let mailTo = "";
 	
-	mailTo = "mailto:" + "DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com" + "?bcc=" + DL + "; ROC-NW@charter.com"
+	mailTo = "mailto:" + "DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com" + "?cc=" + DL + "; ROC-NW@charter.com"
 	+ "&subject="+ encodeURIComponent(TierLV + " Repeat Outage! Northwest > " + MA + " > " + HUB + " > " + NODE) + "&body="+ encodeURIComponent("• Northwest > " + MA + " > " + HUB + " > " + NODE) + encodeURIComponent("\n• " + tear.substring(7,tear.length)) + encodeURIComponent("\n• https://lighthouse.charter.com/#/order/" + LH + "\r\r" + "\n\n") + encodeURIComponent("\n\n" + RepTech + " has been dispatched to investigate. " + Details + "\r\r" + "Orders in the last 10 days" + "\n" + "Outages: " + RepOutages + "\nY6's: " + RepY6 + "\nY7's: " + RepY7 + "\nZZ's: " + RepZZ + "\n\n[Paste Triage Screenshots Here]");
 
 //CHECKS TO ALLOW EMAIL ONLY WHEN FILLED OUT
@@ -1356,8 +1356,11 @@ NodeCount(); //needed for getting node name for PS
 		if (document.getElementById("BOTOTBox").checked == true){ 
 			var InitDesc = a + " is on site at a MT in node outage. " + e + f + pc + c + ". " + rt + GAMsg
 		}
-		else {
-		var InitDesc = techDeets + b + " node outage." + e + f + pc + c + ". " + rt + GAMsg + techETA }
+		if (document.getElementById("REPEATCheck").checked == true){
+			var InitDesc = techDeets + b + " node outage. This is " + REPeatType + "." + e + f + pc + c + ". " + rt + GAMsg + techETA
+		}else {
+		var InitDesc = techDeets + b + " node outage." + e + f + pc + c + ". " + rt + GAMsg + techETA 
+		}
 
 		/* if (document.getElementById("PendTech").checked == true) {
 
