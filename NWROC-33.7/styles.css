@@ -1,0 +1,329 @@
+/* Universal Styles*/
+
+html{font-family: verdana, geneva, sans-serif;}
+li {margin-top: 10px;}
+
+/* General Layout */
+.wrapper {
+	width: 100%;
+	height: 100%;
+}
+
+.header {
+	display: block;
+	background: #1a1d21;
+	color: #fff;
+	float: left;
+	width: 100%;
+	height: 120px;
+}
+
+.menu {
+	display: block;
+	background: #003057;
+	float: left;
+	width: 11%;
+	height: 833px;
+}
+
+.main {
+	display: block;
+	background: #787878;
+  	width: 89%;
+	text-align: left;
+	float: right;
+}
+
+.mainwrapper{
+	width: 100%;
+	height: 100%;
+}
+
+.footer{
+	display: block;
+	float: right;
+	width: 89%;
+	height: 203px;
+}
+
+.main div{vertical-align: middle;}
+
+.footer div {text-align: left;}
+
+#helpcolumn1 {width: 732.5px;}
+#helpcolumn2 {width: 732.5px;}
+
+
+/* Header Layout */
+
+.logo{
+	display: block;
+	float: left;
+	width: 15%;
+	height: 100%;
+	font-size: 36px;
+	font-family: "Arial Black";
+	line-height: 28px;
+	padding-left: 10px;
+	padding-top: 10px;
+}
+
+.title{
+	display: block;
+	width: 85%;
+	height: 100%;
+	text-align: center;
+	line-height: 30px;
+	font-weight: bold;
+	font-size: 28px;
+}
+
+/* Put divs in a table format*/
+
+.row {display: table-row;}
+
+.cell {
+	display: table-cell;
+	padding-bottom: 5px;
+	padding-right: 5px;
+	text-align: right;
+	font-weight: bold;
+	font-size: 13px;
+	color: #fff;
+}
+
+/* Menu Styles */
+
+.Section {
+	text-align: center;
+	font-weight: bold;
+	padding: 5px 0px;
+	background: #666;
+	color: #d9d9d9;
+}
+
+.page {
+	border: 2px solid #787878;
+	background: #787878;
+	border-radius: 5px;
+	height: 40px;
+	width: 90%;
+	line-height: 40px;
+	display: block;
+	text-align: center;
+	margin: 10px auto;
+}
+
+.page a {
+	display: block;
+	font-weight: bold;
+	text-decoration: none;
+	color: #fff;
+}
+
+.page:hover {background: #a1a1a1; border: 2px solid #000;}
+
+.active{
+	background: #a1a1a1;
+	border: 2px solid #000;
+	border-radius: 5px;
+	height: 40px;
+	width: 90%;
+	line-height: 40px;
+	display: block;
+	text-align: center;
+	margin: 10px auto;
+}
+
+.active a{
+	display: block;
+	font-weight: bold;
+	text-decoration: none;
+	color: #000;
+}
+
+.feedback{font-size: 10px; padding-top: 245px; padding-left: 10px; color: white;}
+
+/* Style submit button for the Email Security and Potential Fiber pages */
+
+.SubmitButton {
+	cursor: pointer;
+	height: 40px;
+	width: 225px;
+	font-weight: bold;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	font-family: verdana, geneva, sans-serif;
+	margin-top: 5px;
+}
+
+/* Input field style */
+
+input[type=radio] {
+	margin-top: 0;
+	margin-right: 0;
+	margin-left: 3px;
+	vertical-align: middle;
+}
+
+input[type=text]:focus, [type=number]:focus, textarea:focus, select:focus {
+	border: 2px solid red;
+}
+
+input[type=text], [type=number], [type=datetime-local] {
+	padding: 3px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	width: 300px;
+}
+
+select {
+	padding: 3px;
+ 	border: 2px solid #ccc;
+    border-radius: 5px;
+	width: 310px;
+}
+
+textarea {
+	overflow-y: scroll;
+	resize: none;
+	padding: 3px;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	width: 300px;
+	font-family: verdana, geneva, sans-serif;
+}
+
+.otherInput textarea, .patternInput textarea {
+	height: 60px;
+}
+
+input[type=button], [type=reset] {
+	cursor: pointer;
+	height: 40px;
+	width: 90%;
+	font-weight: bold;
+	border: 2px solid #ccc;
+	border-radius: 5px;
+	font-family: verdana, geneva, sans-serif;
+	margin-top: 5px;
+	white-space: normal;
+}
+
+input[type=button]:active {background: #ccc; border-style: inset;}
+input[type=reset]:active {background: #ccc; border-style: inset;}
+
+
+/* Hides arrow buttons on input type number fields */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+	/*display: none; <-- Crashes Chrome on hover */
+	-webkit-appearance: none;
+	margin: 0; /* <-- Apparently some margins are still there even though it's hidden */
+}
+
+
+/* Modal Image Layout and Design */
+#thumbwrap {
+	position:relative;
+	margin:75px auto;
+	width:252px; height:252px;
+}
+.thumb img { 
+	border:1px solid #000;
+	margin:3px;
+	float:left;
+}
+.thumb span { 
+	position:absolute;
+	visibility:hidden;
+}
+.thumb:hover, .thumb:hover span { 
+	visibility:visible;
+	top:0; left:250px; 
+	z-index:1;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 225px;
+    top: 200px;
+    width: 1400px; /* Set width */
+    height: 400px; /* Set height */
+    /* overflow: none; Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+    margin: auto;
+    display: block;
+}
+
+/* Caption of Modal Image */
+#caption {
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 950px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 30px;
+}
+
+/* Add Animation */
+.modal-content, #caption {    
+    -webkit-animation-name: zoom;
+    -webkit-animation-duration: 0.6s;
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+    from {-webkit-transform:scale(0)} 
+    to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+    from {transform:scale(0)} 
+    to {transform:scale(1)}
+}
+
+/* The Close Button */
+.close {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+    color: #bbb;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+    .modal-content {
+        width: 100%;
+    }
+}
+
+.help {
+	cursor: pointer;
+}
+
+.displayNone {
+	display:none;
+}
