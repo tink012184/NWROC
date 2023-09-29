@@ -7,7 +7,8 @@
 	<meta name="description" content="Notification Template">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<link rel="stylesheet" href="styles2.css">
-	<script src="//code.jquery.com/jquery.min.js"></script>
+
+
 
 	<title>Notification Template</title>
 
@@ -18,11 +19,11 @@
 <div class="wrapper">
 
 	<div class="header">
-		<include src="header.htm"></include>
+		<include src="/header.htm"></include>
 	</div>
 
 	<div class="menu">
-		<include src="nav.html"></include>
+		<include src="/nav.html"></include>
 	</div>
 	
 </div>
@@ -59,6 +60,30 @@
 						   </select>
 					</div>
 			</div>	
+
+			<div class="row displayNone Fiorm INIT">
+				<div class="cell"></div>
+				<div class="cell">IS THIS A REPEAT?<input type="checkbox" id="REPEATCheck" onchange="myUpdate();"></div>
+			</div>
+			<div class="row displayNone REPeat">
+				<div class="cell">What kind of repeat</div>
+				<div class="cell">
+					<select class="" id="REPeatType" onchange="myUpdate();REPeatFun();NodeCount();">
+						<option value=""></option>
+						<option value="2nd Unplanned outage in 5 hours">Reigonal:2nd Unplanned outage in 5 hours</option>
+						<option value="3rd Unplanned outage in 24 hours">Regional:3rd Unplanned outage in 24 hours</option>
+						<option value="7th Unplanned outage in 5 days">Regional:7th Unplanned outage in 5 days</option>
+						<option value="Tier 1:5 unplanned outages in 1 calendar day">Tier 1:5 unplanned outages in 1 calendar day</option>
+						<option value="Tier 1:6 unplanned outages in 10 calendar days">Tier 1:6 unplanned outages in 10 calendar days</option>
+						<option value="Tier 2:6 unplanned outages in 1 calendar day">Tier 2:6 unplanned outages in 1 calendar day</option>
+						<option value="Tier 2:7 unplanned outages in 10 calendar days">Tier 2:7 unplanned outages in 10 calendar days</option>
+						<option value="Tier 3:7 unplanned outages in 1 calendar day">Tier 3:7 unplanned outages in 1 calendar day</option>
+						<option value="Tier 3:8 unplanned outages in 10 calendar days">Tier 3:8 unplanned outages in 10 calendar days</option>
+						<option value="Tier 4:8+ unplanned outages in 1 calendar day">Tier 4:8+ unplanned outages in 1 calendar day</option>
+						<option value="Tier 4:9+unplanned outages in 10 calendar days">Tier 4:9+unplanned outages in 10 calendar days</option>			
+					</select>
+				</div>
+			</div>
 		<div class="row displayNone ETS">
 			<div class="cell">Fiber Count Total</div>
 			<div class="cell"><input type="text" id="ETSTotal" onchange="ETS();"></div>
@@ -121,13 +146,13 @@
 					<div class="cell" align="left">
 					<select id="NumRepsZV" onChange="RepUpdate();ReVis();RepeatBreadCrumb();">
 						<Option value="00000"></option>
-						<Option>Tier1: 5th SSA in 24 hrs</option>
+						<Option>Tier1: 5th unplanned in 24 hrs</option>
 						<Option>Tier1: 6th unplanned outages in 10 days</option>
-						<Option>Tier2: 6th SSA in 24 hrs</option>
+						<Option>Tier2: 6th unplanned in 24 hrs</option>
 						<Option>Tier2: 7th unplanned outages in 10 days</option>
-						<Option>Tier3: 7th SSA in 24 hrs</option>
+						<Option>Tier3: 7th unplanned in 24 hrs</option>
 						<Option>Tier3: 8th unplanned outages in 10 days</option>
-						<Option>Tier4: 8th+ SSA in 24 hrs</option>
+						<Option>Tier4: 8th+ unplanned in 24 hrs</option>
 						<Option>Tier4: 9th+ unplanned outages in 10 days</option>
 					</select>
 					</div>
@@ -477,11 +502,8 @@
 					<BR>
 					<input type="datetime-local" id="IQ4a" value="1969-01-01T00:00" onChange="TimeUp('future',IQ4a.value,'IQ4a');myUpdate();" /> (MT)</div>
 				</div>
+
 <!---End: Power Supply Detail--->
-				<div class="row displayNone Fiorm INIT">
-					<div class="cell">IS THIS A REPEAT</div>
-					<div class="cell"><input type="checkbox" id="REPEATCheck" onchange="myUpdate();"></div>
-				</div>
 
 
 				
