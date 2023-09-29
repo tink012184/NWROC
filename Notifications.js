@@ -424,8 +424,8 @@ const carriers = [0];
 
 	if(document.getElementById("BC").innerHTML != ""){
 
-		if (document.getElementById("REPEATCheck").checked == true) {
-			document.getElementById("BC").innerHTML = document.getElementById("BC").innerHTML + "\n\n" + "\r******REPEAT OUTAGE DO NOT CBT******\r" + "Node: " + ThisNode + " | " + ALLOFF + "/" +ALLDEV + " | " + offlinep + " offline | Power Supply " + PS + "| SNR: " + SNR + " | "
+ 		if (document.getElementById("REPEATCheck").checked == true) {
+			document.getElementById("BC").innerHTML = document.getElementById("BC").innerHTML + "\n\n" + "\r" + REPeatType + "\r" + "Node: " + ThisNode + " | " + ALLOFF + "/" +ALLDEV + " | " + offlinep + " offline | Power Supply " + PS + "| SNR: " + SNR + " | "
 		}else {
 			document.getElementById("BC").innerHTML = document.getElementById("BC").innerHTML + "\n\n" + "Node: " + ThisNode + " | " + ALLOFF + "/" +ALLDEV + " | " + offlinep + " offline | Power Supply " + PS + "| SNR: " + SNR + " | "
 		}
@@ -433,8 +433,8 @@ const carriers = [0];
 		
 	} else if (i==1) {
 
-		if (document.getElementById("REPEATCheck").checked == true) {
-			document.getElementById("BC").innerHTML = "******REPEAT OUTAGE DO NOT CBT******\r" + "Node: " + ThisNode + " | " + ALLOFF + "/" + ALLDEV + " | " + offlinep + " offline | Power Supply " + PS + "| SNR: " + SNR + " | "
+ 		if (document.getElementById("REPEATCheck").checked == true) {
+			document.getElementById("BC").innerHTML = REPeatType + "\r" + "Node: " + ThisNode + " | " + ALLOFF + "/" + ALLDEV + " | " + offlinep + " offline | Power Supply " + PS + "| SNR: " + SNR + " | "
 		}else (
 			document.getElementById("BC").innerHTML = "Node: " + ThisNode + " | " + ALLOFF + "/" + ALLDEV + " | " + offlinep + " offline | Power Supply " + PS + "| SNR: " + SNR + " | "
 		)
@@ -1241,7 +1241,15 @@ NodeCount(); //needed for getting node name for PS
 	var PSFR = document.getElementById("PSFR").value;// PS Fault Reason 
 	var BOTOTBox = document.getElementById("BOTOTBox").checked;
 	var hourly = document.getElementById("hourly").checked;
+	let REPEATCheck = document.getElementById("REPEATCheck").checked;
 	/* var PendTech = document.getElementById("PendTech").checked; */
+
+
+	if (REPEATCheck == true) {
+		for (let el of document.querySelectorAll('.REPeat')) el.classList.remove("displayNone");
+	}else if (REPEATCheck == false) {
+		for (let el of document.querySelectorAll('.REPeat')) el.classList.add("displayNone");
+	}
 
 
 	if (GATotalPS>1) { 
@@ -1348,8 +1356,11 @@ NodeCount(); //needed for getting node name for PS
 		if (document.getElementById("BOTOTBox").checked == true){ 
 			var InitDesc = a + " is on site at a MT in node outage. " + e + f + pc + c + ". " + rt + GAMsg
 		}
-		else {
-		var InitDesc = techDeets + b + " node outage." + e + f + pc + c + ". " + rt + GAMsg + techETA }
+		if (document.getElementById("REPEATCheck").checked == true){
+			var InitDesc = techDeets + b + " node outage. This is " + REPeatType + "." + e + f + pc + c + ". " + rt + GAMsg + techETA
+		}else {
+		var InitDesc = techDeets + b + " node outage." + e + f + pc + c + ". " + rt + GAMsg + techETA 
+		}
 
 		/* if (document.getElementById("PendTech").checked == true) {
 
@@ -1754,6 +1765,12 @@ if (document.getElementById("UQ4e").value == "Yes"){
 		for (let el of document.querySelectorAll('.IRIS')) el.classList.remove("displayNone");
 	}
 
+}
+
+
+function REPeatFun() {
+REPeatType = document.getElementById("REPeatType").value;
+	return REPeatType;
 }
 
 function timediff(){
@@ -2927,7 +2944,7 @@ function IRIS () {
 }
 
 
-//Get the modal
+/* //Get the modal
 var modal = document.getElementById('myModal');
 
 //Get Remedy Work Log image
@@ -2938,7 +2955,7 @@ img.onclick = function(){
     modal.style.display = "block";
     modalImg.src = 'Images/DMGuidelines.png';
 	captionText.innerHTML = 'Guidelines for planned maintenance approval.';
-}
+} */
 
 //Allows Modal to be closed using close button
 
@@ -4222,7 +4239,6 @@ EBMode = document.getElementById("EverbridgeMode").checked
 if(EBMode == true) {
 	document.getElementById("EverButton").value = "Everbridge? [ ]"
 	document.getElementById("EverbridgeMode").checked = false
-	//document.getElementById("header").innerHTML = "Notification Template"
 	document.getElementById("NoteType").value = ""
 	document.getElementById("UQ1").disabled = false
 	document.getElementById("UQ1").value = " "
@@ -4243,7 +4259,6 @@ if(EBMode == true) {
  else if(EBMode == false) {
 	document.getElementById("EverButton").value = "Everbridge? [√]"
 	document.getElementById("EverbridgeMode").checked = true
-	//document.getElementById("header").innerHTML = "Everbridge Template"
 	document.getElementById("IQ1-VM").checked = false
 	document.getElementById("PS1-VM").checked = false
 	document.getElementById("NoteType").value = ""
