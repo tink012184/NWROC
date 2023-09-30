@@ -2278,6 +2278,9 @@ function PSFault() {
 	if (document.getElementById("UQ4e").value == "YesTI"){
 		for (let el of document.querySelectorAll('.PSGEN')) el.classList.add("displayNone");
 	}
+	if (document.getElementById("UQ4e").value == "No"){
+		for (let el of document.querySelectorAll('.PSGEN')) el.classList.add("displayNone");
+	}
 }
 
 function MonitoringNAccess(){
@@ -3115,6 +3118,7 @@ break;
 		for (let el of document.querySelectorAll('.PSQMTAopt1')) el.classList.remove("displayNone"); //Tech Name
 		for (let el of document.querySelectorAll('.CPOR')) el.classList.remove("displayNone"); //CPO Reverify time
 		for (let el of document.querySelectorAll('.NCPOR')) el.classList.add("displayNone"); //CPO Reverify time
+		//for (let el of document.querySelectorAll('.GENInfo')) el.classList.add("displayNone");
 		if(document.getElementById("PS1-VM").checked==false) {;
 			for (let el of document.querySelectorAll('.PSQMTAopt3')) el.classList.remove("displayNone"); //ETA
 		}
@@ -3182,6 +3186,10 @@ function CPOType() { //For show hid of CPOT
 
 	if (document.getElementById("CPOT").value == "6 Hour Re-Verification due at " || document.getElementById("CPOT").value == "Power company website ETR is " || document.getElementById("CPOT").value == "The ETR is provided by the technician is at "){
 
+		for (let el of document.querySelectorAll('.NCOMMPOWER')) el.classList.add("displayNone");
+		for (let el of document.querySelectorAll('.PSUpdate')) el.classList.add("displayNone");
+		for (let el of document.querySelectorAll('.ReverCPO')) el.classList.remove("displayNone");
+
 		if (document.getElementById("CPO1").value == "No Change"){
 
 		for (let el of document.querySelectorAll('.PSo')) el.classList.add("displayNone"); //PS Options
@@ -3190,6 +3198,7 @@ function CPOType() { //For show hid of CPOT
 		for (let el of document.querySelectorAll('.PSQMTAopt3')) el.classList.remove("displayNone");
 		for (let el of document.querySelectorAll('.CPOTNS')) el.classList.add("displayNone");
 		for (let el of document.querySelectorAll('.CPOTy')) el.classList.add("displayNone");
+
 		document.getElementById("CPUETAa").disabled=true;
 	
 	UpdateDesc = "Commercial power outage is still impacting the node. There has been no significant change in online device count. The ROC will continue to monitor this outage for any changes. " + CPOT + FormatTime(document.getElementById("CPUETA").value) + " MT.";
@@ -4154,6 +4163,8 @@ function GenDep(){
 		for (let el of document.querySelectorAll(".PSQMTAopt6")) el.classList.add("displayNone");		
 		for (let el of document.querySelectorAll('.GeN')) el.classList.add("displayNone"); //Genn Address		
 		for (let el of document.querySelectorAll('.GENInfo')) el.classList.add("displayNone");
+		for (let el of document.querySelectorAll('.NoGenA')) el.classList.add("displayNone");
+		for (let el of document.querySelectorAll('.NCOMMPOWER')) el.classList.add("displayNone")
 	}
 myUpdate();
 }

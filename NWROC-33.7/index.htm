@@ -634,7 +634,7 @@
 				</div>
 
 				
-				<div class="row displayNone Fiorm VMUPDATE NAFTER ONSITE NCOMMPOWER ptype PSUpdate PSGEN CPOTy">
+				<div class="row displayNone Fiorm VMUPDATE NAFTER ONSITE NCOMMPOWER ptype PSUpdate PSGEN CPOTy NoGenA">
 					<div class="cell" style="text-align: right;">Plant Type: </div>
 					<div class="cell">
 							<select id="UQ2" onChange="myUpdate();PlantType();" >
@@ -646,7 +646,7 @@
 					</div>
 				</div>
 				
-				<div class="row displayNone Fiorm VMUPDATE SUBTYPE USUB NCOMMPOWER ptype PSUpdate PSGEN CPOTy">
+				<div class="row displayNone Fiorm VMUPDATE SUBTYPE USUB NCOMMPOWER ptype PSUpdate PSGEN CPOTy NoGenA">
 					<div class="cell" style="text-align: right;">• Sub-Type: </div>
 					<div class="cell">
 							<select id="UQ2a" onChange="myUpdate();" >
@@ -660,7 +660,7 @@
 					</div>
 				</div>
 
-				<div class="row displayNone Fiorm VMUPDATE NAFTER ONSITE NCOMMPOWER ptype PSUpdate PSGEN CPOTy">
+				<div class="row displayNone Fiorm VMUPDATE NAFTER ONSITE NCOMMPOWER ptype PSUpdate PSGEN CPOTy NoGenA">
 					<div class="cell" style="text-align: right;">Outage Type: </div>
 					<div class="cell">
 							<select id="UQ3" onChange="myUpdate();" >
@@ -675,7 +675,7 @@
 					</div>
 				</div>
 				
-				<div class="row displayNone Fiorm AFTER NCOMMPOWER PSGEN CPOTy">
+				<div class="row displayNone Fiorm AFTER NCOMMPOWER PSGEN CPOTy NoGenA">
 					<div class="cell">&nbsp;</div>
 					<div class="cell">Dual Dispatch Engaged: <input type="checkbox" id="DualCheck" onChange="DualTwo();myUpdate();" /><BR>
 					
@@ -687,32 +687,32 @@
 					</div>
 				</div>
 				
-				<div class="row displayNone Fiorm AFTER NCOMMPOWER PSGEN CPOTy">
+				<div class="row displayNone Fiorm AFTER NCOMMPOWER PSGEN CPOTy NoGenA">
 					<div class="cell" style="vertical-align: top;"><BR>Technician Update: </div>
 				</div>
 				
 						
 
 				
-				<div class="row displayNone Fiorm AFTER NCOMMPOWER PSGEN CPOTy">
+				<div class="row displayNone Fiorm AFTER NCOMMPOWER PSGEN CPOTy NoGenA">
 					<div class="cell" style="vertical-align: top;text-align: right;">What did the tech do?: </div>
 					<div class="cell" style="vertical-align: top;">
 					<I><font color=white>"They have <input type="text" style="width: 215px;" id="UA1" onChange="myUpdate();" /></I></font>
 					</div>
 				</div>				
 				
-				<div class="row displayNone Fiorm AFTER NCOMMPOWER PSGEN CPOTy">
+				<div class="row displayNone Fiorm AFTER NCOMMPOWER PSGEN CPOTy NoGenA">
 					<div class="cell" style="vertical-align: top; text-align: right;">Where was the work done?: </div>
 					<div class="cell" style="vertical-align: top;">
 					<I><font color=white>at <input type="text" style="width: 283px;" id="UA2" onChange="myUpdate();" /></I></font></div>
 				</div>
 				
-				<div class="row displayNone Fiorm AFTER NFINAL NEXTSTEPS PSGEN GENTI CPOTy">
+				<div class="row displayNone Fiorm AFTER NFINAL NEXTSTEPS PSGEN GENTI CPOTy PSUpdate NCOMMPOWER NoGenA">
 					<div class="cell" style="vertical-align: top; text-align: right;">Tech's next steps?: </div>
 					<div class="cell" style="vertical-align: top;"><I><font color=white>and will continue to<BR><input type="text" style="width: 285px;" id="UA3" onChange="myUpdate();" />."</I></font></div>
 				</div>
 
-				<div class="row displayNone Fiorm FINAL F2 F22 PSGEN">
+				<div class="row displayNone Fiorm FINAL F2 F22 PSGEN NCOMMPOWER">
 					<div class="cell" style="vertical-align: top;"></div>
 					<div class="cell" style="vertical-align: top;"><I><font color=white>which has resolved the outage."</I></font></div>
 				</div>
@@ -802,7 +802,7 @@
 					<div class="cell" style="text-align: right;">ZX-Plant Other LH: <BR><font size=1><I>(YD-Storm Assessment for Storm)</I></font></div>
 					<div class="cell2" align="left"><input maxlength="20" type="number" id="ZX" onChange="HowMany(this.id);CPUExec(PSQMTA1.value);" /> </div>
 				</div>
-				<div class="row displayNone Fiorm COMMPOWER CPOR NLP">
+				<div class="row displayNone Fiorm COMMPOWER CPOR NLP ReverCPO">
 					<div class="cell" style="text-align: right;">Source of Restoration Time: </div>
 					<div class="cell">
 							<select id="CPOT" onChange="myUpdate();CPU1();CommPwr();CPOType();" >
@@ -920,10 +920,10 @@
 					<div class="cell ReV PSo displayNone" style="text-align: right;">Verification Address?: </div>
 					<div class="cell" align="left"><input type="text" id="GENAddy" onChange="CPUExec(PSQMTA1.value);myUpdate(); GenInfoTemplate();" /></div>
 				</div>
-				<div class="row displayNone Fiorm PSQMTAopt6 P SH P So GENInfo">
+				<!-- <div class="row displayNone Fiorm PSQMTAopt6 P SH P So GeN GENInfo NCPOR">
 					<div class="cell GeN PSo" style="text-align: right;">POC: </div>
 					<div class="cell" align="left"><input type="text" id="POCR" onChange="CPU2();myUpdate(); GenInfoTemplate();" /></div>
-				</div>
+				</div> -->
 				<div class="row displayNone Fiorm P SH P So GENInfo PSGEN">
 					<div class="cell" style="text-align: right;">Related INC: </div>
 					<div class="cell" align="left"><input type="text" id="GENINC" onChange="myUpdate(); GenInfoTemplate();" /></div>
