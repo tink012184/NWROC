@@ -3946,6 +3946,7 @@ break;
 		for (let el of document.querySelectorAll('.Reppy6')) el.classList.remove("displayNone");
 		for (let el of document.querySelectorAll('.NOTIFICATIONS')) el.classList.add("displayNone");
 		for (let el of document.querySelectorAll('.EMAIL')) el.classList.remove("displayNone");
+		for (let el of document.querySelectorAll('.RepZV')) el.classList.add("displayNone");
 		
 		if(document.getElementById("NumRepsY6").value>=1) {
 			for (let el of document.querySelectorAll('.Reppy6a')) el.classList.remove("displayNone");
