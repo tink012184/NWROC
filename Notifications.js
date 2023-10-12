@@ -1353,10 +1353,10 @@ NodeCount(); //needed for getting node name for PS
 		if (document.getElementById("NoteType").value == "IRIS") {
 			var InitDesc = techDeets + "an IRIS event. " + e + f + pc + c + ". " + rt + GAMsg + techETA
 		}
-		if (document.getElementById("BOTOTBox").checked == true){ 
+		else if (BOTOTBox == true){ 
 			var InitDesc = a + " is on site at a MT in node outage. " + e + f + pc + c + ". " + rt + GAMsg
 		}
-		if (document.getElementById("REPEATCheck").checked == true){
+		else if (REPEATCheck == true){
 			var InitDesc = techDeets + b + " node outage. This is " + REPeatType + "." + e + f + pc + c + ". " + rt + GAMsg + techETA
 		}else {
 		var InitDesc = techDeets + b + " node outage." + e + f + pc + c + ". " + rt + GAMsg + techETA 
@@ -1571,7 +1571,7 @@ NodeCount(); //needed for getting node name for PS
 			}
 		}
 
-		UD4 = " The outage " + iswas + q;
+		UD4 = "The outage " + iswas + q;
 		if (q == "being investigated") {
 			UD4 = " The root cause of the outage is unknown at this time";
 		}
