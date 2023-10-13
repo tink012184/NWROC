@@ -3231,7 +3231,7 @@ switch(IteM) {
 		var GenAddress = document.getElementById("GENAddy").value
 
 		var GenRefuel = document.getElementById("GENRefuel").value;
-		//var POCR = document.getElementById("POCR").value;
+		var POCR = document.getElementById("POCR").value;
 		
 		UpdateDesc = "There has been no significant change in online device count. The ROC will continue to monitor this outage for any changes. Generator is located at " + GenAddress + ". The next refuel time is " + FormatTime(GenRefuel) + " MT. The POC will be " + POCR
 break;
