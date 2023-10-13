@@ -3211,7 +3211,7 @@ function CPOType() { //For show hid of CPOT
 
 
 function CPU2() { ///Generator Tracking Ticket
-var IteM = document.getElementById("GEN1").value
+let IteM = document.getElementById("GEN1").value
 for (let el of document.querySelectorAll('.PSo')) el.classList.add("displayNone"); //CPO Reverify time
 document.getElementById("PS1-VM").disabled=false;
 for (let el of document.querySelectorAll('.CPOR')) el.classList.add("displayNone"); //CPO Reverify time
@@ -3231,7 +3231,7 @@ switch(IteM) {
 		var GenAddress = document.getElementById("GENAddy").value
 
 		var GenRefuel = document.getElementById("GENRefuel").value;
-		var POCR = document.getElementById("POCR").value;
+		//var POCR = document.getElementById("POCR").value;
 		
 		UpdateDesc = "There has been no significant change in online device count. The ROC will continue to monitor this outage for any changes. Generator is located at " + GenAddress + ". The next refuel time is " + FormatTime(GenRefuel) + " MT. The POC will be " + POCR
 break;
@@ -3334,7 +3334,7 @@ break;
  let dait = d.toLocaleDateString();
  TStamp = dait + " " + FormatTime(new Date())
  
- if (EBMode == true){
+if (EBMode == true){
 	EBTimeStamp = TStamp + " MT - " 
 	if (document.getElementById("CPO1").value == "Restored" || document.getElementById("GEN1").value == "PickupComplete" || document.getElementById("PS1").value == "OnRest" || document.getElementById("QMTA1").value == "Online" || UA0 == true){
 		UpdateChange = ""
