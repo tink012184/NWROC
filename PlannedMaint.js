@@ -255,7 +255,7 @@ function myLHDesc() {
 		l = "Cash Pass"
 	}
 	
-	if (a == "ROC Impairment Deflection" || a == "BOTOT" || a == "Overrun") {
+	if (a == "ROC Impairment Deflection" || a == "BOTOT" || a == "Overrun" || a == "REACT") {
 		c=a;d=a;e=a;f=a;g=a;h=a;i=a;j=a;k="";l=a;m=a;
 		
 	}
