@@ -135,7 +135,7 @@ function generate(){
 
     let mailTo = "";
 	 
-	mailTo = "mailto:" + management + TechEmail + "?subject=" + MA + " - High Demand/REACT Node - Hub: " + hub + " - Node: " + node + "&body=" + encodeURIComponent("This email is to alert you to a node driving high activity in your area. This node will need to be certified/optimized/swept. Once node certification/optimization/sweeping has been completed, the ROC will provide targets, as needed. 1 hour of DM time per day outside of the maintenance window is permitted. DM work during the maintenance window on REACT jobs is BAU. Please utilize the “ART REACT” Webex chat for the enabling/disabling of deflection outside of maintenance window. Impairment Deflection will need to be enabled when this job is being worked (EN ROUTE/WIP). Impairment Deflection does not allow for plant to be taken down. Its purpose is to notify customers that there is a technician working in their area. All updates need to be added to this thread daily. This includes what was swept, what has been replaced, what issues have been found, what improvements have been seen, where we left off, what the next steps are, etc. Please feel free to reach out to the ROC 4 line if you need any assistance or have any questions or concerns. Thank you. ") + encodeURIComponent(CreateNoteEmail());
+	mailTo = "mailto:" + management + TechEmail + "?subject=" + MA + " - High Demand/REACT Node - Hub: " + hub + " - Node: " + node + "&body=" + encodeURIComponent("This email is to alert you to a node driving high activity in your area. This node will need to be certified/optimized/swept. Once node certification/optimization/sweeping has been completed, the ROC will provide targets, as needed.") + encodeURIComponent(CreateNoteEmail());
 
     document.location.href = mailTo;
 }
@@ -143,3 +143,49 @@ function generate(){
 function copyBtn2() {
         navigator.clipboard.writeText(CreateNoteCopy());
 }
+
+
+
+function copyToClipboard() {
+    var sentence = "1 hour of DM time per day outside of the maintenance window is permitted. DM work during the maintenance window on REACT jobs is BAU. Please utilize the “ART REACT” Webex chat for the enabling/disabling of deflection outside of maintenance ";
+    var tempInput = document.createElement("input");
+    tempInput.value = sentence;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("Sentence copied to clipboard!");
+  }
+
+  function copyToClipboard1() {
+    var sentence = "window. Impairment Deflection will need to be enabled when this job is being worked (EN ROUTE/WIP). Impairment Deflection does not allow for plant to be taken down. Its purpose is to notify customers that there is a technician working in their area.";
+    var tempInput = document.createElement("input");
+    tempInput.value = sentence;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("Sentence copied to clipboard!");
+  }
+
+  function copyToClipboard2() {
+    var sentence = " All updates need to be added to this thread daily. This includes what was swept, what has been replaced, what issues have been found, what improvements have been seen, where we left off, what the next steps are, etc.";
+    var tempInput = document.createElement("input");
+    tempInput.value = sentence;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("Sentence copied to clipboard!");
+  }
+
+  function copyToClipboard3() {
+    var sentence = " Please feel free to reach out to the ROC 4 line if you need any assistance or have any questions or concerns. Thank you. ";
+    var tempInput = document.createElement("input");
+    tempInput.value = sentence;
+    document.body.appendChild(tempInput);
+    tempInput.select();
+    document.execCommand("copy");
+    document.body.removeChild(tempInput);
+    alert("Sentence copied to clipboard!");
+  }
