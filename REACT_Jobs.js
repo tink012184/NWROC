@@ -207,7 +207,7 @@ function mngmntEmail() {
 
     let mailTo = "";
 	 
-	mailTo = "mailto:" + management  + "?subject=" + "RE/ZN created for" + MA + "-" + hub + "-" + node + "&body=" + "RE - " + RELink + "/r" + "ZN - " + ZNLink
+	mailTo = "mailto:" + management  + "?subject=" + "RE/ZN created for " + MA + "-" + hub + "-" + node + "&body=" + "RE - " + RELink + "/rZN - " + ZNLink;
  
     document.location.href = mailTo;
 }
