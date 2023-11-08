@@ -160,7 +160,7 @@ function copyToClipboard() {
     tempInput.select();
     document.execCommand("copy");
     document.body.removeChild(tempInput);
-    alert("Sentence copied to clipboard!");
+
   }
 
   function copyToClipboard1() {
@@ -171,7 +171,7 @@ function copyToClipboard() {
     tempInput.select();
     document.execCommand("copy");
     document.body.removeChild(tempInput);
-    alert("Sentence copied to clipboard!");
+
   }
 
   function copyToClipboard2() {
@@ -182,7 +182,7 @@ function copyToClipboard() {
     tempInput.select();
     document.execCommand("copy");
     document.body.removeChild(tempInput);
-    alert("Sentence copied to clipboard!");
+
   }
 
   function copyToClipboard3() {
@@ -193,7 +193,7 @@ function copyToClipboard() {
     tempInput.select();
     document.execCommand("copy");
     document.body.removeChild(tempInput);
-    alert("Sentence copied to clipboard!");
+
   }
 
 
