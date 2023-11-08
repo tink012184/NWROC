@@ -4,12 +4,18 @@ function showhide() {
 
         for (let el of document.querySelectorAll('.section1')) el.classList.add("displayNone");
         for (let el of document.querySelectorAll('.section2')) el.classList.remove("displayNone");
+        for (let el of document.querySelectorAll('.mgmnt')) el.classList.add("displayNone");
 
     } else if (document.getElementById("typeoforder").value == "Update") {
 
         for (let el of document.querySelectorAll('.section1')) el.classList.remove("displayNone");
         for (let el of document.querySelectorAll('.section2')) el.classList.add("displayNone");
+        for (let el of document.querySelectorAll('.mgmnt')) el.classList.add("displayNone");
 
+    } else if (document.getElementById('typeoforder').value == "Mgmt") {
+        for (let el of document.querySelectorAll('.section1')) el.classList.add("displayNone");
+        for (let el of document.querySelectorAll('.section2')) el.classList.add("displayNone");
+        for (let el of document.querySelectorAll('.mgmnt')) el.classList.remove("displayNone");
     }
 
     
@@ -51,7 +57,7 @@ function CreateNoteEmail() {
     var TCpercount = document.getElementById("count-TCper").value;
     var activity = document.getElementById("activity").value;
     var LHlink = document.getElementById("LH-link").value;
-    var SSlink = document.getElementById("SS-link").value;
+    var SSlink = "https://app.smartsheet.com/sheets/Hhcx52fJxxMPP77C6HvmjM2VfXjc3C34vX3VWCq1?view=grid&filterId=8651333020110724";
 
     
     let notes = "\nAlarm Count: " + alarmcount + "\nLHWO count: " + LHWocount + "\nIVR Calls: " + IVRcount + "\nTC Count: " + TCcount + "\nTC Per Account: " + TCpercount + "\nCombined Activity Score: " + activity + "\nLink to Lighthouse work order: " + LHlink + "\nLink to Smartsheet: " + SSlink + "\n\nROC Triage: \n\n" + "\n\n" + allnotes + "\"Screenshots to support the ROC Triage\"";
@@ -129,7 +135,7 @@ function generate(){
 
     var node = document.getElementById("node").value;
 
-    var management = "Shannon.Chapman@charter.com; Tyler.Olson@charter.com; Jeanne.Harabedian@charter.com; DL-Field-Ops-Eng-ROC-NW-ROC-IV@charter.com; DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com;";
+    var management = "Shannon.Chapman@charter.com; Tyler.Olson@charter.com; DL-Field-Ops-Eng-ROC-NW-ROC-IV@charter.com; DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com;";
 
     var TechEmail = TechLoad(hub);
 
@@ -189,3 +195,19 @@ function copyToClipboard() {
     document.body.removeChild(tempInput);
     alert("Sentence copied to clipboard!");
   }
+
+
+function mngmntEmail() {
+    var node = document.getElementById("node").value;
+
+    var management = "DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com;";
+
+    var RELink = document.getElementById("RE-Link").value;
+    var ZNLink = document.getElementById("ZN-Link").value;
+
+    let mailTo = "";
+	 
+	mailTo = "mailto:" + management  + "?subject=" + "RE/ZN created for" + MA + "-" + hub + "-" + node + "&body=" + "RE - " + RELink + "/r" + "ZN - " + ZNLink
+ 
+    document.location.href = mailTo;
+}
