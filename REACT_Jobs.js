@@ -193,7 +193,6 @@ function copyToClipboard() {
     tempInput.select();
     document.execCommand("copy");
     document.body.removeChild(tempInput);
-
   }
 
 
