@@ -234,9 +234,9 @@
                     </div>
                     <div class="row">
                         <div class="cell">RE LH Job Link</div>
-                        <div class="cell2"><input type="text" id="RE-Link" style="width: 300px;" onchange="mngmntEmail();"/></div>
+                        <div class="cell2"><input type="text" id="RE-Link" style="width: 300px;" onchange=""/></div>
                         <div class="cell">ZN LH Job Link</div>
-                        <div class="cell2"><input type="text" id="ZN-Link" style="width: 300px;" onchange="mngmntEmail();"/></div>
+                        <div class="cell2"><input type="text" id="ZN-Link" style="width: 300px;" onchange=""/></div>
                     </div>
                 </div>
                 <br>
@@ -259,11 +259,15 @@
                         <div class="cell">&nbsp;</div>
                         <div><input type="button" value="Copy for Follow-Up Email" class="CopyNotes displayNone section1" onclick="copyBtn2();"/></div>
                     </div>
+                    <div class="row">
+                        <div class="cell">&nbsp;</div>
+                        <div><input type="button" value="Copy for Management Email" class="displayNone mgmnt" onclick="mngmntEmail()"/></div>
+                    </div>
                     <div>
-                        <button onclick="copyToClipboard()">Copy sentence</button>
-                        <button onclick="copyToClipboard1()">Copy sentence</button>
-                        <button onclick="copyToClipboard2()">Copy sentence</button>
-                        <button onclick="copyToClipboard3()">Copy sentence</button>
+                        <button class="displayNone section2" onclick="copyToClipboard()">Copy sentence</button>
+                        <button class="displayNone section2" onclick="copyToClipboard1()">Copy sentence</button>
+                        <button class="displayNone section2" onclick="copyToClipboard2()">Copy sentence</button>
+                        <button class="displayNone section2" onclick="copyToClipboard3()">Copy sentence</button>
                     </div>
                     <div class="row">
                         <div class="cell">&nbsp;</div>
