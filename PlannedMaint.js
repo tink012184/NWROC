@@ -10,7 +10,7 @@ function chngApprover() {
 		if (MA == "Sierra Nevada" || MA == "Pacific Northwest" || MA == "Mountain States") {
 			AO = '<option label=" "></option><option value="Cash Pass">Cash Pass</option>'
 		}
-	}else if (Valu == "Fast Pass" || Why7 == true)  {
+	}else if (Valu == Why7 == true)  { //Critical Y7
 		if (MA == "Mountain States") {
 			AO = '<option label=" "></option><option value="AVP">AVP</option><option value="DFE">DFE</option>';
 		}
@@ -21,16 +21,25 @@ function chngApprover() {
 			AO = '<option label=" "></option><option value="AVP">AVP</option><option value="DFE">DFE</option>';
 		}
 	} else if (Valu != "Fast Pass" && Why7 != true) { //No Fastpass/Y7 Critical
-		if (MA == "Mountain States") { //DFE
+		if (MA == "Mountain States") { 
 			AO = '<option label=" "></option><option value="AVP">AVP</option><option value="DFE">DFE</option>';
 		}
-		if (MA == "Pacific Northwest") { //DFE
+		if (MA == "Pacific Northwest") { 
 			AO = '<option label=" "></option><option value="AVP">AVP</option><option value="DFE">DFE</option>';
 		}		
-		if (MA == "Sierra Nevada") { //DFE Only
+		if (MA == "Sierra Nevada") { 
 			AO = '<option label=" "></option><option value="AVP">AVP</option><option value="DFE">DFE</option>';
 		}
-	}
+	} else if (Valu == "Fast Pass") {// Fast Pass
+		if (MA == "Mountain States") {
+			AO = '<option label=" "></option><option value="DFE">DFE</option>';
+		}
+		if (MA == "Pacific Northwest") {
+			AO = '<option label=" "></option><option value="DFE">DFE</option>';
+		}
+		if (MA == "Sierra Nevada") {
+			AO = '<option label=" "></option><option value="DFE">DFE</option>';
+		}}
 
 	//either way, if NO MA or no Value selected, keep it blank
 	if (MA == "" || Valu == "") {
