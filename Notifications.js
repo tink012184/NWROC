@@ -4297,3 +4297,39 @@ EBMode = document.getElementById("EverbridgeMode").checked
 
 }
 
+function EBRest() {
+	let triggered = document.getElementById("triggered").value;
+	let assignedTime = document.getElementById("assignedTime").value;
+	let assignedMT = document.getElementById("assignedMT").value;
+	let enrouteMT = document.getElementById("enrouteMT").value;
+	let wipMT = document.getElementById("wipMT").value;
+	let locationTime = document.getElementById("locationTime").value;
+	let cause = document.getElementById("cause").value;
+	let spliceLocation = document.getElementById("spliceLocation").value;
+	let sheathCount = document.getElementById("sheathCount").value;
+	let fiberSheath = document.getElementById("fiberSheath").value;
+
+	document.getElementById("RestStat").innerHTML = 
+		`1.The time the outage was triggered: ${triggered} 
+2.The time the outage was assigned to an MT: ${assignedTime}
+3.The MT the outage was assigned to: ${assignedMT}
+4.The time the MT went en route: ${enrouteMT}
+5.The time the MT went WIP: ${wipMT}
+6.The time the damage was located: ${locationTime}
+7.The suspected cause of the damage: ${cause}
+8.The number splice locations: ${spliceLocation}
+9.The sheath count at each splice location: ${sheathCount}
+10.The fiber count per sheath: ${fiberSheath}`
+}
+
+function copyBtn2() {
+	// Get the text field
+	var copyText = document.getElementById("RestStat");
+  
+	// Select the text field
+	copyText.select();
+	copyText.setSelectionRange(0, 99999); // For mobile devices
+  
+	 // Copy the text inside the text field
+	navigator.clipboard.writeText(copyText.value);
+  }

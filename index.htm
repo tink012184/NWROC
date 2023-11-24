@@ -1091,6 +1091,49 @@
 					<div class="cell"><input type="text" id="CBTReason" onChange="IRIS();store_value('CBTReason',this.value);" /></div>
 				</div>
 
+				<section class="displayNone YesEBMode">
+					<div class="row">
+						<div class="cell">1.The time the outage was triggered</div>
+						<div class="cell"><input type="text" id="triggered" onchange="EBRest();"></div>
+					</div>
+					<div class="row">
+						<div class="cell">2.The time the outage was assigned to an MT</div>
+						<div class="cell"><input type="text" id="assignedTime" onchange="EBRest();"></div>
+					</div>
+					<div class="row">
+						<div class="cell">3.The MT the outage was assigned to</div>
+						<div class="cell"><input type="text" id="assignedMT" onchange="EBRest();"></div>
+					</div>
+					<div class="row">
+						<div class="cell">4.The time the MT went en route</div>
+						<div class="cell"><input type="text" id="enrouteMT" onchange="EBRest();"></div>
+					</div>
+					<div class="row">
+						<div class="cell">5.The time the MT went WIP</div>
+						<div class="cell"><input type="text" id="wipMT" onchange="EBRest();"></div>
+					</div>
+					<div class="row">
+						<div class="cell">6.The time the damage was located</div>
+						<div class="cell"><input type="text" id="locationTime" onchange="EBRest();"></div>
+					</div>
+					<div class="row">
+						<div class="cell">7.The suspected cause of the damage</div>
+						<div class="cell"><input type="text" id="cause" onchange="EBRest();"></div>
+					</div>
+					<div class="row">
+						<div class="cell">8.The number splice locations</div>
+						<div class="cell"><input type="text" id="spliceLocation" onchange="EBRest();"></div>
+					</div>
+					<div class="row">
+						<div class="cell">9.The sheath count at each splice location</div>
+						<div class="cell"><input type="text" id="sheathCount" onchange="EBRest();"></div>
+					</div>
+					<div class="row">
+						<div class="cell">10.The fiber count per sheath</div>
+						<div class="cell"><input type="text" id="fiberSheath" onchange="EBRest();"></div>
+					</div>
+				</section>
+
 			</div>
 				
 				<div class="row SPACE HOLDER">
@@ -1175,10 +1218,20 @@
  				<div class="cell">Remedy/Everbridge Notification: <I><font size=1>(Read Only)</font></I><BR>
  <textarea id="Desc" rows="10" cols="49" style="scroll-margin: hidden; width: 500px;background-color: #dddddd;" readonly></textarea></div>
 			</div>
-			
 			<div class="row">
 				<div class="cell">&nbsp;</div>
 				<div class="cell" style="text-align: center;"><input type="button" value="Copy Notification ONLY" class="CopyDesc" /></div>
+			</div>	
+
+			<div class="row displayNone YesEBMode">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: left;"><BR><BR>Everbridge Restoration Status<BR>
+				<textarea id="RestStat" rows="25" cols="49" style="overflow: auto; width: 500px;font-size: 10px;"></textarea></div>
+			</div>
+			
+			<div class="row displayNone YesEBMode">
+				<div class="cell">&nbsp;</div>
+				<div class="cell" style="text-align: center;"><input type="button" value="Copy Restoration Status ONLY" onclick="copyBtn2();"></div>
 			</div>			
 
 			<div class="row BCBC">
