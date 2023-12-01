@@ -1571,7 +1571,7 @@ NodeCount(); //needed for getting node name for PS
 			}
 		}
 
-		UD4 = "The outage " + iswas + q;
+		UD4 = " The outage " + iswas + q;
 		if (q == "being investigated") {
 			UD4 = " The root cause of the outage is unknown at this time";
 		}
