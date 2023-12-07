@@ -48,7 +48,7 @@ function sendMail() {
 	
 	
 	//  NV Service Outage Report – Charter Communications – [Tracking Identifier] [Date]  
-	mailTo = "mailto:" + recipient + "&cc=" + cc
+	mailTo = "mailto:" + recipient + "?cc=" + cc
 	+ "&subject=" 
 		+ "NV Service Outage Event Notification – Charter Communications – " 
 		+ encodeURIComponent( document.getElementById("IncidentId").value + " – " 
