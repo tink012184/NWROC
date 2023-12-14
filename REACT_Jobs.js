@@ -4,52 +4,70 @@ function showhide() {
 
         for (let el of document.querySelectorAll('.section1')) el.classList.add("displayNone");
         for (let el of document.querySelectorAll('.section2')) el.classList.remove("displayNone");
-        for (let el of document.querySelectorAll('.mgmnt')) el.classList.add("displayNone");
-
     } else if (document.getElementById("typeoforder").value == "Update") {
 
         for (let el of document.querySelectorAll('.section1')) el.classList.remove("displayNone");
         for (let el of document.querySelectorAll('.section2')) el.classList.add("displayNone");
-        for (let el of document.querySelectorAll('.mgmnt')) el.classList.add("displayNone");
+    } 
 
-    } else if (document.getElementById('typeoforder').value == "Mgmt") {
-        for (let el of document.querySelectorAll('.section1')) el.classList.add("displayNone");
-        for (let el of document.querySelectorAll('.section2')) el.classList.add("displayNone");
-        for (let el of document.querySelectorAll('.mgmnt')) el.classList.remove("displayNone");
-    }
 
-    
 
 }
 
+function Node() {
+    
+    var node = document.getElementById("node").value;
+
+    return String(node);
+
+}  
+
 function CreateNoteCopy() {
 
-    var ordernum = document.getElementById("order-num").value;
-    var orderstat = document.getElementById("order-stat").value;
-    var ordertech = document.getElementById("order-tech").value;
-    var orderrank = document.getElementById("order-rank").value;
-    var orderapp = document.getElementById("order-app").value;
-    var orderclose = document.getElementById("order-close").value;
-    var orderprevent = document.getElementById("order-prevent").value;
-    var orderNHR = document.getElementById("order-NHR").value;
-    var orderNHRy = document.getElementById("order-NHRy").value;
-    var orderNHR30 = document.getElementById("order-NHR30").value;
-    var alarms = document.getElementById("alarms").value;
-    var LHWO = document.getElementById("LHWO").value;
-    var IVRcount = document.getElementById("IVR-count").value;
-    var TCcount = document.getElementById("TC-count").value;
-    var EVTcount = document.getElementById("EVT-count").value;
-    var allnotes = document.getElementById("allnotes").value;
+    let node = document.getElementById("node").value;
+    let Rank100 = document.getElementById("Rank100").value;
+    let score = document.getElementById("score").value;
+    let nodeHealth = document.getElementById("nodeHealth").value;
+    let status = document.getElementById("status").value;
+    let supApproval = document.getElementById("supApproval").value;
+    let MGRDFE = document.getElementById("MGRDFE").value;
+    let SP = document.getElementById("SP").value;
 
+
+    if (document.getElementById("SP").value == "No"){
+    let notes = 
+    `    Node: ${node}
+    ART Demand Top 100 Rank: ${Rank100}
+        ART Demand Score: ${score}
+    Node Health: ${nodeHealth}
+    Order Status: ${status}
+    Sup Approval(Email): ${supApproval}
+    Manager/DFE Approval(Smartsheet): ${MGRDFE}
+    Update: Please provide and update and/or approvals when available
+    Is tech in Supervisor Project for entire shift: ${SP}
+        Supervisor please place your REACT tech in supervisor project for the day to prevent other jobs from being routed to the tech. Exception for areas with only one tech.`;
     
-    let notes = "\nREACT Order #: " +  ordernum + "\nREACT Order Status: " + orderstat + "\nREACT Order Tech Assigned: " + ordertech + "\nART Demand TOP 100 Rank: " + orderrank + "\nManager/DFE Approval: " + orderapp + "\nClosure Report: " + orderclose + "\nART Prevent Rank: " + orderprevent + "\nNHR Score: " + orderNHR + "\nNHR Score Yesterday: " + orderNHRy + "\n30 Avg NHR Score: " + orderNHR30 + "\nLast Five Days\nAlarms: " + alarms + "\nLHWO Count: " + LHWO + "\nIVR Call Count: " + IVRcount + "\nTC Count: " + TCcount + "\nIRIS EVT Count: " + EVTcount + "\n\n" + allnotes;
+    return notes;
+    }else {
+        let notes = 
+    `    Node: ${node}
+    ART Demand Top 100 Rank: ${Rank100}
+        ART Demand Score: ${score}
+    Node Health: ${nodeHealth}
+    Order Status: ${status}
+    Sup Approval(Email): ${supApproval}
+    Manager/DFE Approval(Smartsheet): ${MGRDFE}
+    Update: Please provide and update and/or approvals when available
+    Is tech in Special Project for entire shift: ${SP}`;
+    
+    return notes;
+    }
 
- return notes;
+ 
 }
 
 function CreateNoteEmail() {
 
-    var allnotes = document.getElementById("allnotes").value;
     var alarmcount = document.getElementById("count-alarm").value;
     var LHWocount = document.getElementById("count-LHWO").value;
     var IVRcount = document.getElementById("count-IVR").value;
@@ -60,7 +78,7 @@ function CreateNoteEmail() {
     var SSlink = "https://app.smartsheet.com/sheets/Hhcx52fJxxMPP77C6HvmjM2VfXjc3C34vX3VWCq1?view=grid&filterId=8651333020110724";
 
     
-    let notes = "\nAlarm Count: " + alarmcount + "\nLHWO count: " + LHWocount + "\nIVR Calls: " + IVRcount + "\nTC Count: " + TCcount + "\nTC Per Account: " + TCpercount + "\nCombined Activity Score: " + activity + "\nLink to Lighthouse work order: " + LHlink + "\nLink to Smartsheet: " + SSlink + "\n\nROC Triage: \n\n" + "\n\n" + allnotes + "\"Screenshots to support the ROC Triage\"";
+    let notes = "\nAlarm Count: " + alarmcount + "\nLHWO count: " + LHWocount + "\nIVR Calls: " + IVRcount + "\nTC Count: " + TCcount + "\nTC Per Account: " + TCpercount + "\nCombined Activity Score: " + activity + "\nLink to Lighthouse work order: " + LHlink + "\nLink to Smartsheet: " + SSlink + "\n\nROC Triage: \n\n" + "\n\n" + "\"Screenshots to support the ROC Triage\"";
 
  return notes;
 }
@@ -69,13 +87,7 @@ function CreateNoteEmail() {
 var MA = document.getElementById("MA").value;
 var hub = document.getElementById("hub").value;
 
-function Node() {
-    
-    var node = document.getElementById("node").value;
 
-    return String(node);
-
-}
 
 
 var copyBtn = document.querySelector(".CopyBtn");
@@ -195,18 +207,3 @@ function copyToClipboard() {
     document.body.removeChild(tempInput);
   }
 
-
-function mngmntEmail() {
-    var node = document.getElementById("node").value;
-
-    var management = "DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com;";
-
-    var RELink = document.getElementById("RE-Link").value;
-    var ZNLink = document.getElementById("ZN-Link").value;
-
-    let mailTo = "";
-	 
-	mailTo = "mailto:" + management  + "?subject=" + "RE/ZN created for " + MA + "-" + hub + "-" + node + "&body=" + encodeURIComponent("RE - " + RELink + "\r" + "ZN - " + ZNLink);
- 
-    document.location.href = mailTo;
-}
