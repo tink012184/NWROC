@@ -4,7 +4,7 @@ var TechsByHub = {
     "BASNWY33614 - BASIN": ["seth.edwards@charter.com;cj.cooper@charter.com;monte.hernandez@charter.com"],
     "BFLOWY00001 - BUFFALO":["michael.huffman@charter.com;"],
     "BGTMMT33578 - BIG TIMBER": ["kirk.stephens@charter.com"],
-    "BLNGMT33579 - BILLINGS": ["Andrew.Cooper@charter.com;Brian.Coles@charter.com;Deshaun.Hogue@charter.com;Erik.Freeman@charter.com;Erik.Freeman@charter.com;Justin.Pluhar@charter.com;Kelly.Braswell@charter.com;Michael.Tiday@charter.com;Ryan.Ralston@charter.com;Samuel.White@charter.com;Robert.Haskins@charter.com;"],
+    "BLNGMT33579 - BILLINGS": ["Andrew.Cooper@charter.com;Brian.Coles@charter.com;Deshaun.Hogue@charter.com;Erik.Freeman@charter.com;Kelly.Braswell@charter.com;Michael.Tiday@charter.com;Ryan.Ralston@charter.com;Samuel.White@charter.com;Robert.Haskins@charter.com;ethan.heser@charter.com;scott.delpriore@charter.com;todd.hawke@charter.com;bryan.riggs@charter.com;"],
     "BNVSCO33566 - BUENA VISTA": ["Aaron.Stewart@charter.com;Bradley.Kavanagh@charter.com;"],
     "BUTTMT33581 - BUTTE": ["Brock.Hassler@charter.com;Jeremy.Walker@charter.com;pete.Nieves@charter.com;Ted.Azure@charter.com;robin.bagley@charter.com;todd.hawke@charter.com;bryan.riggs@charter.com;"],
     "BZMNMT33580 - BOZEMAN": ["Blake.Dailey@charter.com;Brian.Bettle@charter.com;Michael.Visscher@charter.com;Michael.Westforth@charter.com;Neil.Ross@charter.com;Rich.Williams@charter.com;robin.bagley@charter.com;todd.hawke@charter.com;bryan.riggs@charter.com;"],
