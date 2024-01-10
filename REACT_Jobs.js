@@ -150,7 +150,7 @@ function generate(){
 
     var node = document.getElementById("node").value;
 
-    var management = "Shannon.Chapman@charter.com; Tyler.Olson@charter.com; DL-Field-Ops-Eng-ROC-NW-ROC-IV@charter.com; DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com;";
+    var management = "Shannon.Chapman@charter.com; Tyler.Olson@charter.com; ROC-NW-IV@charter.com; DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com;";
 
     var TechEmail = TechLoad(hub);
 
