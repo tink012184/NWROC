@@ -32,6 +32,7 @@ function CreateNoteCopy() {
     let supApproval = document.getElementById("supApproval").value;
     let MGRDFE = document.getElementById("MGRDFE").value;
     let SP = document.getElementById("SP").value;
+    let close = document.getElementById("close").value;
 
 
     if (document.getElementById("SP").value == "No"){
@@ -45,6 +46,7 @@ function CreateNoteCopy() {
     Manager/DFE Approval(Smartsheet): ${MGRDFE}
     Update: Please provide and update and/or approvals when available
     Is tech in Supervisor Project for entire shift: ${SP}
+    Eligible for Closure Date ${close}
         Supervisor please place your REACT tech in supervisor project for the day to prevent other jobs from being routed to the tech. Exception for areas with only one tech.`;
     
     return notes;
@@ -58,7 +60,8 @@ function CreateNoteCopy() {
     Sup Approval(Email): ${supApproval}
     Manager/DFE Approval(Smartsheet): ${MGRDFE}
     Update: Please provide and update and/or approvals when available
-    Is tech in Special Project for entire shift: ${SP}`;
+    Is tech in Special Project for entire shift: ${SP}
+    Eligible for Closure Date ${close}`;
     
     return notes;
     }
