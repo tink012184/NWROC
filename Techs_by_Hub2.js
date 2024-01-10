@@ -6,7 +6,7 @@ var TechsByHub = {
     "BGTMMT33578 - BIG TIMBER": ["kirk.stephens@charter.com"],
     "BLNGMT33579 - BILLINGS": ["Andrew.Cooper@charter.com;Brian.Coles@charter.com;Deshaun.Hogue@charter.com;Erik.Freeman@charter.com;Kelly.Braswell@charter.com;Michael.Tiday@charter.com;Ryan.Ralston@charter.com;Samuel.White@charter.com;Robert.Haskins@charter.com;ethan.heser@charter.com;scott.delpriore@charter.com;todd.hawke@charter.com;bryan.riggs@charter.com;"],
     "BNVSCO33566 - BUENA VISTA": ["Aaron.Stewart@charter.com;Bradley.Kavanagh@charter.com;"],
-    "BUTTMT33581 - BUTTE": ["Brock.Hassler@charter.com;Jeremy.Walker@charter.com;pete.Nieves@charter.com;Ted.Azure@charter.com;robin.bagley@charter.com;todd.hawke@charter.com;bryan.riggs@charter.com;"],
+    "BUTTMT33581 - BUTTE": ["pete.Nieves@charter.com;Benn.Regalado@charter.com;daniel.weldon@charter.com;Brock.Hassler@charter.com;robin.bagley@charter.com;todd.hawke@charter.com;bryan.riggs@charter.com;"],
     "BZMNMT33580 - BOZEMAN": ["Blake.Dailey@charter.com;Brian.Bettle@charter.com;Michael.Visscher@charter.com;Michael.Westforth@charter.com;Neil.Ross@charter.com;Rich.Williams@charter.com;robin.bagley@charter.com;todd.hawke@charter.com;bryan.riggs@charter.com;"],
     "CACYCO00038 - CANON CITY": ["Donny.Vela@charter.com;matthew.reynolds@charter.com;michael.goff@charter.com;Rory.Randleman@charter.com;christopher.estey@charter.com;terry.fielder@charter.com;bryan.riggs@charter.com;"],
     "CHYNWY33610 - CHEYENNE": ["Josh.Sisk@charter.com;Joshua.Brackett@charter.com;Stephen.Helvig@charter.com;Steven.Meinz@charter.com;Travis.Burkett@charter.com;russell.loetscher@charter.com;dan.dorrell@charter.com;bryan.riggs@charter.com;"],
