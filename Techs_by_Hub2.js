@@ -32,7 +32,7 @@ var TechsByHub = {
     "LVTNMT33596 - LIVINGSTON": ["Kirk.Stephens@charter.com;robin.bagley@charter.com;todd.hawke@charter.com;bryan.riggs@charter.com;"],
     "MSSLMT00033 - MISSOULA": ["chris.Koreski@charter.com;daniel.bauer@charter.com;Arnold.Ailer@charter.com;billy.dean@charter.com;Bob.Hughes2@charter.com;daniel.wilson@charter.com;Ryan.Bulyca@charter.com;raymond.roberts@charter.com;todd.hawke@charter.com;bryan.riggs@charter.com;"],
     "MTRSCO00054 - MONTROSE": ["Andrew.Casaday@charter.com;dan.powers@charter.com;Kyle.Henderson@charter.com;thomas.obrien@charter.com;terry.fielder@charter.com;bryan.riggs@charter.com;"],
-    "PLSNMT33598 - POLSON": ["Mitchell.Sampson@charter.com;raymond.roberts@charter.com;todd.hawke@charter.com;bryan.riggs@charter.com;"],
+    "PLSNMT33598 - POLSON": ["thomas.siple@charter.com;Mitchell.Sampson@charter.com;raymond.roberts@charter.com;todd.hawke@charter.com;bryan.riggs@charter.com;"],
     "RVTNWY33574 - RIVERTON": ["Jonathan.Marshall@charter.com;Jon.Sonnenschein@charter.com;Michael.A.Peterson@charter.com;lee.millsap@charter.com;dan.dorrell@charter.com;bryan.riggs@charter.com;"],
     "RWLNWY00018 - RAWLINS": ["Jake.Henry@charter.com;lee.millsap@charter.com;dan.dorrell@charter.com;bryan.riggs@charter.com;"],
     "SALDCO00058 - SALIDA": ["Aaron.Stewart@charter.com;Bradley.Kavanagh@charter.com;frank.valdez@charter.com;terry.fielder@charter.com;bryan.riggs@charter.com;"],
