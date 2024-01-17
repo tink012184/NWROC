@@ -40,8 +40,9 @@
 					<div class="cell">Notification Type:</div>
 					<div class="cell">
 						<select id="NotificationType" onChange="setOutageCauses();setVisibility()">
+							<option value=""></option>
 							<option value="Initial Notification">Initial Notification</option>
-							<!-- <option value="Final Notification">Final Notification</option> -->
+							<option value="Final Notification">Final Notification</option>
 						</select>
 					</div>
 				</div>
@@ -97,7 +98,7 @@
 					<div class="cell">Date/Time Outage Discovered<BR>(Use Mountain Time):</div>
 					<div class="cell2"><input type="datetime-local" id="OutageDiscovered" /></div>
 				</div>
-				<div class="row displayNone statusUpdate">
+				<div class="row displayNone" id="ETRSH">
 					<div class="cell">ETR Date/Time:<BR>(Use Mountain Time)</div>
 					<div class="cell"><input type="datetime-local" id="ETR" /></div>
 				</div>
@@ -128,11 +129,11 @@
 				</div>
 				<div class="row displayNone">
 					<div class="cell">E-Mail Final mailTo Line:</div>
-					<div class="cell"><input type="text" id="TOLine" value="DL-Regulatory-Outages@charter.com" disabled /></div>
+					<div class="cell"><input type="text" id="TOLine" value="DL-Regulatory-Outages@charter.com;" disabled /></div>
 				</div>
 				<div class="row">
 					<div class="cell">&nbsp;</div>
-					<div class="cell" style="text-align: center;"><input type="button" style="width: 275px;" value="Clear" onClick="defaultForm();" /></div>
+					<div class="cell" style="text-align: center;"><input type="button" style="width: 275px;" value="Clear" onClick="defaultForm();  window.location.reload();" /></div>
 				</div>
 			</div>
 			</form>
@@ -189,6 +190,7 @@
 <script src="StoreValues.js"></script>
 <script src="ROC_User_List.js"></script>
 <script src="include.js"></script>
+
 
 <!-- Populate Persisting Fields -->
 

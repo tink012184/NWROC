@@ -1,17 +1,38 @@
+function setVisibility() {
+	document.getElementById("sss").classList.remove("displayNone");
+	//document.getElementById("ttt").classList.remove("displayNone");
+			
+		if (document.getElementById("NotificationType").value == "Initial Notification") {
+				document.getElementById("sss").classList.add("displayNone");
+				document.getElementById("ETRSH").classList.remove("displayNone");
+				//document.getElementById("ttt").classList.add("displayNone");
+		} 
+	
+		if (document.getElementByID("NotificationType").value == "Final Notification") {
+				document.getElementById("sss").classList.remove("displayNone");
+				document.getElementById("ETRSH").classList.add("displayNone");
+				//document.getElementById("ttt").classList.remove("displayNone");
+		} 
+	
+	}
+
+
 //Script to create email template to NV PUC
 function sendMail() {
 
+	let ETRTime = new Date(document.getElementById("ETR").value);
+	ETRTime.setHours(ETRTime.getHours() - 1);
 
 	let restoral = new Date(document.getElementById("ATR").value);
 	restoral.setHours(restoral.getHours() - 1);
-	
+
 	
 	
 
 	
 	
 	let began = new Date(document.getElementById("OutageBegan").value);
-	began.setHours(began.getHours() - 2);
+	began.setHours(began.getHours() - 1);
 	
 	let discovered = new Date(document.getElementById("OutageDiscovered").value);
 	discovered.setHours(discovered.getHours() - 1);
@@ -31,22 +52,21 @@ function sendMail() {
 	
 	if (document.getElementById("NotificationType").value == "Initial Notification") {
 		recipient = "lopez@puc.nv.gov";
-		impact = "Unknown";
+		impact = document.getElementById("SubImpact").value;
 		cc = document.getElementById("CCLine2").value + "; " + document.getElementById("CCLine").value;
-		restoral = "Unknown";
+		restoral = formatDate(ETRTime, "MM/dd/yyyy h:mmtt") + " PT (UTC−08:00)";
 		conf = "CONFIDENTIAL - DO NOT DISCLOSE.\r\nPursuant to Nevada Administrative Code 704.258 the information provided in this initial outage notification is confidential and must be treated confidentially."
 
 		
 	} else if (document.getElementById("NotificationType").value == "Final Notification") {
-		recipient = document.getElementById("TOLine").value;
+		recipient = recipient = "lopez@puc.nv.gov";
 		impact = document.getElementById("SubImpact").value;
-		cc = document.getElementById("CCLine").value;
+		cc = document.getElementById("CCLine2").value + "; " + document.getElementById("CCLine").value;
 		restoral = formatDate(restoral, "MM/dd/yyyy h:mmtt") + " PT (UTC−08:00)"
 		conf = "CONFIDENTIAL - DO NOT DISCLOSE.\r\nPursuant to Nevada Administrative Code 704.258 the information provided in this final outage notification is confidential and must be treated confidentially."
 	}
-	
-	
-	
+
+if 	(document.getElementById("NotificationType").value == "Initial Notification"){
 	//  NV Service Outage Report – Charter Communications – [Tracking Identifier] [Date]  
 	mailTo = "mailto:" + recipient + "?cc=" + cc
 	+ "&subject=" 
@@ -60,15 +80,37 @@ function sendMail() {
 		+ encodeURIComponent("Utility/Operator Name: Charter Communications\r\n")
 		+ encodeURIComponent("Follow-Up Contact Name: " + document.getElementById("EmpName").value + "     Job Title: " + document.getElementById("EmpTitle").value + "     Telephone#: 1-(844)-849-7831 Opt. 4\r\n\r\n")
 		+ encodeURIComponent("Type of Event: " + document.getElementById("EventType").value + "\r\n")
-		+ encodeURIComponent("Approximate Start Date/Time of Event: " + formatDate(began, "MM/dd/yyyy h:mmtt") + " PT (UTC−08:00)\r\n")		
-		+ encodeURIComponent("Approximate Discovery Date/Time: " + formatDate(discovered, "MM/dd/yyyy h:mmtt") + " PT (UTC−08:00)\r\n")
+		+ encodeURIComponent("Start Date/Time of Event: " + formatDate(began, "MM/dd/yyyy h:mmtt") + " PT (UTC−08:00)\r\n")		
+		+ encodeURIComponent("Discovery Date/Time: " + formatDate(discovered, "MM/dd/yyyy h:mmtt") + " PT (UTC−08:00)\r\n")
 		+ encodeURIComponent("Preliminary Indication of Cause: " + document.getElementById("OutageCause").value + "\r\n")
-		+ encodeURIComponent("Approximate Number of Customers Impacted: " + impact + "\r\n")
-		+ encodeURIComponent("Approximate Restoral Date/Time: " + restoral + "\r\n")
-		+ encodeURIComponent("Approximate Areas Impacted: " + document.getElementById("CitiesAreasImpacted").value + "\r\n\r\n") 
+		+ encodeURIComponent("Number of Customers Impacted: " + impact + "\r\n")
+		+ encodeURIComponent("ETR Date/Time: " + restoral + "\r\n")
+		+ encodeURIComponent("Areas Impacted: " + document.getElementById("CitiesAreasImpacted").value + "\r\n\r\n") 
 		
 		+ encodeURIComponent("Please contact the Northwest ROC at 1-844-849-7831 Opt. 4 and/or ROC-NW@Charter.com if you have any questions.");
-	
+} else {
+	//  NV Service Outage Report – Charter Communications – [Tracking Identifier] [Date]  
+	mailTo = "mailto:" + recipient + "?cc=" + cc
+	+ "&subject=" 
+		+ "NV Service Outage Event Notification – Charter Communications – " 
+		+ encodeURIComponent( document.getElementById("IncidentId").value + " – " 
+		+ formatDate(test, "dddd MM/dd/yyyy") + " - "
+		+ document.getElementById("NotificationType").value.toUpperCase())
+	+ "&body="
+		+ encodeURIComponent(conf)
+		+ encodeURIComponent("Utility/Operator Type: Telecom\r\n")
+		+ encodeURIComponent("Utility/Operator Name: Charter Communications\r\n")
+		+ encodeURIComponent("Follow-Up Contact Name: " + document.getElementById("EmpName").value + "     Job Title: " + document.getElementById("EmpTitle").value + "     Telephone#: 1-(844)-849-7831 Opt. 4\r\n\r\n")
+		+ encodeURIComponent("Type of Event: " + document.getElementById("EventType").value + "\r\n")
+		+ encodeURIComponent("Start Date/Time of Event: " + formatDate(began, "MM/dd/yyyy h:mmtt") + " PT (UTC−08:00)\r\n")		
+		+ encodeURIComponent("Discovery Date/Time: " + formatDate(discovered, "MM/dd/yyyy h:mmtt") + " PT (UTC−08:00)\r\n")
+		+ encodeURIComponent("Preliminary Indication of Cause: " + document.getElementById("OutageCause").value + "\r\n")
+		+ encodeURIComponent("Number of Customers Impacted: " + impact + "\r\n")
+		+ encodeURIComponent("Restoral Date/Time: " + restoral + "\r\n")
+		+ encodeURIComponent("Areas Impacted: " + document.getElementById("CitiesAreasImpacted").value + "\r\n\r\n") 
+		
+		+ encodeURIComponent("Please contact the Northwest ROC at 1-844-849-7831 Opt. 4 and/or ROC-NW@Charter.com if you have any questions.");
+}
 	document.location.href = mailTo;
 }
 
@@ -167,13 +209,13 @@ function setDateTimeFieldDefaults() {
 }
 
 function defaultForm() {
-	document.getElementById('NotificationType').value = "Initial Notification";
+	
 	document.getElementById('IncidentId').value = "";
 	document.getElementById('OutageCause').value = "Unknown";
 	document.getElementById('SubImpact').value = "";
 	document.getElementById('ZipCodes').value = "";
 	document.getElementById('CitiesAreasImpacted').value = "";
-	
+
 	setDateTimeFieldDefaults();
 	//setVisibility();
 	//myWorkLog();
@@ -199,21 +241,23 @@ function setOutageCauses() {
 	document.getElementById("OutageCause").innerHTML = outageCauseOptions;
 }
 
-function setVisibility() {
+/* function setVisibility() {
 document.getElementById("sss").classList.remove("displayNone");
 //document.getElementById("ttt").classList.remove("displayNone");
 		
 	if (document.getElementById("NotificationType").value == "Initial Notification") {
 			document.getElementById("sss").classList.add("displayNone");
+			document.getElementById("ETRSH").classList.remove("displayNone");
 			//document.getElementById("ttt").classList.add("displayNone");
 	} 
 
 	if (document.getElementByID("NotificationType").value == "Final Notification") {
 			document.getElementById("sss").classList.remove("displayNone");
+			document.getElementById("ETRSH").classList.add("displayNone");
 			//document.getElementById("ttt").classList.remove("displayNone");
 	} 
 
-}
+} */
 
 //function setOutageCauses() {
 	
