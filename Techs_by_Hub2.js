@@ -85,7 +85,7 @@ var TechsByHub = {
     "BKFD07S - SHAFTER HUB": ["German.Bugarin@charter.com;Joshua.Villareal@charter.com;scott.obert@charter.com;asencion.leal@charter.com;trentyn.roden@charter.com;"],
     "BKFD08 - TAFT HUB": ["Felipe.Pulido@charter.com;William.Denson@charter.com;john.marquez@charter.com;asencion.leal@charter.com;trentyn.roden@charter.com;"],
     "BKFD09 - TEHACHAPI HUB": ["Matthew.Gardello@charter.com;john.marquez@charter.com;asencion.leal@charter.com;trentyn.roden@charter.com;"],
-    "CRCYNV33563 - CARSON CITY": ["Brian.Traver@charter.com;Cory.Fowler@charter.com;Daniel.Lawson@charter.com;David.Husson@charter.com;thomas.robertson@charter.com;david.steger@charter.com;trentyn.roden@charter.com;"],
+    "CRCYNV33563 - CARSON CITY": ["Brian.Traver@charter.com;Cory.Fowler@charter.com;Daniel.Lawson@charter.com;thomas.robertson@charter.com;david.steger@charter.com;trentyn.roden@charter.com;"],
     "ESCLCA00075 - ESCALON": ["Albert.Bocanegra@charter.com;dar.singh@charter.com;Pablo.Mendoza@charter.com;orlando.soliz@charter.com;anthony.ramirez@charter.com;trentyn.roden@charter.com;"],
     "FLLNNV35146 - FALLON": ["Dennis.Coney@charter.com;brian.ramil@charter.com;david.steger@charter.com;trentyn.roden@charter.com;"],
     "GLRYCA17900 - GILROY": ["juan.r.garcia@charter.com;Manuel.Galvan@charter.com;Ricardo.Gomez@charter.com;Rick.Hernandez@charter.com;Seth.Smaltz@charter.com;tyrone.sears@charter.com;anthony.ramirez@charter.com;trentyn.roden@charter.com;"],
