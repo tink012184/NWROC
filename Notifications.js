@@ -1739,7 +1739,7 @@ if(DD2 == true) {
 if (document.getElementById("UQ4e").value == "Yes"){
 	var GenInfoTemplate = "";
 	GenInfoTemplate = 
-	"Generator Serial Num - " + GENSerial + "\r"
+	"***Do not close until generator has been picked up***" + "\r" + "Generator Serial Num - " + GENSerial + "\r"
 	+ "Next Refuel Time - " + FormatTime(GENRefuel) + " MT" + "\r"
 	+ "POC - " + GENPOC + "\r"
 	+ "Currently Powering - " + GENNodes + "\r"
@@ -3211,7 +3211,7 @@ function CPOType() { //For show hid of CPOT
 
 
 function CPU2() { ///Generator Tracking Ticket
-let IteM = document.getElementById("GEN1").value
+let IteM = document.getElementById("GEN1").value;
 for (let el of document.querySelectorAll('.PSo')) el.classList.add("displayNone"); //CPO Reverify time
 document.getElementById("PS1-VM").disabled=false;
 for (let el of document.querySelectorAll('.CPOR')) el.classList.add("displayNone"); //CPO Reverify time
