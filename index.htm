@@ -596,6 +596,7 @@
 								<option value="due to NON-Pay Power Disconnects">NON-Pay Power Disconnects</option>
 								<option value="due to single customer issues">Single CX Issues</option>
 								<option value="due to no access at the location">No Access</option>
+								<option value="due to a stuck alarm">Stuck Alarm</option>
 						   </select>
 					</div>
 				</div>				
@@ -619,6 +620,10 @@
 						• CBT? <input type="checkbox" id="CBTB4" onChange="CBTBefore();myUpdate();" />
 					</div>
 					</div>
+				</div>
+				<div class="row displayNone stuck">
+					<div class="cell">Cherwell Ticket Number</div>
+					<div class="cell2"><input type="text" style="width: 300px;" id="stuckAlarm" onchange="myUpdate();" ></div>
 				</div>
 				<div class="row displayNone YesEBMode">
 					<div class="cell3">Are we updating Hourly???</div>

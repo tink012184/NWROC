@@ -1243,6 +1243,7 @@ NodeCount(); //needed for getting node name for PS
 	var hourly = document.getElementById("hourly").checked;
 	let REPEATCheck = document.getElementById("REPEATCheck").checked;
 	/* var PendTech = document.getElementById("PendTech").checked; */
+	let stuckAlarm = document.getElementById("stuckAlarm").value;
 
 
 	if (REPEATCheck == true) {
@@ -1755,6 +1756,9 @@ if (document.getElementById("UQ4e").value == "Yes"){
 			Monitor ="We are monitoring this outage " + Mon + ". We will gain access at " + FormatTime(w) + " and the POC will be " + GENPOC
 		} else if (document.getElementById("MonRes").checked == true) {
 			Monitor = "HFC function confirmed, Alarm is clear closing ticket" 
+		} else if (document.getElementById("Mon").value == "due to a stuck alarm"){
+			for (let el of document.querySelectorAll('.stuck')) el.classList.remove("displayNone");
+			Monitor = `We are monitoring this outage ${Mon}. A Cherwell has been submitted. Chewell Ticket number is ${stuckAlarm}.`
 		} else {
 			Monitor = "We are monitoring this outage " + Mon + ". We will update this ticket as new information comes in or at 9:00 AM MNT tomorrow. "
 		}
