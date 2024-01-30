@@ -4,7 +4,7 @@ function showhide() {
 
         for (let el of document.querySelectorAll('.section1')) el.classList.add("displayNone");
         for (let el of document.querySelectorAll('.section2')) el.classList.remove("displayNone");
-    } else if (document.getElementById("typeoforder").value == "Update") {
+    } else if (document.getElementById("typeoforder").value == "Close") {
 
         for (let el of document.querySelectorAll('.section1')) el.classList.remove("displayNone");
         for (let el of document.querySelectorAll('.section2')) el.classList.add("displayNone");
@@ -24,65 +24,42 @@ function Node() {
 
 function CreateNoteCopy() {
 
-    let node = document.getElementById("node").value;
-    let Rank100 = document.getElementById("Rank100").value;
-    let score = document.getElementById("score").value;
-    let nodeHealth = document.getElementById("nodeHealth").value;
-    let status = document.getElementById("status").value;
-    let supApproval = document.getElementById("supApproval").value;
-    let MGRDFE = document.getElementById("MGRDFE").value;
-    let SP = document.getElementById("SP").value;
-    let close = document.getElementById("close").value;
-
-
-    if (document.getElementById("SP").value == "No"){
     let notes = 
-    `    Node: ${node}
-    ART Demand Top 100 Rank: ${Rank100}
-        ART Demand Score: ${score}
-    Node Health: ${nodeHealth}
-    Order Status: ${status}
-    Sup Approval(Email): ${supApproval}
-    Manager/DFE Approval(Smartsheet): ${MGRDFE}
-    Update: Please provide and update and/or approvals when available
-    Is tech in Supervisor Project for entire shift: ${SP}
-    Eligible for Closure Date ${close}
-        Supervisor please place your REACT tech in supervisor project for the day to prevent other jobs from being routed to the tech. Exception for areas with only one tech.`;
-    
+    `This REACT job has been closed.`
     return notes;
-    }else {
-        let notes = 
-    `    Node: ${node}
-    ART Demand Top 100 Rank: ${Rank100}
-        ART Demand Score: ${score}
-    Node Health: ${nodeHealth}
-    Order Status: ${status}
-    Sup Approval(Email): ${supApproval}
-    Manager/DFE Approval(Smartsheet): ${MGRDFE}
-    Update: Please provide and update and/or approvals when available
-    Is tech in Special Project for entire shift: ${SP}
-    Eligible for Closure Date ${close}`;
-    
-    return notes;
-    }
+
 
  
 }
 
-function CreateNoteEmail() {
+function CreateNote() {
 
     var alarmcount = document.getElementById("count-alarm").value;
+    let alarmScore = document.getElementById("score-alarm").value;
     var LHWocount = document.getElementById("count-LHWO").value;
+    let LHWoScore = document.getElementById("score-LHWO").value;
     var IVRcount = document.getElementById("count-IVR").value;
+    let IVRscore = document.getElementById("score-IVR").value;
     var TCcount = document.getElementById("count-TC").value;
-    var TCpercount = document.getElementById("count-TCper").value;
+    var TCscore = document.getElementById("score-TC").value;
     var activity = document.getElementById("activity").value;
     var LHlink = document.getElementById("LH-link").value;
     var SSlink = "https://app.smartsheet.com/sheets/Hhcx52fJxxMPP77C6HvmjM2VfXjc3C34vX3VWCq1?view=grid&filterId=8651333020110724";
 
     
-    let notes = "\nAlarm Count: " + alarmcount + "\nLHWO count: " + LHWocount + "\nIVR Calls: " + IVRcount + "\nTC Count: " + TCcount + "\nTC Per Account: " + TCpercount + "\nCombined Activity Score: " + activity + "\nLink to Lighthouse work order: " + LHlink + "\nLink to Smartsheet: " + SSlink + "\n\nROC Triage: \n\n" + "\n\n" + "\"Screenshots to support the ROC Triage\"";
-
+    let notes = `This notification is to alert you to a node driving high activity in your area. This node will need to be certified/optimized/swept. Once node certification/optimization/sweeping has been completed, the ROC will provide targets, as needed.
+    Alarm count: ${alarmcount}
+    Alarm score: ${alarmScore}
+    LHWO count: ${LHWocount}
+    LHWO score: ${LHWoScore}
+    IVR calls: ${IVRcount}
+    IVR calls score: ${IVRscore}
+    TC count: ${TCcount}
+    TC score: ${TCscore}
+    ART Demand Score: ${activity}
+    `
+    /* LHWO Link: ${LHlink}
+    Smartsheet Link: ${SSlink} */
  return notes;
 }
 
@@ -91,14 +68,12 @@ var MA = document.getElementById("MA").value;
 var hub = document.getElementById("hub").value;
 
 
-
-
-var copyBtn = document.querySelector(".CopyBtn");
+/* var copyBtn = document.querySelector(".CopyBtn");
 
 copyBtn.addEventListener("click", function(event) {
-    generate();
+    CreateNote();
 });
-
+ */
 function HubLoad(value){
 	
 	MA=document.getElementById("MA").value;
@@ -150,7 +125,7 @@ function generate(){
 
     var node = document.getElementById("node").value;
 
-    var management = "Shannon.Chapman@charter.com;ROC-NW-IV@charter.com; DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com;";
+    var management = "Shannon.Chapman@charter.com; ROC-NW-IV@charter.com; DL-Field-Ops-Eng-ROC-NW-Mgmt@charter.com;";
 
     var TechEmail = TechLoad(hub);
 
@@ -165,48 +140,10 @@ function copyBtn2() {
         navigator.clipboard.writeText(CreateNoteCopy());
 }
 
+function copyBtn() {
+    navigator.clipboard.writeText(CreateNote());
+}
 
 
-function copyToClipboard() {
-    var sentence = "1 hour of DM time per day outside of the maintenance window is permitted. DM work during the maintenance window on REACT jobs is BAU. Please utilize the “ART REACT” Webex chat for the enabling/disabling of deflection outside of maintenance ";
-    var tempInput = document.createElement("input");
-    tempInput.value = sentence;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInput);
 
-  }
-
-  function copyToClipboard1() {
-    var sentence = "window. Impairment Deflection will need to be enabled when this job is being worked (EN ROUTE/WIP). Impairment Deflection does not allow for plant to be taken down. Its purpose is to notify customers that there is a technician working in their area.";
-    var tempInput = document.createElement("input");
-    tempInput.value = sentence;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInput);
-
-  }
-
-  function copyToClipboard2() {
-    var sentence = " All updates need to be added to this thread daily. This includes what was swept, what has been replaced, what issues have been found, what improvements have been seen, where we left off, what the next steps are, etc.";
-    var tempInput = document.createElement("input");
-    tempInput.value = sentence;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInput);
-
-  }
-
-  function copyToClipboard3() {
-    var sentence = " Please feel free to reach out to the ROC 4 line if you need any assistance or have any questions or concerns. Thank you. ";
-    var tempInput = document.createElement("input");
-    tempInput.value = sentence;
-    document.body.appendChild(tempInput);
-    tempInput.select();
-    document.execCommand("copy");
-    document.body.removeChild(tempInput);
-  }
 

@@ -47,12 +47,12 @@
                     <div class="cell2"><input type="text" id="node" style="width: 300px;" onchange="Node();"/></div>
                 </div>
                 <div class="row">
-                    <div class="cell">Initial/Update</div>
+                    <div class="cell">Initial/Close</div>
                     <div class="cell2">
                         <select id="typeoforder" onChange="showhide();">
                             <option value=""></option>
                             <option value="Initial">Initial</option>
-                            <option value="Update">Update</option>
+                            <option value="Close">Close</option>
                         </select>
                     </div>
                 </div>
@@ -60,69 +60,12 @@
                 <br>
                 <div class="row displayNone section1">
                     <div class="row">
-                        <div class="cell">Update: </div>
+                        <div class="cell">Close: </div>
                         <div class="cell"></div>
                     </div>
                     <br>
-                    <div class="row">
-                        <div class="cell">ART Demand Top 100 Rank: </div>
-                        <div class="cell2"><input type="text" id="Rank100" style="width: 300px;" onchange="CreateNoteCopy();"/></div> 
-                    </div>
-                    <div class="row">
-                        <div class="cell">ART Demand Score: </div>
-                        <div class="cell2"><input type="text" id="score" style="width: 300px;" onchange="CreateNoteCopy();"/></div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="cell">Node Health: </div>
-                        <div class="cell2"><input type="text" id="nodeHealth" style="width: 300px;" onchange="CreateNoteCopy();"/></div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Order Status: </div>
-                        <div class="cell2">
-                            <select id="status" onChange="CreateNoteCopy();">
-                                <option value=""></option>
-                                <option value="New">New</option>
-                                <option value="In Progress">In Progress</option>
-                                <option value="Resolved">Resolved</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Sup Approval(Email): </div>
-                        <div class="cell2">
-                            <select id="supApproval" onChange="CreateNoteCopy();">
-                                <option value=""></option>
-                                <option value="Required">Required</option>
-                                <option value="Provided">Provided</option>
-                            </select>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <div class="cell">Manager/DFE Approval: </div>
-                        <div class="cell2">
-                            <select id="MGRDFE" onChange="CreateNoteCopy();">
-                                <option value=""></option>
-                                <option value="Required">Required</option>
-                                <option value="Provided">Provided</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Is tech in Supervisor Project for entire shift: </div>
-                        <div class="cell2">
-                            <select id="SP" onChange="CreateNoteCopy();">
-                                <option value=""></option>
-                                <option value="Yes">Yes</option>
-                                <option value="No">No</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">Eligible for Closure Date: </div>
-                        <div class="cell2"><input type="text" id="close" style="width: 300px;" onchange="CreateNoteCopy();"/></div> 
-                    </div>
+
+                    
                 </div>
                 <div class="row displayNone section2">
                     <div class="row">
@@ -164,32 +107,44 @@
                     <br>
                     <div class="row">
                         <div class="cell">Alarm Count: </div>
-                        <div class="cell2"><input type="text" id="count-alarm" style="width: 300px;" onchange="CreateNoteEmail();"/></div>
+                        <div class="cell2"><input type="text" id="count-alarm" style="width: 300px;" onchange="CreateNote();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Alarm Score: </div>
+                        <div class="cell2"><input type="text" id="score-alarm" style="width: 300px;" onchange="CreateNote();"/></div>
                     </div>
                     <div class="row">
                         <div class="cell">LHWO count: </div>
-                        <div class="cell2"><input type="text" id="count-LHWO" style="width: 300px;" onchange="CreateNoteEmail();"/></div>
+                        <div class="cell2"><input type="text" id="count-LHWO" style="width: 300px;" onchange="CreateNote();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">LHWO Score: </div>
+                        <div class="cell2"><input type="text" id="score-LHWO" style="width: 300px;" onchange="CreateNote();"/></div>
                     </div>
                     <div class="row">
                         <div class="cell">IVR calls: </div>
-                        <div class="cell2"><input type="text" id="count-IVR" style="width: 300px;" onchange="CreateNoteEmail();"/></div>
+                        <div class="cell2"><input type="text" id="count-IVR" style="width: 300px;" onchange="CreateNote();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">IVR calls Score: </div>
+                        <div class="cell2"><input type="text" id="score-IVR" style="width: 300px;" onchange="CreateNote();"/></div>
                     </div>
                     <div class="row">
                         <div class="cell">TC count: </div>
-                        <div class="cell2"><input type="text" id="count-TC" style="width: 300px;" onchange="CreateNoteEmail();"/></div>
+                        <div class="cell2"><input type="text" id="count-TC" style="width: 300px;" onchange="CreateNote();"/></div>
                     </div>
                     <div class="row">
-                        <div class="cell">TC Per Account: </div>
-                        <div class="cell2"><input type="text" id="count-TCper" style="width: 300px;" onchange="CreateNoteEmail();"/></div>
+                        <div class="cell">TC Score: </div>
+                        <div class="cell2"><input type="text" id="score-TC" style="width: 300px;" onchange="CreateNote();"/></div>
                     </div>
                     <div class="row">
-                        <div class="cell">Combined Activity Score: </div>
-                        <div class="cell2"><input type="text" id="activity" style="width: 300px;" onchange="CreateNoteEmail();"/></div>
+                        <div class="cell">ART Demand Score: </div>
+                        <div class="cell2"><input type="text" id="activity" style="width: 300px;" onchange="CreateNote();"/></div>
                     </div>
-                    <div class="row">
+<!--                     <div class="row">
                         <div class="cell">Link to Lighthouse work order: </div>
-                        <div class="cell2"><input type="text" id="LH-link" style="width: 300px;" onchange="CreateNoteEmail();"/></div>
-                    </div>
+                        <div class="cell2"><input type="text" id="LH-link" style="width: 300px;" onchange="CreateNote();"/></div>
+                    </div> -->
                 </div>
                 
                 <br>
@@ -202,17 +157,11 @@
                     <!-- <textarea id="Desc" rows="10" cols="49" style="scroll-behavior: auto; width: 500px;background-color: #dddddd;" readonly></textarea> -->
                     <div class="row">
                         <div class="cell">&nbsp;</div>
-                        <div><input type="button" value="Generate Email for Initial" class="CopyBtn displayNone section2"/></div>
+                        <div><input type="button" value="Copy for Initial Notification" class="CopyBtn displayNone section2" onclick="copyBtn();" ></div>
                     </div>
                     <div class="row">
                         <div class="cell">&nbsp;</div>
-                        <div><input type="button" value="Copy for Update Email" class="CopyNotes displayNone section1" onclick="copyBtn2();"/></div>
-                    </div>
-                    <div>
-                        <button class="displayNone section2" onclick="copyToClipboard()">Copy sentence</button>
-                        <button class="displayNone section2" onclick="copyToClipboard1()">Copy sentence</button>
-                        <button class="displayNone section2" onclick="copyToClipboard2()">Copy sentence</button>
-                        <button class="displayNone section2" onclick="copyToClipboard3()">Copy sentence</button>
+                        <div><input type="button" value="Copy for Closure Notification" class="CopyNotes displayNone section1" onclick="copyBtn2();"/></div>
                     </div>
                     <div class="row">
                         <div class="cell">&nbsp;</div>
