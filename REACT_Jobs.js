@@ -43,8 +43,7 @@ function CreateNote() {
     var TCcount = document.getElementById("count-TC").value;
     var TCscore = document.getElementById("score-TC").value;
     var activity = document.getElementById("activity").value;
-    var LHlink = document.getElementById("LH-link").value;
-    var SSlink = "https://app.smartsheet.com/sheets/Hhcx52fJxxMPP77C6HvmjM2VfXjc3C34vX3VWCq1?view=grid&filterId=8651333020110724";
+
 
     
     let notes = `This notification is to alert you to a node driving high activity in your area. This node will need to be certified/optimized/swept. Once node certification/optimization/sweeping has been completed, the ROC will provide targets, as needed.
@@ -58,8 +57,6 @@ function CreateNote() {
     TC score: ${TCscore}
     ART Demand Score: ${activity}
     `
-    /* LHWO Link: ${LHlink}
-    Smartsheet Link: ${SSlink} */
  return notes;
 }
 
