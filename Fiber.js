@@ -14,6 +14,19 @@ copyLHDescBtn.addEventListener("click", function(event) {
 	   console.log("Oops, unable to copy");
    }
 });
+
+var copyLHDescBtn = document.querySelector(".CopyDesc2");
+copyLHDescBtn.addEventListener("click", function(event) {
+    var copyLHDesc = document.querySelector("#LHDesc2");
+    copyLHDesc.select();
+       try {
+        var successful = document.execCommand("copy");
+        var msg = successful ? "successful" : "unsuccessful";
+        console.log("Copying text command was " + msg);
+     } catch (err) {
+        console.log("Oops, unable to copy");
+    }
+ });
 var copyLHDescBtn = document.querySelector(".CopyDesc4");
 
 copyLHDescBtn.addEventListener("click", function(event) {
@@ -81,7 +94,17 @@ function myLHDesc() {
     var au =  document.getElementById("Q46").value; 
     var av =  document.getElementById("Q47").value; 
     var aw =  document.getElementById("Q48").value; 
-
+    let sup = document.getElementById("sup").value;
+    let supContact = document.getElementById("supContact").value;
+    let ROC = document.getElementById("ROC").value;
+    let ROCContact = document.getElementById("ROCContact").value;
+    let AWho = document.getElementById("AWho").value;
+    let ATime = document.getElementById("ATime").value;
+    let ANotes = document.getElementById("ANotes").value;
+    let SEWho = document.getElementById("SEWho").value;
+    let SETime = document.getElementById("SETime").value;
+    let SENotes = document.getElementById("SENotes").value;
+    let Dual = document.getElementById("Dual").value;
 
 	document.getElementById("LHDesc").innerHTML = 
 		
@@ -136,6 +159,24 @@ function myLHDesc() {
         + "Is there slack available after restoration? " + au + "\r"
         + "Was an OTDR used, yes/no and by whom? " + av + "\r"
         + "Were we prepared to make all necessary repairs (test equipment, materials, etc.)? " + aw + "\r"
+
+
+        document.getElementById("LHDesc2").innerHTML = 
+        `
+        MT Engaged: ${f}
+        Contact time: ${h}
+        MT Supervisor: ${sup}
+        Contact Time: ${supContact}
+        ROC Supervisor: ${ROC}
+        Contact Time: ${ROCContact}
+        Event PUC: ${a}
+        Austin NOC Agent: ${AWho}
+        Time Called: ${ATime}
+        Notes: ${ANotes}
+        SE NOC Agent: ${SEWho}
+        Time Called: ${SETime}
+        Notes: ${SENotes}
+        Dual Dispatch INC: ${Dual}`
 
 }
 	//document.getElementById("Q11").value = style;
