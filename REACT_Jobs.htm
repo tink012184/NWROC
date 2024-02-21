@@ -53,6 +53,8 @@
                             <option value=""></option>
                             <option value="Initial">Initial</option>
                             <option value="Close">Close</option>
+                            <option value="Approval">Approval Template</option>
+                            <option value="Update">Update</option>
                         </select>
                     </div>
                 </div>
@@ -148,6 +150,68 @@
                 </div>
                 
                 <br>
+
+                <div class="row displayNone section3">
+                    <div class="row">
+                        <div style="color: red; font-size: 25px; -webkit-text-stroke-width: 1px;
+                        -webkit-text-stroke-color: black;">Make sure you are calling the DFE/AVP first. Then message them with the details.</div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Who is asking</div>
+                        <div class="cell2"><input type="text" id="who" style="width: 300px;" onchange="CreateNote2();CreateNote3();"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">How many deflections have already occurred in the life of the ticket</div>
+                        <div class="cell2"><input type="text" id="deflections" style="width: 300px;" onchange="CreateNote2();CreateNote3();"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Why do they need deflection this time</div>
+                        <div class="cell2"><input type="text" id="why" style="width: 300px;" onchange="CreateNote2();CreateNote3();"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Is it Approved</div>
+                        <div class="cell">
+                            <select id="Approved" onChange="CreateNote2();CreateNote3();">
+                                <option value=""></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row displayNone section4">
+                    <div class="row">
+                        <div class="cell">When is the closure date?</div>
+                        <div class="cell2"><input type="date" id="closeDate" style="width: 300px;" onChange="CreateNote4();"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Node Health Score</div>
+                        <div class="cell2"><input type="number" id="nodeHealth" style="width: 300px;" onChange="CreateNote4();"></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Is is in the top 5%?</div>
+                        <div class="cell">
+                            <select id="top5" onchange="CreateNote4();">
+                                <option value=""></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Does it have approval to close?</div>
+                        <div class="cell">
+                            <select id="DFEMGR" onchange="CreateNote4();">
+                                <option value=""></option>
+                                <option value="Yes">Yes</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Resolution side -->
@@ -162,6 +226,18 @@
                     <div class="row">
                         <div class="cell">&nbsp;</div>
                         <div><input type="button" value="Copy for Closure Notification" class="CopyNotes displayNone section1" onclick="copyBtn2();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">&nbsp;</div>
+                        <div><input type="button" value="Copy for Ask" class="CopyNotes displayNone section3" onclick="copyBtn3();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">&nbsp;</div>
+                        <div><input type="button" value="Copy for Approval Determined" class="CopyNotes displayNone section3" onclick="copyBtn4();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">&nbsp;</div>
+                        <div><input type="button" value="Copy for Update" class="CopyNotes displayNone section4" onclick="copyBtn5();"/></div>
                     </div>
                     <div class="row">
                         <div class="cell">&nbsp;</div>
