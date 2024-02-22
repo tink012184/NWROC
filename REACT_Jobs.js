@@ -108,11 +108,13 @@ function CreateNote4() {
     let health = document.getElementById("nodeHealth").value;
     let top5 = document.getElementById("top5").value;
     let approval = document.getElementById("DFEMGR").value;
+    let note = document.getElementById("notes").value;
 
     let notes = `Closure Date: ${close}
 Node Health Score: ${health}
 Top 5%: ${top5}
-Approval: ${approval}`
+Approval: ${approval}
+Notes: ${note}`
 
     return notes
 }
