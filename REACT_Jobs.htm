@@ -108,45 +108,61 @@
                     </div>
                     <br>
                     <div class="row">
-                        <div class="cell">Alarm Count: </div>
-                        <div class="cell2"><input type="text" id="count-alarm" style="width: 300px;" onchange="CreateNote();"/></div>
+                        <div class="cell">ART Demand Score: </div>
+                        <div class="cell2"><input type="text" id="activity" style="width: 300px;" onchange="CreateNote();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">ART Demand Top 5% baseline: </div>
+                        <div class="cell2"><input type="text" id="fivePercent" style="width: 300px;" onchange="CreateNote();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">ART Prevent Today: </div>
+                        <div class="cell2"><input type="text" id="prevent-today" style="width: 300px;" onchange="CreateNote();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">NHR Score Today: </div>
+                        <div class="cell2"><input type="text" id="score-today" style="width: 300px;" onchange="CreateNote();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Routing Area Top 5% Position: </div>
+                        <div class="cell2"><input type="text" id="position" style="width: 300px;" onchange="CreateNote();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Routing Area: </div>
+                        <div class="cell2"><input type="text" id="area" style="width: 300px;" onchange="CreateNote();"/></div>
                     </div>
                     <div class="row">
                         <div class="cell">Alarm Score: </div>
                         <div class="cell2"><input type="text" id="score-alarm" style="width: 300px;" onchange="CreateNote();"/></div>
                     </div>
                     <div class="row">
-                        <div class="cell">LHWO count: </div>
-                        <div class="cell2"><input type="text" id="count-LHWO" style="width: 300px;" onchange="CreateNote();"/></div>
-                    </div>
-                    <div class="row">
                         <div class="cell">LHWO Score: </div>
                         <div class="cell2"><input type="text" id="score-LHWO" style="width: 300px;" onchange="CreateNote();"/></div>
                     </div>
                     <div class="row">
-                        <div class="cell">IVR calls: </div>
-                        <div class="cell2"><input type="text" id="count-IVR" style="width: 300px;" onchange="CreateNote();"/></div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">IVR calls Score: </div>
+                        <div class="cell">IVR Score: </div>
                         <div class="cell2"><input type="text" id="score-IVR" style="width: 300px;" onchange="CreateNote();"/></div>
-                    </div>
-                    <div class="row">
-                        <div class="cell">TC count: </div>
-                        <div class="cell2"><input type="text" id="count-TC" style="width: 300px;" onchange="CreateNote();"/></div>
                     </div>
                     <div class="row">
                         <div class="cell">TC Score: </div>
                         <div class="cell2"><input type="text" id="score-TC" style="width: 300px;" onchange="CreateNote();"/></div>
                     </div>
                     <div class="row">
-                        <div class="cell">ART Demand Score: </div>
-                        <div class="cell2"><input type="text" id="activity" style="width: 300px;" onchange="CreateNote();"/></div>
+                        <div class="cell">Alarm Count 30 Days: </div>
+                        <div class="cell2"><input type="text" id="count-alarm" style="width: 300px;" onchange="CreateNote();"/></div>
                     </div>
-<!--                     <div class="row">
-                        <div class="cell">Link to Lighthouse work order: </div>
-                        <div class="cell2"><input type="text" id="LH-link" style="width: 300px;" onchange="CreateNote();"/></div>
-                    </div> -->
+                    <div class="row">
+                        <div class="cell">LHWO Count 30 Days: </div>
+                        <div class="cell2"><input type="text" id="count-LHWO" style="width: 300px;" onchange="CreateNote();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">IVR Count 30 Days: </div>
+                        <div class="cell2"><input type="text" id="count-IVR" style="width: 300px;" onchange="CreateNote();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">TC Count 30 Days: </div>
+                        <div class="cell2"><input type="text" id="count-TC" style="width: 300px;" onchange="CreateNote();"/></div>
+                    </div>
                 </div>
                 
                 <br>
@@ -171,10 +187,24 @@
                     <div class="row">
                         <div class="cell">Is it Approved</div>
                         <div class="cell">
-                            <select id="Approved" onChange="CreateNote2();CreateNote3();">
+                            <select id="Approved" onChange="CreateNote2();CreateNote3();showhide();">
                                 <option value=""></option>
                                 <option value="Yes">Yes</option>
                                 <option value="No">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row displayNone approver">
+                        <div class="cell">By Whom?</div>
+                        <div class="cell">
+                            <select id="byWhom" onchange="CreateNote3();">
+                                <option value=""></option>
+                                <option value="Bryan Riggs">Bryan Riggs</option>
+                                <option value="Michael Smith">Michael Smith</option>
+                                <option value="Trentyn Roden">Trentyn Roden</option>
+                                <option value="Tyler Olson">Tyler Olson</option>
+                                <option value="Danielle Wade">Danielle Wade</option>
+                                <option value="Ed Gaffney">Ed Gaffney</option>
                             </select>
                         </div>
                     </div>

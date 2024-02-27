@@ -23,7 +23,11 @@ function showhide() {
         for (let el of document.querySelectorAll('.section4')) el.classList.remove("displayNone");
     }
 
-
+    if (document.getElementById("Approved").value == "Yes"){
+        for (let el of document.querySelectorAll('.approver')) el.classList.remove("displayNone");
+    }else {
+        for (let el of document.querySelectorAll('.approver')) el.classList.add("displayNone");
+    }
 
 }
 
@@ -56,20 +60,30 @@ function CreateNote() {
     var TCcount = document.getElementById("count-TC").value;
     var TCscore = document.getElementById("score-TC").value;
     var activity = document.getElementById("activity").value;
+    let fivePercent = document.getElementById("fivePercent").value;
+    let preventToday = document.getElementById("prevent-today").value;
+    let scoreToday = document.getElementById("score-today").value;
+    let position = document.getElementById("position").value;
+    let area = document.getElementById("area").value;
 
 
     
     let notes = `This notification is to alert you to a node driving high activity in your area. This node will need to be certified/optimized/swept. Once node certification/optimization/sweeping has been completed, the ROC will provide targets, as needed.
-    Alarm count: ${alarmcount}
-    Alarm score: ${alarmScore}
-    LHWO count: ${LHWocount}
-    LHWO score: ${LHWoScore}
-    IVR calls: ${IVRcount}
-    IVR calls score: ${IVRscore}
-    TC count: ${TCcount}
-    TC score: ${TCscore}
-    ART Demand Score: ${activity}
-    `
+ART Demand: ${activity}
+ART Demand Top 5% Baseline: ${fivePercent}
+ART Prevent Today: ${preventToday}
+NHR Score Today: ${scoreToday}
+Routing Area Top 5% Position: ${position}
+Routing Area: ${area}
+Alarm Score: ${alarmScore}
+LHWO Score: ${LHWoScore}
+IVR Score: ${IVRscore}
+TC Score: ${TCscore}
+Alarm Count 30 Days: ${alarmcount}
+LHWO Count 30 Days: ${LHWocount}
+IVR Count 30 Days: ${IVRcount}
+TC Count 30 Days:  ${TCcount}`
+
  return notes;
 }
 
@@ -92,11 +106,12 @@ function CreateNote3() {
     let why = document.getElementById("why").value;
     let Approved = document.getElementById("Approved").value;
     let node = document.getElementById("node").value;
+    let approvedBy = document.getElementById("byWhom").value;
 
     let final = `Where: ${node}
 Who: ${who}
 Why: ${why}
-Approved: ${Approved}`
+Approved: ${Approved} by ${approvedBy}`
 
     
     return final;
