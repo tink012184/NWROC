@@ -55,6 +55,7 @@
                             <option value="Close">Close</option>
                             <option value="Approval">Approval Template</option>
                             <option value="Update">Update</option>
+                            <option value="handoff">Handoff</option>
                         </select>
                     </div>
                 </div>
@@ -254,6 +255,37 @@
                         <div class="cell2"><textarea id="notes" style="width: 300px;" rows="5" onchange="CreateNote4"></textarea></div>
                     </div>
                 </div>
+
+                <div class="row displayNone section5">
+                    <div class="row">
+                        <div class="cell">Jobs Assigned:</div>
+                        <div class="cell2"><textarea id="assigned" style="width: 300px;" rows="5" onchange="handOff();"></textarea></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Jobs Unassigned:</div>
+                        <div class="cell2"><textarea id="unassigned" style="width: 300px;" rows="5" onchange="handOff();"></textarea></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Jobs in Resolved Pending Closure:</div>
+                        <div class="cell2"><textarea id="resolvedPend" style="width: 300px;" rows="5" onchange="handOff();"></textarea></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">REACT Jobs I Closed:</div>
+                        <div class="cell2"><textarea id="closed" style="width: 300px;" rows="5" onchange="handOff();"></textarea></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">REACT Jobs I Created:</div>
+                        <div class="cell2"><textarea id="created" style="width: 300px;" rows="5" onchange="handOff();"></textarea></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Techs Still Needing Work:</div>
+                        <div class="cell2"><textarea id="needing" style="width: 300px;" rows="5" onchange="handOff();"></textarea></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">Hand Off Comments</div>
+                        <div class="cell2"><textarea id="comments" style="width: 300px;" rows="5" onchange="handOff();"></textarea></div>
+                    </div>
+                </div>
             </div>
 
             <!-- Resolution side -->
@@ -280,6 +312,10 @@
                     <div class="row">
                         <div class="cell">&nbsp;</div>
                         <div><input type="button" value="Copy for Update" class="CopyNotes displayNone section4" onclick="copyBtn5();"/></div>
+                    </div>
+                    <div class="row">
+                        <div class="cell">&nbsp;</div>
+                        <div><input type="button" value="Copy for Hand Off" class="CopyNotes displayNone section5" onclick="copyBtn6();"/></div>
                     </div>
                     <div class="row">
                         <div class="cell">&nbsp;</div>

@@ -5,22 +5,31 @@ function showhide() {
         for (let el of document.querySelectorAll('.section2')) el.classList.remove("displayNone");
         for (let el of document.querySelectorAll('.section3')) el.classList.add("displayNone");
         for (let el of document.querySelectorAll('.section4')) el.classList.add("displayNone");
+        for (let el of document.querySelectorAll('.section5')) el.classList.add("displayNone");
     } else if (document.getElementById("typeoforder").value == "Close") {
-
         for (let el of document.querySelectorAll('.section1')) el.classList.remove("displayNone");
         for (let el of document.querySelectorAll('.section2')) el.classList.add("displayNone");
         for (let el of document.querySelectorAll('.section3')) el.classList.add("displayNone");
         for (let el of document.querySelectorAll('.section4')) el.classList.add("displayNone");
+        for (let el of document.querySelectorAll('.section5')) el.classList.add("displayNone");
     } else if (document.getElementById("typeoforder").value == "Approval") {
         for (let el of document.querySelectorAll('.section1')) el.classList.add("displayNone");
         for (let el of document.querySelectorAll('.section2')) el.classList.add("displayNone");
         for (let el of document.querySelectorAll('.section3')) el.classList.remove("displayNone");
         for (let el of document.querySelectorAll('.section4')) el.classList.add("displayNone");
+        for (let el of document.querySelectorAll('.section5')) el.classList.add("displayNone");
     } else if (document.getElementById("typeoforder").value == "Update") {
         for (let el of document.querySelectorAll('.section1')) el.classList.add("displayNone");
         for (let el of document.querySelectorAll('.section2')) el.classList.add("displayNone");
         for (let el of document.querySelectorAll('.section3')) el.classList.add("displayNone");
         for (let el of document.querySelectorAll('.section4')) el.classList.remove("displayNone");
+        for (let el of document.querySelectorAll('.section5')) el.classList.add("displayNone");
+    } else if (document.getElementById("typeoforder").value == "handoff") {
+        for (let el of document.querySelectorAll('.section1')) el.classList.add("displayNone");
+        for (let el of document.querySelectorAll('.section2')) el.classList.add("displayNone");
+        for (let el of document.querySelectorAll('.section3')) el.classList.add("displayNone");
+        for (let el of document.querySelectorAll('.section4')) el.classList.add("displayNone");
+        for (let el of document.querySelectorAll('.section5')) el.classList.remove("displayNone");
     }
 
     if (document.getElementById("Approved").value == "Yes"){
@@ -178,6 +187,27 @@ document.getElementById("hub").innerHTML = "<option></option>";
 	
 }
 
+function handOff(){
+    let assigned = document.getElementById("assigned").value;
+    let unassigned = document.getElementById("unassigned").value;
+    let resolvedPend = document.getElementById("resolvedPend").value;
+    let closed = document.getElementById("closed").value;
+    let created = document.getElementById("created").value;
+    let needing = document.getElementById("needing").value;
+    let comments = document.getElementById("comments").value;
+
+    let notes = `Jobs Assigned: ${assigned}
+Jobs Unassigned: ${unassigned}
+Jobs in Resolved Pending Closure: ${resolvedPend}
+Jobs I Closed: ${closed}
+REACT Jobs I Created: ${created}
+Techs Still Needing Work: ${needing}
+Comments: ${comments}`
+
+    return notes;
+
+}
+
 
 function TechLoad(value){
 	
@@ -225,6 +255,10 @@ function copyBtn4() {
 
 function copyBtn5() {
     navigator.clipboard.writeText(CreateNote4());
+}
+
+function copyBtn6() {
+    navigator.clipboard.writeText(handOff());
 }
 
 
