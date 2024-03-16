@@ -119,13 +119,13 @@ Approved: ${Approved} by ${approvedBy}`
 }
 
 function CreateNote4() {
-    let close = document.getElementById("closeDate").value;
+    let soak = document.getElementById("soak").value;
     let health = document.getElementById("nodeHealth").value;
     let top5 = document.getElementById("top5").value;
     let approval = document.getElementById("DFEMGR").value;
     let note = document.getElementById("notes").value;
 
-    let notes = `Closure Date: ${close}
+    let notes = `${soak}
 Node Health Score: ${health}
 Top 5%: ${top5}
 Approval: ${approval}
