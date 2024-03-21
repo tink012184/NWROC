@@ -45,6 +45,15 @@ function displayLinks() {
 
 // Call the function to display links
 displayLinks();
+
+
+// Define the groupBy function
+function groupBy(array, key) {
+  return array.reduce(function(result, item) {
+    (result[item[key]] = result[item[key]] || []).push(item);
+    return result;
+  }, {});
+}
 </script>
 
 </body>
