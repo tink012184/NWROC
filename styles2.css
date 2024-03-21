@@ -42,6 +42,14 @@ li {margin-top: 10px;}
 	float: right;
 }
 
+.main2 {
+	display: block;
+	background: #787878;
+  	width: 100%;
+	text-align: left;
+	float: right;
+}
+
 .mainTu {
 	display: block;
 	background: #0099D8;
@@ -375,3 +383,23 @@ input::-webkit-inner-spin-button {
 .fiberCall {
 	background-color: darkblue;
 	}
+
+/* unvisited link */
+a:link {
+  color: white;
+}
+
+/* visited link */
+a:visited {
+  color: white;
+}
+
+/* mouse over link */
+a:hover {
+  color: blue;
+}
+
+/* selected link */
+a:active {
+  color: blue;
+}
