@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>ROC Links</title>
+</head>
+<body>
+
+<div id="linkList"></div>
+
+<script>
+// Array of links
+let links = [
+  { section: "Search Engines", name: "Google", url: "https://www.google.com" },
+  { section: "Search Engines", name: "Bing", url: "https://www.bing.com" },
+  { section: "Programming", name: "Stack Overflow", url: "https://stackoverflow.com" },
+  { section: "Programming", name: "GitHub", url: "https://github.com" } ];
+
+// Function to display links
+function displayLinks() {
+  let list = document.getElementById('linkList');
+  let groupedLinks = groupBy(links, 'section');
+  for (const section in groupedLinks) {
+    let sectionDiv = document.createElement('div');
+    sectionDiv.classList.add('section');
+    let h2 = document.createElement('h2');
+    h2.textContent = section;
+    sectionDiv.appendChild(h2);
+    let ul = document.createElement('ul');
+    sectionDiv.appendChild(ul);
+    groupedLinks[section].forEach(function(link) {
+      let li = document.createElement('li');
+      let a = document.createElement('a');
+      let linkText = document.createTextNode(link.name);
+      a.appendChild(linkText);
+      a.title = link.name;
+      a.href = link.url;
+      a.target = "_blank"; // Open in new tab
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    list.appendChild(sectionDiv);
+  }
+}
+
+// Call the function to display links
+displayLinks();
+</script>
+
+</body>
+</html>
